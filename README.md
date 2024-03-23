@@ -77,6 +77,26 @@
 <b>doctor:</b>Styles related to doctors.<br />
 <b>patient:</b>Styles related to patients.<br />
 
+<p><b>Node modules</b></br>
+<span style="color: green;"> "ethereumjs-wallet": "^1.0.2",
+    "ganache-cli": "^6.12.2",
+    "mongoose": "^8.2.3",
+    "neo4j-driver": "^5.18.0",
+    "next": "^14.1.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "web3": "^4.6.0" </span>
+</p>
+
+
+**Note:**
+- Please ensure to update the `node_modules` field in the `readme.md` file if you install any new modules using npm . This helps maintain an accurate list of dependencies for the project.
+
+- If you update the MongoDB connection string in the `.env` file, make sure to upload the updated `.env` file to GitHub along with your other project files. This ensures that other contributors have access to the correct database connection configuration.
+
+- When creating new files, such as components, please use camel case for the file names. For example, `SampleComponent` instead of `sample_component`.
+
+  
 ### Reporting Issues
 
 If you encounter any bugs, glitches, or other issues, please [create a new issue](link-to-issue-tracker) on our issue tracker. Be sure to include detailed information about the problem, including steps to reproduce it if possible.
