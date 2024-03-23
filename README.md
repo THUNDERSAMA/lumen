@@ -1,45 +1,45 @@
 ## Project Lumen
 ## Folder Structure
-+---.github
-|   \---workflows
-+---node_modules
-+---public
-|   +---images
-|   \---json
-+---PythonScripts
-|   +---2auth_images
-|   +---api
-|   \---ML
-+---src
-|   \---app
-|       +---api
-|       +---components
-|       |   +---desktop
-|       |   |   +---doctor
-|       |   |   \---patient
-|       |   \---mobile
-|       |       +---doctor
-|       |       \---patient
-|       +---middleware
-|       \---pages
-|           +---desktop
-|           |   +---doctor
-|           |   |   \---sample_page
-|           |   \---patient
-|           |       \---sample_page
-|           \---mobile
-|               +---doctor
-|               |   \---sample_page
-|               \---patient
-|                   \---sample_page
-\---styles
-    \---components
-        +---desktop
-        |   +---doctor
-        |   \---patient
-        \---mobile
-            +---doctor
-            \---patient
++---.github <br />
+|   \---workflows <br />
++---node_modules <br />
++---public <br />
+|   +---images<br />
+|   \---json<br />
++---PythonScripts<br />
+|   +---2auth_images<br />
+|   +---api<br />
+|   \---ML<br />
++---src<br />
+|   \---app<br />
+|       +---api<br />
+|       +---components<br />
+|       |   +---desktop<br />
+|       |   |   +---doctor<br />
+|       |   |   \---patient<br />
+|       |   \---mobile<br />
+|       |       +---doctor<br />
+|       |       \---patient<br />
+|       +---middleware<br />
+|       \---pages<br />
+|           +---desktop<br />
+|           |   +---doctor<br />
+|           |   |   \---sample_page<br />
+|           |   \---patient<br />
+|           |       \---sample_page<br />
+|           \---mobile<br />
+|               +---doctor<br />
+|               |   \---sample_page<br />
+|               \---patient<br />
+|                   \---sample_page<br />
+\---styles<br />
+    \---components<br />
+        +---desktop<br />
+        |   +---doctor<br />
+        |   \---patient<br />
+        \---mobile<br />
+            +---doctor<br />
+            \---patient<br />
 
 ## Folder Structure Explanation
 
