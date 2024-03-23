@@ -44,50 +44,47 @@
 
 ## Folder Structure Explanation
 
-.github/workflows: Contains GitHub Actions workflows.
-node_modules: Node.js dependencies.
-public: Public assets like images and JSON files.
-PythonScripts: Python scripts including authentication images, APIs, and machine learning scripts.
-src: Source code for the Next.js application.
-app: Main application logic.
-api: API routes.
-components: Reusable UI components.
-desktop: Components specific to desktop layout.
-doctor: Components related to doctors.
-patient: Components related to patients.
-mobile: Components specific to mobile layout.
-doctor: Components related to doctors.
-patient: Components related to patients.
-middleware: Middleware for handling requests.
-pages: Next.js pages.
-desktop: Pages specific to desktop layout.
-doctor: Pages related to doctors.
-patient: Pages related to patients.
-sample_page: Sample page for patients.
-mobile: Pages specific to mobile layout.
-doctor: Pages related to doctors.
-patient: Pages related to patients.
-sample_page: Sample page for patients.
-styles: CSS stylesheets.
-components: Styles for components.
-desktop: Styles specific to desktop layout.
-doctor: Styles related to doctors.
-patient: Styles related to patients.
-mobile: Styles specific to mobile layout.
-doctor: Styles related to doctors.
-patient: Styles related to patients.
+<b>.github/workflows:</b> Contains GitHub Actions workflows.<br />
+node_modules: Node.js dependencies.<br />
+public: Public assets like images and JSON files.<br />
+PythonScripts: Python scripts including authentication images, APIs, and machine learning scripts.<br />
+src: Source code for the Next.js application.<br />
+app: Main application logic.<br />
+api: API routes.<br />
+components: Reusable UI components.<br />
+desktop: Components specific to desktop layout.<br />
+doctor: Components related to doctors.<br />
+patient: Components related to patients.<br />
+mobile: Components specific to mobile layout.<br />
+doctor: Components related to doctors.<br />
+patient: Components related to patients.<br />
+middleware: Middleware for handling requests.<br />
+pages: Next.js pages.<br />
+desktop: Pages specific to desktop layout.<br />
+doctor: Pages related to doctors.<br />
+patient: Pages related to patients.<br />
+sample_page: Sample page for patients.<br />
+mobile: Pages specific to mobile layout.<br />
+doctor: Pages related to doctors.<br />
+patient: Pages related to patients.<br />
+sample_page: Sample page for patients.<br />
+styles: CSS stylesheets.<br />
+components: Styles for components.<br />
+desktop: Styles specific to desktop layout.<br />
+doctor: Styles related to doctors.<br />
+patient: Styles related to patients.<br />
+mobile: Styles specific to mobile layout.<br />
+doctor: Styles related to doctors.<br />
+patient: Styles related to patients.<br />
 
 ### Reporting Issues
 
 If you encounter any bugs, glitches, or other issues, please [create a new issue](link-to-issue-tracker) on our issue tracker. Be sure to include detailed information about the problem, including steps to reproduce it if possible.
 
-### Suggesting Enhancements
-
-Have an idea for a new feature or improvement? Feel free to [open a new discussion](link-to-discussions) to suggest your enhancement. We value community feedback and would love to hear your ideas.
 
 ### Submitting Pull Requests
 
-We welcome contributions via pull requests. If you'd like to fix a bug, add a new feature, or make any other changes to the project, please follow these steps:
+ please follow these steps:
 
 1. Fork the repository and create your branch from `main`.
 2. Make your changes and ensure the codebase is properly formatted.
@@ -95,9 +92,6 @@ We welcome contributions via pull requests. If you'd like to fix a bug, add a ne
 4. Ensure your commits are well-documented and descriptive.
 5. Submit a pull request, explaining the changes you've made and why they're beneficial.
 
-### Providing Feedback
-
-Even if you're not able to contribute code directly, your feedback is valuable to us. If you have any thoughts, suggestions, or questions about the project, feel free to [reach out](link-to-contact) to us.
 
 ## Setup Instructions
 
