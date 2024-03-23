@@ -1,6 +1,6 @@
 ## Project Lumen
 ## Folder Structure
-+---.github <br />
+<p>+---.github <br />
 |   \---workflows <br />
 +---node_modules <br />
 +---public <br />
@@ -40,6 +40,7 @@
         \---mobile<br />
             +---doctor<br />
             \---patient<br />
+</p>
 
 ## Folder Structure Explanation
 
