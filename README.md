@@ -1,6 +1,104 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Project Lumen
+## Folder Structure
++---.github
+|   \---workflows
++---node_modules
++---public
+|   +---images
+|   \---json
++---PythonScripts
+|   +---2auth_images
+|   +---api
+|   \---ML
++---src
+|   \---app
+|       +---api
+|       +---components
+|       |   +---desktop
+|       |   |   +---doctor
+|       |   |   \---patient
+|       |   \---mobile
+|       |       +---doctor
+|       |       \---patient
+|       +---middleware
+|       \---pages
+|           +---desktop
+|           |   +---doctor
+|           |   |   \---sample_page
+|           |   \---patient
+|           |       \---sample_page
+|           \---mobile
+|               +---doctor
+|               |   \---sample_page
+|               \---patient
+|                   \---sample_page
+\---styles
+    \---components
+        +---desktop
+        |   +---doctor
+        |   \---patient
+        \---mobile
+            +---doctor
+            \---patient
 
-## Getting Started
+## Folder Structure Explanation
+
+.github/workflows: Contains GitHub Actions workflows.
+node_modules: Node.js dependencies.
+public: Public assets like images and JSON files.
+PythonScripts: Python scripts including authentication images, APIs, and machine learning scripts.
+src: Source code for the Next.js application.
+app: Main application logic.
+api: API routes.
+components: Reusable UI components.
+desktop: Components specific to desktop layout.
+doctor: Components related to doctors.
+patient: Components related to patients.
+mobile: Components specific to mobile layout.
+doctor: Components related to doctors.
+patient: Components related to patients.
+middleware: Middleware for handling requests.
+pages: Next.js pages.
+desktop: Pages specific to desktop layout.
+doctor: Pages related to doctors.
+patient: Pages related to patients.
+sample_page: Sample page for patients.
+mobile: Pages specific to mobile layout.
+doctor: Pages related to doctors.
+patient: Pages related to patients.
+sample_page: Sample page for patients.
+styles: CSS stylesheets.
+components: Styles for components.
+desktop: Styles specific to desktop layout.
+doctor: Styles related to doctors.
+patient: Styles related to patients.
+mobile: Styles specific to mobile layout.
+doctor: Styles related to doctors.
+patient: Styles related to patients.
+
+### Reporting Issues
+
+If you encounter any bugs, glitches, or other issues, please [create a new issue](link-to-issue-tracker) on our issue tracker. Be sure to include detailed information about the problem, including steps to reproduce it if possible.
+
+### Suggesting Enhancements
+
+Have an idea for a new feature or improvement? Feel free to [open a new discussion](link-to-discussions) to suggest your enhancement. We value community feedback and would love to hear your ideas.
+
+### Submitting Pull Requests
+
+We welcome contributions via pull requests. If you'd like to fix a bug, add a new feature, or make any other changes to the project, please follow these steps:
+
+1. Fork the repository and create your branch from `main`.
+2. Make your changes and ensure the codebase is properly formatted.
+3. Write tests to cover your changes, if applicable.
+4. Ensure your commits are well-documented and descriptive.
+5. Submit a pull request, explaining the changes you've made and why they're beneficial.
+
+### Providing Feedback
+
+Even if you're not able to contribute code directly, your feedback is valuable to us. If you have any thoughts, suggestions, or questions about the project, feel free to [reach out](link-to-contact) to us.
+
+## Setup Instructions
 
 First, run the development server:
 
@@ -20,17 +118,3 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
