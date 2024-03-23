@@ -1,5 +1,19 @@
 ## Project Lumen 🙂
+
+🏥 Our project addresses the modern healthcare landscape's need for efficient, secure, and patient-centric prescription data management. By integrating blockchain technology with a centralized medical database, we ensure security, accessibility, and confidentiality.
+
+🔒 Traditional paper-based systems pose vulnerabilities, including inefficiencies and data breaches. Our solution leverages blockchain's transparency and immutability to establish a secure platform for prescription data storage.
+
+💡 Patients gain control over their data, with the ability to grant or revoke access as needed. This fosters trust and empowers individuals in their health journey.
+
+🚀 The transition to digital systems streamlines record-keeping and data management, enhancing efficiency and accessibility.
+
+🔐 Key components include a user-friendly registration process, smart contracts for secure data management on the Ethereum blockchain, integration with a graph database for data analysis, and robust security measures for compliance with regulations like HIPAA.
+
+🌟 Our solution enables accurate tracking, reduced errors, and minimized fraud. It facilitates seamless data exchange between healthcare providers, improving care coordination and decision-making.
+
 ## Folder Structure 😯
+
 <p>+---.github <br />
 |&nbsp &nbsp \---workflows <br />
 +---node_modules <br />
