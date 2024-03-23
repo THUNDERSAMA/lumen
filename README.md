@@ -45,37 +45,37 @@
 ## Folder Structure Explanation
 
 <b>.github/workflows:</b> Contains GitHub Actions workflows.<br />
-node_modules: Node.js dependencies.<br />
-public: Public assets like images and JSON files.<br />
-PythonScripts: Python scripts including authentication images, APIs, and machine learning scripts.<br />
-src: Source code for the Next.js application.<br />
-app: Main application logic.<br />
-api: API routes.<br />
-components: Reusable UI components.<br />
-desktop: Components specific to desktop layout.<br />
-doctor: Components related to doctors.<br />
-patient: Components related to patients.<br />
-mobile: Components specific to mobile layout.<br />
-doctor: Components related to doctors.<br />
-patient: Components related to patients.<br />
-middleware: Middleware for handling requests.<br />
-pages: Next.js pages.<br />
-desktop: Pages specific to desktop layout.<br />
-doctor: Pages related to doctors.<br />
-patient: Pages related to patients.<br />
-sample_page: Sample page for patients.<br />
-mobile: Pages specific to mobile layout.<br />
-doctor: Pages related to doctors.<br />
-patient: Pages related to patients.<br />
-sample_page: Sample page for patients.<br />
-styles: CSS stylesheets.<br />
-components: Styles for components.<br />
-desktop: Styles specific to desktop layout.<br />
-doctor: Styles related to doctors.<br />
-patient: Styles related to patients.<br />
-mobile: Styles specific to mobile layout.<br />
-doctor: Styles related to doctors.<br />
-patient: Styles related to patients.<br />
+<b>node_modules:</b>Node.js dependencies.<br />
+<b>public:</b>Public assets like images and JSON files.<br />
+<b>PythonScripts:</b>Python scripts including authentication images, APIs, and machine learning scripts.<br />
+<b>src:</b>Source code for the Next.js application.<br />
+<b>app:</b>Main application logic.<br />
+<b>api:</b>API routes.<br />
+<b>components:</b>Reusable UI components.<br />
+<b>desktop:</b>Components specific to desktop layout.<br />
+<b>doctor:</b>Components related to doctors.<br />
+<b>patient:</b>Components related to patients.<br />
+<b>mobile:</b>Components specific to mobile layout.<br />
+<b>doctor:</b>Components related to doctors.<br />
+<b>patient:</b>Components related to patients.<br />
+<b>middleware:</b>Middleware for handling requests.<br />
+<b>pages:</b>Next.js pages.<br />
+<b>desktop:</b>Pages specific to desktop layout.<br />
+<b>doctor:</b>Pages related to doctors.<br />
+<b>patient:</b>Pages related to patients.<br />
+<b>sample_page:</b>Sample page for patients.<br />
+<b>mobile:</b>Pages specific to mobile layout.<br />
+<b>doctor:</b>Pages related to doctors.<br />
+<b>patient:</b>Pages related to patients.<br />
+<b>sample_page:</b>Sample page for patients.<br />
+<b>styles:</b>CSS stylesheets.<br />
+<b>components:</b>Styles for components.<br />
+<b>desktop:</b>Styles specific to desktop layout.<br />
+<b>doctor:</b>Styles related to doctors.<br />
+<b>patient:</b>Styles related to patients.<br />
+<b>mobile:</b>Styles specific to mobile layout.<br />
+<b>doctor:</b>Styles related to doctors.<br />
+<b>patient:</b>Styles related to patients.<br />
 
 ### Reporting Issues
 
