@@ -1,3 +1,4 @@
+![Alt](https://repobeats.axiom.co/api/embed/5b856a2914d963228592b041fc375c4f001137bc.svg "Repobeats analytics image")
 ## Project Lumen 🙂
 
 🏥 Our project addresses the modern healthcare landscape's need for efficient, secure, and patient-centric prescription data management. By integrating blockchain technology with a centralized medical database, we ensure security, accessibility, and confidentiality.
