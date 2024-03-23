@@ -4,42 +4,42 @@
 |&nbsp &nbsp \---workflows <br />
 +---node_modules <br />
 +---public <br />
-|   +---images<br />
-|   \---json<br />
+|&nbsp &nbsp +---images<br />
+|&nbsp &nbsp \---json<br />
 +---PythonScripts<br />
-|   +---2auth_images<br />
-|   +---api<br />
-|   \---ML<br />
+|&nbsp &nbsp +---2auth_images<br />
+|&nbsp &nbsp +---api<br />
+|&nbsp &nbsp \---ML<br />
 +---src<br />
-|   \---app<br />
-|       +---api<br />
-|       +---components<br />
-|       |   +---desktop<br />
-|       |   |   +---doctor<br />
-|       |   |   \---patient<br />
-|       |   \---mobile<br />
-|       |       +---doctor<br />
-|       |       \---patient<br />
-|       +---middleware<br />
-|       \---pages<br />
-|           +---desktop<br />
-|           |   +---doctor<br />
-|           |   |   \---sample_page<br />
-|           |   \---patient<br />
-|           |       \---sample_page<br />
-|           \---mobile<br />
-|               +---doctor<br />
-|               |   \---sample_page<br />
-|               \---patient<br />
-|                   \---sample_page<br />
+|&nbsp &nbsp \---app<br />
+|&nbsp &nbsp &nbsp &nbsp +---api<br />
+|&nbsp &nbsp &nbsp &nbsp +---components<br />
+|&nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp +---desktop<br />
+|&nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp |&nbsp &nbsp +---doctor<br />
+|&nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp |&nbsp &nbsp \---patient<br />
+|&nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp \---mobile<br />
+|&nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp &nbsp &nbsp +---doctor<br />
+|&nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp &nbsp &nbsp \---patient<br />
+|&nbsp &nbsp &nbsp &nbsp +---middleware<br />
+|&nbsp &nbsp &nbsp &nbsp \---pages<br />
+|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp +---desktop<br />
+|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp +---doctor<br />
+|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp |&nbsp &nbsp \---sample_page<br />
+|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp \---patient<br />
+|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp &nbsp &nbsp \---sample_page<br />
+|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp \---mobile<br />
+|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp +---doctor<br />
+|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp \---sample_page<br />
+|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  \---patient<br />
+|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp \---sample_page<br />
 \---styles<br />
-    \---components<br />
-        +---desktop<br />
-        |   +---doctor<br />
-        |   \---patient<br />
-        \---mobile<br />
-            +---doctor<br />
-            \---patient<br />
+ &nbsp &nbsp &nbsp &nbsp \---components<br />
+ &nbsp &nbsp &nbsp &nbsp +---desktop<br />
+ &nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp +---doctor<br />
+ &nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp \---patient<br />
+ &nbsp &nbsp &nbsp &nbsp \---mobile<br />
+ &nbsp &nbsp &nbsp &nbsp +---doctor<br />
+ &nbsp &nbsp &nbsp &nbsp \---patient<br />
 </p>
 
 ## Folder Structure Explanation
