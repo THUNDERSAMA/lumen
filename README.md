@@ -1,7 +1,7 @@
 ## Project Lumen
 ## Folder Structure
 <p>+---.github <br />
-|   \---workflows <br />
+|&nbsp &nbsp \---workflows <br />
 +---node_modules <br />
 +---public <br />
 |   +---images<br />
