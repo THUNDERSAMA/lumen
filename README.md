@@ -34,12 +34,12 @@
 |&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp \---sample_page<br />
 \---styles<br />
  &nbsp &nbsp &nbsp &nbsp \---components<br />
- &nbsp &nbsp &nbsp &nbsp +---desktop<br />
- &nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp +---doctor<br />
- &nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp \---patient<br />
- &nbsp &nbsp &nbsp &nbsp \---mobile<br />
- &nbsp &nbsp &nbsp &nbsp +---doctor<br />
- &nbsp &nbsp &nbsp &nbsp \---patient<br />
+ &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp +---desktop<br />
+ &nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp &nbsp &nbsp +---doctor<br />
+ &nbsp &nbsp &nbsp &nbsp |&nbsp &nbsp&nbsp &nbsp  \---patient<br />
+ &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp  \---mobile<br />
+ &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp +---doctor<br />
+ &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp  \---patient<br />
 </p>
 
 ## Folder Structure Explanation
