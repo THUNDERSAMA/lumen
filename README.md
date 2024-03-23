@@ -1,5 +1,5 @@
-## Project Lumen
-## Folder Structure
+## Project Lumen 🙂
+## Folder Structure 😯
 <p>+---.github <br />
 |&nbsp &nbsp \---workflows <br />
 +---node_modules <br />
@@ -42,7 +42,7 @@
  &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp  \---patient<br />
 </p>
 
-## Folder Structure Explanation
+## Folder Structure Explanation 🤨
 
 <b>.github/workflows:</b> Contains GitHub Actions workflows.<br />
 <b>node_modules:</b>Node.js dependencies.<br />
@@ -77,32 +77,38 @@
 <b>doctor:</b>Styles related to doctors.<br />
 <b>patient:</b>Styles related to patients.<br />
 
-<p><b>Node modules</b></br>
-<span style="color: green;"> "ethereumjs-wallet": "^1.0.2",
+<p><b>Node modules 😏</b></br>
+ "ethereumjs-wallet": "^1.0.2",
     "ganache-cli": "^6.12.2",
     "mongoose": "^8.2.3",
     "neo4j-driver": "^5.18.0",
     "next": "^14.1.4",
     "react": "^18",
     "react-dom": "^18",
-    "web3": "^4.6.0" </span>
+    "web3": "^4.6.0" 
 </p>
 
 
-**Note:**
+## Note: 🥸🥸 
 - Please ensure to update the `node_modules` field in the `readme.md` file if you install any new modules using npm . This helps maintain an accurate list of dependencies for the project.
 
-- If you update the MongoDB connection string in the `.env` file, make sure to upload the updated `.env` file to GitHub along with your other project files. This ensures that other contributors have access to the correct database connection configuration.
+- If you update or add any connection string in the `.env` file, make sure to upload the updated `.env` file to GitHub along with your other project files. This ensures that other contributors have access to the correct database connection configuration.
 
 - When creating new files, such as components, please use camel case for the file names. For example, `SampleComponent` instead of `sample_component`.
+  
+- Before pushing code in git run `npm build` is must
+  
+- Ensure that your code contains proper comments explaining the changes made. Comments help other developers understand the purpose of each code modification and facilitate collaboration.
+
+- Provide a descriptive commit message when committing changes to the repository. A clear and informative commit message helps maintain a well-documented history of project changes and facilitates easier tracking of modifications over time.
 
   
-### Reporting Issues
+### Reporting Issues 🤦‍♀️🤦‍♂️
 
 If you encounter any bugs, glitches, or other issues, please [create a new issue](link-to-issue-tracker) on our issue tracker. Be sure to include detailed information about the problem, including steps to reproduce it if possible.
 
 
-### Submitting Pull Requests
+### Submitting Pull Requests 😊😊
 
  please follow these steps:
 
@@ -113,7 +119,7 @@ If you encounter any bugs, glitches, or other issues, please [create a new issue
 5. Submit a pull request, explaining the changes you've made and why they're beneficial.
 
 
-## Setup Instructions
+## Setup Instructions 😏😏
 
 First, run the development server:
 
@@ -127,7 +133,7 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. 🤗
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
