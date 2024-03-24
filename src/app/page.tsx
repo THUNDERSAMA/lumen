@@ -3,8 +3,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import * as Switch from "@radix-ui/react-switch";
+import { getTranslation } from "./utils/TranslationUtils";
 export default function Home() {
   const [isChecked, setIsChecked] = useState<boolean>();
+  const [language, setLanguage] = useState("bn"); //Language is  initially Bengali.
   const userType = isChecked ? "patient" : "doctor";
   return (
     <main className=" bg-purple-700 h-svh w-screen flex gap-10 flex-col justify-center items-center text-white">
@@ -17,7 +19,7 @@ export default function Home() {
             onClick={() => setIsChecked(true)}
             className="leading-none select-none cursor-pointer"
           >
-            Doctor
+            {getTranslation("Doctor", language)}
           </label>
           <Switch.Root
             checked={isChecked}
@@ -32,7 +34,7 @@ export default function Home() {
             onClick={() => setIsChecked(false)}
             className="leading-none select-none cursor-pointer"
           >
-            Patient
+            {getTranslation("Patient", language)}
           </label>
         </div>
       </form>
@@ -42,14 +44,16 @@ export default function Home() {
           href={`/${userType}/register`}
           className=" text-center text-xs w-full text-black bg-white font-semibold p-2 rounded-full outline-black outline outline-2"
         >
-          Register
+          {getTranslation("Register", language)}
         </Link>
-        <span className=" text-xs text-opacity-70 my-1">or</span>
+        <span className=" text-xs text-opacity-70 my-1">
+          {getTranslation("or", language)}
+        </span>
         <Link
           href={`/${userType}/login`}
           className=" text-center text-xs w-full text-black bg-white font-semibold p-2 rounded-full outline-black outline outline-2"
         >
-          Login
+          {getTranslation("Login", language)}
         </Link>
       </div>
     </main>
