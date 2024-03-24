@@ -39,14 +39,14 @@ export default function Home() {
 
       <div className=" w-40 flex flex-col justify-center items-center">
         <Link
-          href={`pages/${userType}/register`}
+          href={`/${userType}/register`}
           className=" text-center text-xs w-full text-black bg-white font-semibold p-2 rounded-full outline-black outline outline-2"
         >
           Register
         </Link>
         <span className=" text-xs text-opacity-70 my-1">or</span>
         <Link
-          href={`pages/${userType}/login`}
+          href={`/${userType}/login`}
           className=" text-center text-xs w-full text-black bg-white font-semibold p-2 rounded-full outline-black outline outline-2"
         >
           Login

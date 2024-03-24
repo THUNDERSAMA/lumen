@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lumen",
-  description: "Made with ❤️ by Team Lumen",
+  title: "Lumen App",
+  description: "Healthcare app  for the future.",
 };
 
 export default function RootLayout({
