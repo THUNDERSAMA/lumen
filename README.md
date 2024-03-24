@@ -93,14 +93,20 @@
 <b>patient:</b>Styles related to patients.<br />
 
 <p><b>Node modules 😏</b></br>
- "ethereumjs-wallet": "^1.0.2",
-    "ganache-cli": "^6.12.2",
-    "mongoose": "^8.2.3",
-    "neo4j-driver": "^5.18.0",
-    "next": "^14.1.4",
-    "react": "^18",
-    "react-dom": "^18",
-    "web3": "^4.6.0" 
+ "@emotion/react": "^11.11.4",
+        "@emotion/styled": "^11.11.0",
+        "@mui/icons-material": "^5.15.14",
+        "@mui/material": "^5.15.14",
+        "ethereumjs-wallet": "^1.0.2",
+        "ganache-cli": "^6.12.2",
+        "mongoose": "^8.2.3",
+        "neo4j-driver": "^5.18.0",
+        "next": "^14.1.4",
+        "next-pwa": "^5.6.0",
+        "react": "^18",
+        "react-dom": "^18",
+        "redux": "^5.0.1",
+        "web3": "^4.6.0" 
 </p>
 
 
@@ -111,7 +117,7 @@
 
 - When creating new files, such as components, please use camel case for the file names. For example, `SampleComponent` instead of `sample_component`.
   
-- Before pushing code in git run `npm build` is must
+- Before pushing code in git run `npm run build` is must
   
 - Ensure that your code contains proper comments explaining the changes made. Comments help other developers understand the purpose of each code modification and facilitate collaboration.
 
