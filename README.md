@@ -1,4 +1,5 @@
 ![Alt](https://repobeats.axiom.co/api/embed/5b856a2914d963228592b041fc375c4f001137bc.svg "Repobeats analytics image")
+
 ## Project Lumen 🙂
 
 🏥 Our project addresses the modern healthcare landscape's need for efficient, secure, and patient-centric prescription data management. By integrating blockchain technology with a centralized medical database, we ensure security, accessibility, and confidentiality.
@@ -97,6 +98,7 @@
         "@emotion/styled": "^11.11.0",
         "@mui/icons-material": "^5.15.14",
         "@mui/material": "^5.15.14",
+        "@radix-ui/react-switch": "^1.0.3",
         "ethereumjs-wallet": "^1.0.2",
         "ganache-cli": "^6.12.2",
         "mongoose": "^8.2.3",
@@ -109,36 +111,31 @@
         "web3": "^4.6.0" 
 </p>
 
+## Note: 🥸🥸
 
-## Note: 🥸🥸 
 - Please ensure to update the `node_modules` field in the `readme.md` file if you install any new modules using npm . This helps maintain an accurate list of dependencies for the project.
 
 - If you update or add any connection string in the `.env` file, make sure to upload the updated `.env` file to GitHub along with your other project files. This ensures that other contributors have access to the correct database connection configuration.
 
 - When creating new files, such as components, please use camel case for the file names. For example, `SampleComponent` instead of `sample_component`.
-  
 - Before pushing code in git run `npm run build` is must
-  
 - Ensure that your code contains proper comments explaining the changes made. Comments help other developers understand the purpose of each code modification and facilitate collaboration.
 
 - Provide a descriptive commit message when committing changes to the repository. A clear and informative commit message helps maintain a well-documented history of project changes and facilitates easier tracking of modifications over time.
 
-  
 ### Reporting Issues 🤦‍♀️🤦‍♂️
 
 If you encounter any bugs, glitches, or other issues, please [create a new issue](link-to-issue-tracker) on our issue tracker. Be sure to include detailed information about the problem, including steps to reproduce it if possible.
 
-
 ### Submitting Pull Requests 😊😊
 
- please follow these steps:
+please follow these steps:
 
 1. Fork the repository and create your branch from `main`.
 2. Make your changes and ensure the codebase is properly formatted.
 3. Write tests to cover your changes, if applicable.
 4. Ensure your commits are well-documented and descriptive.
 5. Submit a pull request, explaining the changes you've made and why they're beneficial.
-
 
 ## Setup Instructions 😏😏
 
@@ -159,4 +156,3 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
