@@ -23,7 +23,11 @@ export default function Home() {
   };
 
   return (
-    <main className=" bg-purple-700 h-svh w-screen flex gap-10 flex-col justify-center items-center text-white">
+    <main
+      className={`${
+        isChecked ? "bg-purple-700" : "bg-orange-700"
+      } h-svh w-screen flex gap-10 flex-col justify-center items-center text-white`}
+    >
       <h1 className=" font-bold text-6xl drop-shadow-xl">LUMEN</h1>
 
       <form>
@@ -70,7 +74,7 @@ export default function Home() {
           {getTranslation("Login", language)}
         </Link>
       </div>
-      <Dropdown items={items} onSelect={handleSelect} />
+      <Dropdown items={items} checked={isChecked} onSelect={handleSelect} />
     </main>
   );
 }

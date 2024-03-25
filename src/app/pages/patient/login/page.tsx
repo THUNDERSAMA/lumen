@@ -8,18 +8,21 @@ export default function PatientLogin() {
             check your details before you login!
           </span>
         </div>
-        <form action="" className=" text-black w-80 flex flex-col gap-1">
+        <form
+          action=""
+          className="w-80 flex flex-col gap-1 text-white font-medium"
+        >
           <input
             type="phone"
             id="phone"
             placeholder="Phone"
-            className="p-3 text-xs rounded-full bg-purple-500 placeholder:text-slate-200"
+            className="p-3 text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
           />
           <input
             type="password"
             id="password"
             placeholder="Password"
-            className="p-3 text-xs rounded-full bg-purple-500 placeholder:text-slate-200"
+            className="p-3 text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
           />
           <button
             type="submit"
