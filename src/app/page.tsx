@@ -5,10 +5,12 @@ import * as Switch from "@radix-ui/react-switch";
 import { getTranslation } from "./utils/TranslationUtils";
 import React from "react";
 import Dropdown from "./components/Dropdown";
+import { RecoilRoot, useRecoilState } from "recoil";
+import languageState from "./utils/store";
 
-export default function Home() {
+function App() {
   const [isChecked, setIsChecked] = useState<boolean>();
-  const [language, setLanguage] = useState("en"); //Language is initially en.
+  const [language, setLanguage] = useRecoilState(languageState); //Language is initially English.
   const userType = isChecked ? "patient" : "doctor";
   const items = [
     { label: "English", value: "en" },
@@ -76,5 +78,12 @@ export default function Home() {
       </div>
       <Dropdown items={items} checked={isChecked} onSelect={handleSelect} />
     </main>
+  );
+}
+export default function Home() {
+  return (
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
   );
 }

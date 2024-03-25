@@ -1,9 +1,26 @@
+"use client";
+import { RecoilRoot, useRecoilState } from "recoil";
+import languageState from "@/app/utils/store";
+import { getTranslation } from "@/app/utils/TranslationUtils";
+
 export default function DoctorReg() {
+  return (
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  );
+}
+
+function App() {
+  const [language, setLanguage] = useRecoilState(languageState);
+  console.log(language);
   return (
     <>
       <main className=" text-white bg-orange-700 h-svh w-screen flex gap-10 flex-col justify-center items-center">
         <div className=" w-80">
-          <h1 className="font-semibold text-2xl">Register as a doctor</h1>
+          <h1 className="font-semibold text-2xl">
+            {getTranslation("Register as a doctor", language)}
+          </h1>
           <span className="text-xs opacity-80">
             make sure your details are correct!
           </span>
