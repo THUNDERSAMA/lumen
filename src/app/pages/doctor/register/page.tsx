@@ -3,7 +3,7 @@ export default function DoctorReg() {
     <>
       <main className=" text-white bg-purple-700 h-svh w-screen flex gap-10 flex-col justify-center items-center">
         <div className=" w-80">
-          <h1 className="font-semibold text-2xl">Register as a patient</h1>
+          <h1 className="font-semibold text-2xl">Register as a doctor</h1>
           <span className="text-xs opacity-80">
             make sure your details are correct!
           </span>
@@ -55,7 +55,7 @@ export default function DoctorReg() {
           />
           <button
             type="submit"
-            className=" mt-4 text-center text-xs w-full text-black bg-white font-semibold p-3 rounded-full outline-black outline outline-2"
+            className=" mt-4 text-center text-xs w-full text-black bg-white font-semibold p-3 rounded-full"
           >
             Register
           </button>
