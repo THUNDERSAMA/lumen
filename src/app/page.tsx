@@ -12,30 +12,36 @@ import Cookies from "js-cookie";
 
 function App() {
   const [isChecked, setIsChecked] = useState<boolean>();
-  const [language, setLanguage] = useState<string>("en");
+
+  const [language, setLanguage] = useState<string>(
+    Cookies.get("language") || "en"
+  );
 
   useEffect(() => {
+    console.log(language, "setting cookie value");
     Cookies.set("language", language);
   }, [language]);
 
-  // useEffect(() => {
-  //   const cookieLanguage = Cookies.get("language");
-  //   console.log(cookieLanguage, "valll");
-  //   if (
-  //     (cookieLanguage && cookieLanguage !== language && language == "en") ||
-  //     (cookieLanguage && cookieLanguage !== language)
-  //   ) {
-  //     setLanguage(cookieLanguage);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const cookieLanguage = Cookies.get("language");
+    console.log(cookieLanguage, "valll");
+    if (
+      (cookieLanguage && cookieLanguage !== language && language == "en") ||
+      (cookieLanguage && cookieLanguage !== language)
+    ) {
+      setLanguage(cookieLanguage);
+    }
+  }, []);
 
-  if (
-    Cookies.get("language") &&
-    Cookies.get("language") !== language &&
-    language == "en"
-  ) {
-    setLanguage(Cookies.get("language") as string);
-  }
+  // if (
+  //   (Cookies.get("language") && Cookies.get("language") !== language) ||
+  //   language === "en"
+  //   // (Cookies.get("language") &&
+  //   //   Cookies.get("language") == "en" &&
+  //   //   language === "en")
+  // ) {
+  //   setLanguage(Cookies.get("language") as string);
+  // }
   console.log(Cookies.get("language"));
   const userType = isChecked ? "patient" : "doctor";
   const items = [
@@ -47,6 +53,7 @@ function App() {
   ];
   const handleSelect = (item: any) => {
     setLanguage(item.value);
+    // Cookies.set("language", item.value);
   };
 
   return (
