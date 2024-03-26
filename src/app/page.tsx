@@ -18,14 +18,24 @@ function App() {
     Cookies.set("language", language);
   }, [language]);
 
-  useEffect(() => {
-    const cookieLanguage = Cookies.get("language");
-    if (cookieLanguage && cookieLanguage !== language) {
-      setLanguage(cookieLanguage);
-    }
-  }, [language]);
-
-  console.log(language);
+  // useEffect(() => {
+  //   const cookieLanguage = Cookies.get("language");
+  //   console.log(cookieLanguage, "valll");
+  //   if (
+  //     (cookieLanguage && cookieLanguage !== language && language == "en") ||
+  //     (cookieLanguage && cookieLanguage !== language)
+  //   ) {
+  //     setLanguage(cookieLanguage);
+  //   }
+  // }, []);
+  if (
+    Cookies.get("language") &&
+    Cookies.get("language") !== language &&
+    language === "en"
+  ) {
+    setLanguage(Cookies.get("language") as string);
+  }
+  console.log(Cookies.get("language"));
   const userType = isChecked ? "patient" : "doctor";
   const items = [
     { label: "English", value: "en" },
