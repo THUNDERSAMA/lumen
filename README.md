@@ -101,6 +101,7 @@
         "@radix-ui/react-switch": "^1.0.3",
         "ethereumjs-wallet": "^1.0.2",
         "ganache-cli": "^6.12.2",
+        "js-cookie": "^3.0.5",
         "mongoose": "^8.2.3",
         "neo4j-driver": "^5.18.0",
         "next": "^14.1.4",

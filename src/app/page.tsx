@@ -1,16 +1,31 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import * as Switch from "@radix-ui/react-switch";
 import { getTranslation } from "./utils/TranslationUtils";
 import React from "react";
 import Dropdown from "./components/Dropdown";
-import { RecoilRoot, useRecoilState } from "recoil";
-import languageState from "./utils/store";
+import Cookies from "js-cookie";
+// import languageState from "./utils/store";
+// import { CookieValueTypes, getCookie, setCookie } from "cookies-next";
+// Cookies.set("language", "en"); //Language is initially English.
 
 function App() {
   const [isChecked, setIsChecked] = useState<boolean>();
-  const [language, setLanguage] = useRecoilState(languageState); //Language is initially English.
+  const [language, setLanguage] = useState<string>("en");
+
+  useEffect(() => {
+    Cookies.set("language", language);
+  }, [language]);
+
+  useEffect(() => {
+    const cookieLanguage = Cookies.get("language");
+    if (cookieLanguage && cookieLanguage !== language) {
+      setLanguage(cookieLanguage);
+    }
+  }, [language]);
+
+  console.log(language);
   const userType = isChecked ? "patient" : "doctor";
   const items = [
     { label: "English", value: "en" },
@@ -19,7 +34,6 @@ function App() {
     { label: "मराठी", value: "mr" },
     { label: "తెలుగు", value: "te" },
   ];
-
   const handleSelect = (item: any) => {
     setLanguage(item.value);
   };
@@ -81,9 +95,5 @@ function App() {
   );
 }
 export default function Home() {
-  return (
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
-  );
+  return <App />;
 }

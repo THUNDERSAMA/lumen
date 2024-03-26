@@ -1,18 +1,22 @@
 "use client";
-import { RecoilRoot, useRecoilState } from "recoil";
-import languageState from "@/app/utils/store";
+// import { RecoilRoot, useRecoilState } from "recoil";
+// import languageState from "@/app/utils/store";
 import { getTranslation } from "@/app/utils/TranslationUtils";
+import { useState } from "react";
+import Cookies from "js-cookie";
 
 export default function DoctorReg() {
   return (
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
+    // <RecoilRoot>
+    <App />
+    // </RecoilRoot>
   );
 }
 
 function App() {
-  const [language, setLanguage] = useRecoilState(languageState);
+  const [language, setLanguage] = useState<string>(
+    Cookies.get("language") || "en"
+  );
   console.log(language);
   return (
     <>
