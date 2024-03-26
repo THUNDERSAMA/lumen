@@ -2,7 +2,7 @@
 import { getTranslation } from "@/app/utils/TranslationUtils";
 import { useState } from "react";
 import Cookies from "js-cookie";
-import { Providers } from "@/app/Provider";
+import { Providers } from "@/app/Providers";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/utils/store";
 import Translate from "@/app/Translate";
