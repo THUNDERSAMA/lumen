@@ -7,13 +7,15 @@ import React from "react";
 import Dropdown from "./components/Dropdown";
 import Cookies from "js-cookie";
 import { useSelector, useDispatch } from "react-redux";
-import { updateByValue } from "./utils/slice";
-import type { RootState } from "./utils/redux";
+import { updateByValue } from "./utils/slices/LanguageState";
+import type { RootState } from "./store";
+import { Providers } from "./Provider";
 
 function App() {
-  const language = useSelector((state: RootState) => state.language.value);
   const dispatch = useDispatch();
+  const language = useSelector((state: RootState) => state.language.value);
 
+  console.log(language);
   const [isChecked, setIsChecked] = useState<boolean>();
 
   // const [language, setLanguage] = useState<string>(
@@ -115,5 +117,11 @@ function App() {
   );
 }
 export default function Home() {
-  return <App />;
+  return (
+    <>
+      <Providers>
+        <App />
+      </Providers>
+    </>
+  );
 }

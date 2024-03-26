@@ -2,15 +2,23 @@
 import { getTranslation } from "@/app/utils/TranslationUtils";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import { Providers } from "@/app/Provider";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store";
 
 export default function DoctorReg() {
-  return <App />;
+  return (
+    <>
+      <Providers>
+        <App />
+      </Providers>
+    </>
+  );
 }
 
 function App() {
-  const [language, setLanguage] = useState<string>(
-    Cookies.get("language") || "en"
-  );
+  const lang = useSelector((state: RootState) => state.language.value);
+  const [language, setLanguage] = useState<string>(lang || "en");
   console.log(language);
   return (
     <>

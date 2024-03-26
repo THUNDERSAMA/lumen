@@ -1,6 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { RootState } from "../../store";
 export interface LanguageState {
   value: string;
 }
@@ -21,5 +20,6 @@ export const languageSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { updateByValue } = languageSlice.actions;
+export const selectValueProp = (state: RootState) => state.language.value;
 
 export default languageSlice.reducer;
