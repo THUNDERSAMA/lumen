@@ -31,7 +31,7 @@ function App() {
     ) {
       setLanguage(cookieLanguage);
     }
-  }, []);
+  }, [language]);
 
   // if (
   //   (Cookies.get("language") && Cookies.get("language") !== language) ||
