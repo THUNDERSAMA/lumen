@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
-import { RootState } from "../utils/redux";
+import { RootState } from "../store";
 
 export default function Dropdown({ items, checked, onSelect }: any) {
   const [isOpen, setIsOpen] = useState(false);
