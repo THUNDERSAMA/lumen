@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Cookies from "js-cookie";
+import { useSelector } from "react-redux";
+import { RootState } from "../utils/redux";
 
 export default function Dropdown({ items, checked, onSelect }: any) {
   const [isOpen, setIsOpen] = useState(false);
-  const language = Cookies.get("language") as string;
+  // const language = Cookies.get("language") as string;
+  const language = useSelector((state: RootState) => state.language.value);
   const [selectedItem, setSelectedItem] = useState(
     language
       ? items.filter((item: any) => item.value === language)[0]

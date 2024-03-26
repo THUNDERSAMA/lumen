@@ -6,32 +6,33 @@ import { getTranslation } from "./utils/TranslationUtils";
 import React from "react";
 import Dropdown from "./components/Dropdown";
 import Cookies from "js-cookie";
-// import languageState from "./utils/store";
-// import { CookieValueTypes, getCookie, setCookie } from "cookies-next";
-// Cookies.set("language", "en"); //Language is initially English.
+import { useSelector, useDispatch } from "react-redux";
+import { updateByValue } from "./utils/slice";
+import type { RootState } from "./utils/redux";
 
 function App() {
+  const language = useSelector((state: RootState) => state.language.value);
+  const dispatch = useDispatch();
+
   const [isChecked, setIsChecked] = useState<boolean>();
 
-  const [language, setLanguage] = useState<string>(
-    Cookies.get("language") || "en"
-  );
+  // const [language, setLanguage] = useState<string>(
+  //   Cookies.get("language") || "en"
+  // );
 
-  useEffect(() => {
-    console.log(language, "setting cookie value");
-    Cookies.set("language", language);
-  }, [language]);
+  // useEffect(() => {
+  //   console.log(language, "setting cookie value");
+  //   Cookies.set("language", language);
 
-  useEffect(() => {
-    const cookieLanguage = Cookies.get("language");
-    console.log(cookieLanguage, "valll");
-    if (
-      (cookieLanguage && cookieLanguage !== language && language == "en") ||
-      (cookieLanguage && cookieLanguage !== language)
-    ) {
-      setLanguage(cookieLanguage);
-    }
-  }, []);
+  //   const cookieLanguage = Cookies.get("language");
+  //   console.log(cookieLanguage, "valll");
+  //   if (
+  //     (cookieLanguage && cookieLanguage !== language && language == "en") ||
+  //     (cookieLanguage && cookieLanguage !== language)
+  //   ) {
+  //     setLanguage(cookieLanguage);
+  //   }
+  // }, [language]);
 
   // if (
   //   (Cookies.get("language") && Cookies.get("language") !== language) ||
@@ -42,7 +43,7 @@ function App() {
   // ) {
   //   setLanguage(Cookies.get("language") as string);
   // }
-  console.log(Cookies.get("language"));
+  // console.log(Cookies.get("language"));
   const userType = isChecked ? "patient" : "doctor";
   const items = [
     { label: "English", value: "en" },
@@ -52,7 +53,8 @@ function App() {
     { label: "తెలుగు", value: "te" },
   ];
   const handleSelect = (item: any) => {
-    setLanguage(item.value);
+    // setLanguage(item.value);
+    dispatch(updateByValue(item.value));
     // Cookies.set("language", item.value);
   };
 

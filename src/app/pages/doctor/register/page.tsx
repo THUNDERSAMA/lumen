@@ -1,16 +1,10 @@
 "use client";
-// import { RecoilRoot, useRecoilState } from "recoil";
-// import languageState from "@/app/utils/store";
 import { getTranslation } from "@/app/utils/TranslationUtils";
 import { useState } from "react";
 import Cookies from "js-cookie";
 
 export default function DoctorReg() {
-  return (
-    // <RecoilRoot>
-    <App />
-    // </RecoilRoot>
-  );
+  return <App />;
 }
 
 function App() {
