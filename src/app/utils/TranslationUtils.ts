@@ -7,10 +7,11 @@ export const getTranslation = (sentence: string, lang: string) => {
     return sentence;
   }
   const translatedSentence = sentence
-    .toLowerCase()
+
     .split(" ")
     .map((word) => {
-      const translation = (translations as Translations)[word]?.[lang] || word;
+      const translation =
+        (translations as Translations)[word.toLowerCase()]?.[lang] || word;
       return translation;
     })
     .join(" ");

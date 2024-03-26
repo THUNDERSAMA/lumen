@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../../store";
+import type { RootState } from "../store";
+import Cookies from "js-cookie";
+
 export interface LanguageState {
   value: string;
 }
 
 const initialState: LanguageState = {
-  value: "en",
+  value: Cookies.get("language") || "en",
 };
 
 export const languageSlice = createSlice({
@@ -14,6 +16,7 @@ export const languageSlice = createSlice({
   reducers: {
     updateByValue: (state, action: PayloadAction<string>) => {
       state.value = action.payload;
+      Cookies.set("language", action.payload);
     },
   },
 });

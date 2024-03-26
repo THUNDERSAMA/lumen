@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
-import { RootState } from "../utils/redux";
+import { RootState } from "@/app/utils/store";
+import Translate from "../Translate";
 
 export default function Dropdown({ items, checked, onSelect }: any) {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +43,7 @@ export default function Dropdown({ items, checked, onSelect }: any) {
         className="w-20 p-2 font-semibold bg-white text-xs rounded-full focus:outline-none text-black cursor-pointer inline-flex justify-center items-center gap-1"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {selectedItem.label}
+        <Translate>{selectedItem.label}</Translate>
         <Image src="/down_icon.svg" height={10} width={10} alt="down button" />
       </button>
       {isOpen && (

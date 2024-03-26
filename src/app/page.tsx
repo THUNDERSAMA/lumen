@@ -8,8 +8,9 @@ import Dropdown from "./components/Dropdown";
 import Cookies from "js-cookie";
 import { useSelector, useDispatch } from "react-redux";
 import { updateByValue } from "./utils/slices/LanguageState";
-import type { RootState } from "./store";
+import type { RootState } from "./utils/store";
 import { Providers } from "./Provider";
+import Translate from "./Translate";
 
 function App() {
   const dispatch = useDispatch();
@@ -75,7 +76,7 @@ function App() {
             onClick={() => setIsChecked(true)}
             className="leading-none select-none cursor-pointer"
           >
-            {getTranslation("Doctor", language)}
+            <Translate>Doctor</Translate>
           </label>
           <Switch.Root
             checked={isChecked}
@@ -90,7 +91,7 @@ function App() {
             onClick={() => setIsChecked(false)}
             className="leading-none select-none cursor-pointer"
           >
-            {getTranslation("Patient", language)}
+            <Translate>Patient</Translate>
           </label>
         </div>
       </form>
@@ -100,16 +101,16 @@ function App() {
           href={`/${userType}/register`}
           className=" text-center text-xs w-full text-black bg-white font-semibold p-2 rounded-full"
         >
-          {getTranslation("Register", language)}
+          <Translate>Register</Translate>
         </Link>
         <span className=" text-xs text-opacity-70 my-1">
-          {getTranslation("or", language)}
+          <Translate>or</Translate>
         </span>
         <Link
           href={`/${userType}/login`}
           className=" text-center text-xs w-full text-black bg-white font-semibold p-2 rounded-full"
         >
-          {getTranslation("Login", language)}
+          <Translate>Login</Translate>
         </Link>
       </div>
       <Dropdown items={items} checked={isChecked} onSelect={handleSelect} />
