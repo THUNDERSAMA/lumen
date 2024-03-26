@@ -28,10 +28,11 @@ function App() {
   //     setLanguage(cookieLanguage);
   //   }
   // }, []);
+
   if (
     Cookies.get("language") &&
     Cookies.get("language") !== language &&
-    language === "en"
+    language == "en"
   ) {
     setLanguage(Cookies.get("language") as string);
   }

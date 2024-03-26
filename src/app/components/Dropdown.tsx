@@ -1,9 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 export default function Dropdown({ items, checked, onSelect }: any) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(items[0]);
+  const language = Cookies.get("language") as string;
+  const [selectedItem, setSelectedItem] = useState(
+    language
+      ? items.filter((item: any) => item.value === language)[0]
+      : items[0]
+  );
   const dropdownRef = useRef(null);
 
   useEffect(() => {
