@@ -18,35 +18,8 @@ function App() {
 
   console.log(language);
   const [isChecked, setIsChecked] = useState<boolean>();
+  console.log(Cookies.get("language"), " dispatch");
 
-  // const [language, setLanguage] = useState<string>(
-  //   Cookies.get("language") || "en"
-  // );
-
-  // useEffect(() => {
-  //   console.log(language, "setting cookie value");
-  //   Cookies.set("language", language);
-
-  //   const cookieLanguage = Cookies.get("language");
-  //   console.log(cookieLanguage, "valll");
-  //   if (
-  //     (cookieLanguage && cookieLanguage !== language && language == "en") ||
-  //     (cookieLanguage && cookieLanguage !== language)
-  //   ) {
-  //     setLanguage(cookieLanguage);
-  //   }
-  // }, [language]);
-
-  // if (
-  //   (Cookies.get("language") && Cookies.get("language") !== language) ||
-  //   language === "en"
-  //   // (Cookies.get("language") &&
-  //   //   Cookies.get("language") == "en" &&
-  //   //   language === "en")
-  // ) {
-  //   setLanguage(Cookies.get("language") as string);
-  // }
-  // console.log(Cookies.get("language"));
   const userType = isChecked ? "patient" : "doctor";
   const items = [
     { label: "English", value: "en" },
@@ -58,7 +31,8 @@ function App() {
   const handleSelect = (item: any) => {
     // setLanguage(item.value);
     dispatch(updateByValue(item.value));
-    // Cookies.set("language", item.value);
+    Cookies.set("language", item.value);
+    console.log(Cookies.get("language"), "value cookie updated");
   };
 
   return (

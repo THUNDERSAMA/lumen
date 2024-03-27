@@ -1,18 +1,30 @@
+// // import { useRouter } from "next/navigation";
 "use client";
-// import { useRouter } from "next/navigation";
 import { redirect } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "./utils/store";
+import { useEffect } from "react";
 import Cookies from "js-cookie";
+import { useDispatch, useSelector } from "react-redux";
 import { updateByValue } from "./utils/slices/LanguageState";
 import { Providers } from "./Providers";
+import type { RootState } from "@/app/utils/store";
 function App() {
   const dispatch = useDispatch();
-  console.log(Cookies.get("language"), " before dispatch");
-  dispatch(updateByValue(Cookies.get("language") || "en"));
-  const lang = useSelector((state: RootState) => state.language.value);
-  console.log(lang, " after dispatch");
-  redirect("/home");
+  const language = useSelector((state: RootState) => state.language.value);
+
+  useEffect(() => {
+    const cookieLanguage = Cookies.get("language");
+    console.log(cookieLanguage, " before dispatch");
+    if (cookieLanguage) {
+      dispatch(updateByValue(cookieLanguage));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (language) {
+      redirect("/home");
+    }
+  }, [language]);
+
   return null;
 }
 
