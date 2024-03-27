@@ -6,6 +6,7 @@ import { Providers } from "@/app/Providers";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/utils/store";
 import Translate from "@/app/Translate";
+import OneTimePass from "@/app/components/OneTimePass";
 
 export default function DoctorReg() {
   return (
@@ -21,9 +22,18 @@ function App() {
   const language = useSelector((state: RootState) => state.language.value);
   // const [language, setLanguage] = useState<string>(lang || "en");
   console.log(language);
+  const handleOTPClick = (toggle: boolean) => {
+    setIsClicked(toggle);
+  };
+  const [isClicked, setIsClicked] = useState<boolean>(false);
   return (
     <>
-      <main className=" text-white bg-orange-700 h-svh w-screen flex gap-10 flex-col justify-center items-center">
+      {isClicked && (
+        <main className="grid place-content-center backdrop-blur-[50px] absolute z-10 w-svw h-svh text-white bg-black bg-opacity-0">
+          <OneTimePass handleOTP={handleOTPClick} />
+        </main>
+      )}
+      <main className="z-0 text-white bg-orange-700 h-svh w-screen flex gap-10 flex-col justify-center items-center">
         <div className=" w-80">
           <h1 className="font-semibold text-2xl">
             <Translate>Register as a doctor</Translate>
@@ -83,8 +93,12 @@ function App() {
           <button
             type="submit"
             className=" mt-4 text-center text-xs w-full text-black bg-white font-semibold p-3 rounded-full"
+            onClick={(e) => {
+              e.preventDefault();
+              handleOTPClick(true);
+            }}
           >
-            Register
+            <Translate>Request OTP</Translate>
           </button>
         </form>
       </main>

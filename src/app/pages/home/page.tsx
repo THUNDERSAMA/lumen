@@ -58,7 +58,7 @@ function App() {
   const handleSelect = (item: any) => {
     // setLanguage(item.value);
     dispatch(updateByValue(item.value));
-    Cookies.set("language", item.value);
+    // Cookies.set("language", item.value);
   };
 
   return (

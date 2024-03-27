@@ -1,6 +1,28 @@
+"use client";
+import { Providers } from "@/app/Providers";
+import OneTimePass from "@/app/components/OneTimePass";
+import { useState } from "react";
+
 export default function PatientReg() {
   return (
+    <Providers>
+      <App />
+    </Providers>
+  );
+}
+
+function App() {
+  const handleOTPClick = (toggle: boolean) => {
+    setIsClicked(toggle);
+  };
+  const [isClicked, setIsClicked] = useState<boolean>(false);
+  return (
     <>
+      {isClicked && (
+        <main className="grid place-content-center backdrop-blur-[50px] absolute z-10 w-svw h-svh text-white bg-black bg-opacity-0">
+          <OneTimePass handleOTP={handleOTPClick} />
+        </main>
+      )}
       <main className=" text-white bg-purple-700 h-svh w-screen flex gap-10 flex-col justify-center items-center">
         <div className=" w-80">
           <h1 className="font-semibold text-2xl">Register as a patient</h1>
@@ -53,8 +75,12 @@ export default function PatientReg() {
           <button
             type="submit"
             className=" mt-4 text-center text-xs w-full text-black bg-white font-semibold p-3 rounded-full"
+            onClick={(e) => {
+              e.preventDefault();
+              handleOTPClick(true);
+            }}
           >
-            Register
+            Request OTP
           </button>
         </form>
       </main>

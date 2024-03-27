@@ -7,7 +7,9 @@ export interface LanguageState {
 }
 
 const initialState: LanguageState = {
-  value: "en",
+  value:
+    // Cookies.get("language") ||
+    "en",
 };
 
 export const languageSlice = createSlice({
