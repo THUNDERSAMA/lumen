@@ -16,7 +16,7 @@ export const languageSlice = createSlice({
   reducers: {
     updateByValue: (state, action: PayloadAction<string>) => {
       state.value = action.payload;
-      // Cookies.set("language", action.payload);
+      Cookies.set("language", action.payload);
     },
   },
 });
