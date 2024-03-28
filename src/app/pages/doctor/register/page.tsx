@@ -45,7 +45,7 @@ function App() {
       return;
     }
     setError(null);
-    router.push("/otp");
+    router.push("/pages/otp");
     console.log({
       name: (firstName.trim() + " " + lastName.trim()).trim(),
       phone: phone.trim(),
@@ -58,7 +58,7 @@ function App() {
 
   return (
     <>
-      <main className=" text-white bg-purple-700 h-svh w-screen flex gap-10 flex-col justify-center items-center">
+      <main className=" text-white bg-orange-700 h-svh w-screen flex gap-10 flex-col justify-center items-center">
         <p
           className={`py-1 px-2 text-[.8rem] font-normal text-white w-full text-center bg-red-600 flex items-center justify-center gap-1.5 fixed ${
             error ? "top-0" : "top-[-30px]"
@@ -74,7 +74,7 @@ function App() {
           {error}
         </p>
         <div className=" w-80">
-          <h1 className="font-semibold text-2xl">Register as a patient</h1>
+          <h1 className="font-semibold text-2xl">Register as a doctor</h1>
           <span className="text-xs opacity-80">
             make sure your details are correct!
           </span>
@@ -135,7 +135,7 @@ function App() {
               id="password"
               value={password}
               onChange={(e) => {
-                setPassword(e.target.value);
+                setPassword(e.target.value.trim());
               }}
               placeholder="Password"
               className="p-3 w-full text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
@@ -161,7 +161,7 @@ function App() {
               id="confirm-password"
               value={confirmPassword}
               onChange={(e) => {
-                setConfirmPassword(e.target.value);
+                setConfirmPassword(e.target.value.trim());
               }}
               placeholder="Confirm Password"
               className="p-3 w-full text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"

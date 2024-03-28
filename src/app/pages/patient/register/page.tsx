@@ -43,7 +43,7 @@ function App() {
       return;
     }
     setError(null);
-    router.push("/otp");
+    router.push("/pages/otp");
     console.log({
       name: (firstName.trim() + " " + lastName.trim()).trim(),
       phone: phone.trim(),
@@ -124,7 +124,7 @@ function App() {
               id="password"
               value={password}
               onChange={(e) => {
-                setPassword(e.target.value);
+                setPassword(e.target.value.trim());
               }}
               placeholder="Password"
               className="p-3 w-full text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
@@ -150,7 +150,7 @@ function App() {
               id="confirm-password"
               value={confirmPassword}
               onChange={(e) => {
-                setConfirmPassword(e.target.value);
+                setConfirmPassword(e.target.value.trim());
               }}
               placeholder="Confirm Password"
               className="p-3 w-full text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"

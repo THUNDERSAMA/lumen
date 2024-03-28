@@ -73,7 +73,7 @@ function App() {
               id="password"
               value={password}
               onChange={(e) => {
-                setPassword(e.target.value);
+                setPassword(e.target.value.trim());
               }}
               placeholder="Password"
               className="p-3 w-full text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
