@@ -6,7 +6,8 @@ import { Providers } from "@/app/Providers";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/utils/store";
 import Translate from "@/app/Translate";
-import OneTimePass from "@/app/components/OneTimePass";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function DoctorReg() {
   return (
@@ -21,18 +22,10 @@ export default function DoctorReg() {
 function App() {
   const language = useSelector((state: RootState) => state.language.value);
   // const [language, setLanguage] = useState<string>(lang || "en");
+  const router = useRouter();
   console.log(language);
-  const handleOTPClick = (toggle: boolean) => {
-    setIsClicked(toggle);
-  };
-  const [isClicked, setIsClicked] = useState<boolean>(false);
   return (
     <>
-      {isClicked && (
-        <main className="grid place-content-center backdrop-blur-[50px] absolute z-10 w-svw h-svh text-white bg-black bg-opacity-0">
-          <OneTimePass handleOTP={handleOTPClick} />
-        </main>
-      )}
       <main className="z-0 text-white bg-orange-700 h-svh w-screen flex gap-10 flex-col justify-center items-center">
         <div className=" w-80">
           <h1 className="font-semibold text-2xl">
@@ -90,16 +83,12 @@ function App() {
             placeholder={getTranslation("Confirm password", language)}
             className="p-3 text-xs rounded-full bg-white bg-opacity-20 placeholder:text-slate-300"
           />
-          <button
-            type="submit"
-            className=" mt-4 text-center text-xs w-full text-black bg-white font-semibold p-3 rounded-full"
-            onClick={(e) => {
-              e.preventDefault();
-              handleOTPClick(true);
-            }}
+          <Link
+            className=" mt-4 bg-transparent text-white text-center text-xs w-2/5 hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
+            href={"/pages/otp"}
           >
             <Translate>Request OTP</Translate>
-          </button>
+          </Link>
         </form>
       </main>
     </>

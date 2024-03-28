@@ -1,12 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 // ...
 
 import LanguageState from "./slices/LanguageState";
+import ColorState from "./slices/ColorState";
+
+const rootReducer = combineReducers({
+  language: LanguageState,
+  color: ColorState,
+});
 
 export const store = configureStore({
-  reducer: {
-    language: LanguageState,
-  },
+  reducer: rootReducer,
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

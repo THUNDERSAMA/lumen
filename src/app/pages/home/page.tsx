@@ -11,16 +11,27 @@ import { updateByValue } from "../../utils/slices/LanguageState";
 import type { RootState } from "../../utils/store";
 import { Providers } from "../../Providers";
 import Translate from "../../Translate";
+import {
+  updatePrimaryColor,
+  updateSecondaryColor,
+} from "@/app/utils/slices/ColorState";
 
 function App() {
   const dispatch = useDispatch();
   const language = useSelector((state: RootState) => state.language.value);
-
+  const color = useSelector((state: RootState) => state.color.value);
   console.log(language);
   const [isChecked, setIsChecked] = useState<boolean>();
   console.log(Cookies.get("language"), " dispatch");
 
   const userType = isChecked ? "patient" : "doctor";
+  if (isChecked) {
+    dispatch(updatePrimaryColor("bg-purple-700"));
+    dispatch(updateSecondaryColor("bg-purple-200"));
+  } else {
+    dispatch(updatePrimaryColor("bg-orange-700"));
+    dispatch(updateSecondaryColor("bg-orange-200"));
+  }
   const items = [
     { label: "English", value: "en" },
     { label: "हिंदी", value: "hi" },
@@ -37,9 +48,7 @@ function App() {
 
   return (
     <main
-      className={`${
-        isChecked ? "bg-purple-700" : "bg-orange-700"
-      } h-svh w-screen flex gap-10 flex-col justify-center items-center text-white`}
+      className={`${color.primary} h-svh w-screen flex gap-10 flex-col justify-center items-center text-white`}
     >
       <h1 className=" font-bold text-6xl drop-shadow-xl">LUMEN</h1>
 
@@ -70,24 +79,24 @@ function App() {
         </div>
       </form>
 
-      <div className=" w-40 flex flex-col justify-center items-center">
+      <div className=" w-40 flex flex-col gap-2 justify-center items-center">
         <Link
           href={`/${userType}/register`}
-          className=" text-center text-xs w-full text-black bg-white font-semibold p-2 rounded-full"
+          className="bg-transparent text-white text-center text-xs w-full hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
         >
           <Translate>Register</Translate>
         </Link>
-        <span className=" text-xs text-opacity-70 my-1">
+        {/* <span className=" text-xs text-opacity-50 my-[5px]">
           <Translate>or</Translate>
-        </span>
+        </span> */}
         <Link
           href={`/${userType}/login`}
-          className=" text-center text-xs w-full text-black bg-white font-semibold p-2 rounded-full"
+          className="bg-transparent text-white text-center text-xs w-full hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
         >
           <Translate>Login</Translate>
         </Link>
       </div>
-      <Dropdown items={items} checked={isChecked} onSelect={handleSelect} />
+      <Dropdown items={items} color={color} onSelect={handleSelect} />
     </main>
   );
 }
