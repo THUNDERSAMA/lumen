@@ -26,7 +26,7 @@ export default function PatientLogin() {
           />
           <button
             type="submit"
-            className=" mt-4 text-center text-xs w-full text-black bg-white font-semibold p-3 rounded-full"
+            className="mt-4 bg-transparent text-white text-center text-xs w-1/3 hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
           >
             Log In
           </button>
