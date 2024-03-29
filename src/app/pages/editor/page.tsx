@@ -1,10 +1,9 @@
 "use client";
 import { Providers } from "@/app/Providers";
 import type { RootState } from "@/app/utils/store";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-// import $ from "jquery";
 
 export default function Editor() {
   return (
@@ -14,75 +13,32 @@ export default function Editor() {
   );
 }
 
-// interface BoldRange {
-//   start: number;
-//   end: number;
-// }
-
 function App() {
   const language = useSelector((state: RootState) => state.language.value);
 
   const [patientID, setPatientID] = useState<string>("");
   const [presc, setPresc] = useState<string>("");
-
   const [error, setError] = useState<string>("");
-
-  const [colorMode, setColorMode] = useState<boolean>(true); // true for dark mode, false for light mode
-
-  // const [boldRanges, setBoldRanges] = useState<BoldRange[]>([]);
-  // const textareaRef = useRef<HTMLDivElement>(null);
-
+  const [colorMode, setColorMode] = useState<boolean>(true);
+  const [placeholderVisible, setPlaceholderVisible] = useState(true);
   const myDivRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check if the ref is valid
     if (myDivRef.current) {
-      // Set contentEditable to true
       myDivRef.current.contentEditable = "true";
     }
   }, []);
 
-  function getTextContent() {
-    console.log("first");
-    if (myDivRef.current) {
-      const textContent = myDivRef.current.innerHTML;
-      setPresc(textContent);
-      console.log({ patientID, presc });
+  const getTextContent = () => {
+    const text = myDivRef.current?.innerHTML || "";
+    setPresc(text);
+    console.log(text);
+    if (placeholderVisible && text.trim().length > 0) {
+      setPlaceholderVisible(false);
+    } else if (!placeholderVisible && text.trim().length === 0) {
+      setPlaceholderVisible(true);
     }
-  }
-
-  // const handleTextChange = (event: React.ChangeEvent<HTMLDivElement>) => {
-  //   setPresc(event.target.value);
-  // };
-
-  // const handleMakeBold = () => {
-  //   if (!textareaRef.current) return;
-
-  //   const selectionStart = textareaRef.current.selectionStart;
-  //   const selectionEnd = textareaRef.current.selectionEnd;
-
-  //   if (selectionStart === undefined || selectionEnd === undefined) return;
-
-  //   if (selectionStart === selectionEnd) {
-  //     return; // No text selected
-  //   }
-
-  //   // Update boldRanges to include the newly selected range
-  //   setBoldRanges([
-  //     ...boldRanges,
-  //     { start: selectionStart, end: selectionEnd },
-  //   ]);
-
-  //   // Make the selected text bold
-  //   const newPresc =
-  //     presc.slice(0, selectionStart) +
-  //     "<b>" +
-  //     presc.slice(selectionStart, selectionEnd) +
-  //     "</b>" +
-  //     presc.slice(selectionEnd);
-
-  //   setPresc(newPresc);
-  // };
+  };
 
   function handleSubmit() {
     if (patientID.trim() === "") {
@@ -94,12 +50,6 @@ function App() {
       return;
     }
   }
-  // $(document).ready(function () {
-  // $("#prescription").on("change", function () {
-  //   const newContent = $(this).text();
-  //   console.log("Div content changed to:", newContent);
-  // });
-  // });
 
   return (
     <main
@@ -151,25 +101,52 @@ function App() {
           Ask your patient for their Lumen ID
         </p>
         <div
-          // name=""
           id="prescription"
-          // cols={30}
-          // rows={30}
           spellCheck="false"
-          // required
-          // placeholder="Write the prescription..."
-          // contentEditable={true}
-          // ref={textareaRef}
+          onInput={getTextContent}
           ref={myDivRef}
-          onChange={getTextContent}
-          // value={presc}
           className={`mt-2 rounded-2xl p-2 px-3 h-full font-light text-sm bg-white ${
             colorMode
               ? "bg-opacity-10 placeholder:text-zinc-700"
               : "bg-opacity-80 placeholder:text-orange-700 placeholder:text-opacity-50"
           } placeholder:text-gray-500 resize-none`}
         >
-          {presc}
+          {placeholderVisible && (
+            <div
+              style={{ color: "rgb(0 0 0 / 58%)" }}
+              className="text-lg font-mono"
+            >
+              <h1>Welcome to the Prescription Lumen editor</h1>
+              <p>Your trusted companion in the noble art of healing! 🩺✨</p>
+              <h2>Today`&apos`s Prescription:</h2>
+              <ul>
+                <li>
+                  <strong>Patient:</strong> [Patient Name]
+                </li>
+                <li>
+                  <strong>Diagnosis:</strong> [Diagnosis Here]
+                </li>
+                <li>
+                  <strong>Medication:</strong> [Medication Name and Dosage]
+                </li>
+                <li>
+                  <strong>Instructions:</strong> [Administration Instructions]
+                </li>
+                <li>
+                  <strong>Additional Notes:</strong> [Any Additional Notes]
+                </li>
+              </ul>
+              <p>
+                Remember, a spoonful of humor can be the best medicine! Feel
+                free to add your personal touch . 😉
+              </p>
+
+              <p>
+                Thank you for choosing Prescription Lumen editor. Wishing you
+                and your patients a speedy recovery!
+              </p>
+            </div>
+          )}
         </div>
         <div className="mt-4 flex gap-1 items-start justify-end">
           <button
