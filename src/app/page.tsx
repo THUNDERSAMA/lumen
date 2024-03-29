@@ -17,7 +17,7 @@ function App() {
     if (cookieLanguage) {
       dispatch(updateByValue(cookieLanguage));
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (language) {

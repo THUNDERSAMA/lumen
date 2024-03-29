@@ -52,9 +52,9 @@ export default function Dropdown({ items, checked, onSelect }: any) {
             <li
               key={item.value}
               onClick={() => handleItemClick(item)}
-              className={`cursor-pointer text-center text-xs font-semibold px-4 py-2 ${
+              className={`${
                 checked ? "hover:bg-purple-200" : "hover:bg-orange-200"
-              } rounded-2xl flex justify-center items-center gap-1`}
+              } cursor-pointer text-center text-xs font-semibold px-4 py-2 rounded-2xl flex justify-center items-center gap-1`}
             >
               {selectedItem.value === item.value && (
                 <Image
