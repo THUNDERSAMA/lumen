@@ -2,11 +2,11 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 // ...
 
 import LanguageState from "./slices/LanguageState";
-import ColorState from "./slices/ColorState";
+import UserState from "./slices/UserState";
 
 const rootReducer = combineReducers({
   language: LanguageState,
-  color: ColorState,
+  user: UserState,
 });
 
 export const store = configureStore({

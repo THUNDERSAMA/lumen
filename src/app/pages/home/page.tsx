@@ -11,27 +11,37 @@ import { updateByValue } from "../../utils/slices/LanguageState";
 import type { RootState } from "../../utils/store";
 import { Providers } from "../../Providers";
 import Translate from "../../Translate";
-import {
-  updatePrimaryColor,
-  updateSecondaryColor,
-} from "@/app/utils/slices/ColorState";
+import { updateUser } from "@/app/utils/slices/UserState";
+
+export default function Home() {
+  return (
+    <>
+      <Providers>
+        <App />
+      </Providers>
+    </>
+  );
+}
 
 function App() {
   const dispatch = useDispatch();
   const language = useSelector((state: RootState) => state.language.value);
-  const color = useSelector((state: RootState) => state.color.value);
+  const user = useSelector((state: RootState) => state.user.value);
   console.log(language);
-  const [isChecked, setIsChecked] = useState<boolean>();
+  const check = Cookies.get("user") === "doctor";
+  const [isChecked, setIsChecked] = useState<boolean>(check);
+  // dispatch(updateUser(!isChecked ? "doctor" : "patient"));
   console.log(Cookies.get("language"), " dispatch");
 
-  const userType = isChecked ? "patient" : "doctor";
-  if (isChecked) {
-    dispatch(updatePrimaryColor("bg-purple-700"));
-    dispatch(updateSecondaryColor("bg-purple-200"));
-  } else {
-    dispatch(updatePrimaryColor("bg-orange-700"));
-    dispatch(updateSecondaryColor("bg-orange-200"));
-  }
+  // const userType = isChecked ? "patient" : "doctor";
+  useEffect(() => {
+    if (isChecked) {
+      dispatch(updateUser("patient"));
+    } else {
+      dispatch(updateUser("doctor"));
+    }
+  }, [isChecked, dispatch]);
+
   const items = [
     { label: "English", value: "en" },
     { label: "हिंदी", value: "hi" },
@@ -48,7 +58,7 @@ function App() {
 
   return (
     <main
-      className={`${color.primary} h-svh w-screen flex gap-10 flex-col justify-center items-center text-white`}
+      className={`${user.primaryColor} h-svh w-screen flex gap-10 flex-col justify-center items-center text-white`}
     >
       <h1 className=" font-bold text-6xl drop-shadow-xl">LUMEN</h1>
 
@@ -81,31 +91,19 @@ function App() {
 
       <div className=" w-40 flex flex-col gap-2 justify-center items-center">
         <Link
-          href={`/${userType}/register`}
+          href={`/${user.userType}/register`}
           className="bg-transparent text-white text-center text-xs w-full hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
         >
           <Translate>Register</Translate>
         </Link>
-        {/* <span className=" text-xs text-opacity-50 my-[5px]">
-          <Translate>or</Translate>
-        </span> */}
         <Link
-          href={`/${userType}/login`}
+          href={`/${user.userType}/login`}
           className="bg-transparent text-white text-center text-xs w-full hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
         >
           <Translate>Login</Translate>
         </Link>
       </div>
-      <Dropdown items={items} color={color} onSelect={handleSelect} />
+      <Dropdown items={items} checked={isChecked} onSelect={handleSelect} />
     </main>
-  );
-}
-export default function Home() {
-  return (
-    <>
-      <Providers>
-        <App />
-      </Providers>
-    </>
   );
 }

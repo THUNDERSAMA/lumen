@@ -15,11 +15,11 @@ export default function OneTimePass() {
   );
 }
 function App() {
-  const color = useSelector((state: RootState) => state.color.value);
+  const user = useSelector((state: RootState) => state.user.value);
   const router = useRouter();
   return (
     <main
-      className={`grid place-content-center backdrop-blur-[50px] absolute z-10 w-svw h-svh text-white ${color.primary}`}
+      className={`grid place-content-center backdrop-blur-[50px] absolute z-10 w-svw h-svh text-white ${user.primaryColor}`}
     >
       <div className="w-80">
         <h1 className="font-semibold text-2xl">

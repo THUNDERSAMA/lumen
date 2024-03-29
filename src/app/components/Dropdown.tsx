@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/app/utils/store";
 import Translate from "../Translate";
 
-export default function Dropdown({ items, color, onSelect }: any) {
+export default function Dropdown({ items, checked, onSelect }: any) {
   const [isOpen, setIsOpen] = useState(false);
   // const language = Cookies.get("language") as string;
   const language = useSelector((state: RootState) => state.language.value);
@@ -52,9 +52,9 @@ export default function Dropdown({ items, color, onSelect }: any) {
             <li
               key={item.value}
               onClick={() => handleItemClick(item)}
-              className={`cursor-pointer text-center text-xs font-semibold px-4 py-2 ${
-                `hover:` + color.secondary
-              } rounded-2xl flex justify-center items-center gap-1`}
+              className={`${
+                checked ? "hover:bg-purple-200" : "hover:bg-orange-200"
+              } cursor-pointer text-center text-xs font-semibold px-4 py-2 rounded-2xl flex justify-center items-center gap-1`}
             >
               {selectedItem.value === item.value && (
                 <Image
