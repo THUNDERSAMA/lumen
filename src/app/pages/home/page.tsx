@@ -60,7 +60,9 @@ function App() {
     <main
       className={`${user.primaryColor} h-svh w-screen flex gap-10 flex-col justify-center items-center text-white`}
     >
-      <h1 className=" font-bold text-6xl drop-shadow-xl">LUMEN</h1>
+      <h1 className=" font-bold text-6xl drop-shadow-xl">
+        <Translate>LUMEN</Translate>
+      </h1>
 
       <form>
         <div className="flex items-center gap-2">
@@ -100,7 +102,7 @@ function App() {
           href={`/${user.userType}/login`}
           className="bg-transparent text-white text-center text-xs w-full hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
         >
-          <Translate>Login</Translate>
+          <Translate>Log In</Translate>
         </Link>
       </div>
       <Dropdown items={items} checked={isChecked} onSelect={handleSelect} />

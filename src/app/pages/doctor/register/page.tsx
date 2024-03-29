@@ -1,5 +1,7 @@
 "use client";
 import { Providers } from "@/app/Providers";
+import Translate from "@/app/Translate";
+import { getTranslation } from "@/app/utils/TranslationUtils";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -71,12 +73,14 @@ function App() {
             alt="error"
             className="invert"
           />{" "}
-          {error}
+          <Translate>{error}</Translate>
         </p>
         <div className=" w-80">
-          <h1 className="font-semibold text-2xl">Register as a doctor</h1>
+          <h1 className="font-semibold text-2xl">
+            <Translate>Register as a doctor</Translate>
+          </h1>
           <span className="text-xs opacity-80">
-            make sure your details are correct!
+            <Translate>make sure your details are correct!</Translate>
           </span>
         </div>
         <form
@@ -89,7 +93,7 @@ function App() {
               id="first-name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              placeholder="First name"
+              placeholder={getTranslation("First name")}
               className=" w-[calc(40%-0.1rem)] p-3 text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
             />
             <input
@@ -97,7 +101,7 @@ function App() {
               id="last-name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              placeholder="Last name"
+              placeholder={getTranslation("Last name")}
               className=" w-[calc(60%-0.1rem)] p-3 text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
             />
           </div>
@@ -108,7 +112,7 @@ function App() {
             id="phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            placeholder="Phone"
+            placeholder={getTranslation("Phone")}
             className="p-3 mt-3 text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
           />
           <input
@@ -118,15 +122,15 @@ function App() {
             id="aadhar"
             value={aadhar}
             onChange={(e) => setAadhar(e.target.value)}
-            placeholder="Aadhar"
+            placeholder={getTranslation("Aadhar")}
             className="p-3 text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
           />
           <input
             type="text"
-            id="license-number"
+            id="license"
             value={licenseNumber}
             onChange={(e) => setLicenseNumber(e.target.value)}
-            placeholder="License number"
+            placeholder={getTranslation("License")}
             className="p-3 text-xs rounded-full bg-white bg-opacity-20 placeholder:text-slate-300"
           />
           <div className="mt-4 flex items-center justify-end relative">
@@ -137,7 +141,7 @@ function App() {
               onChange={(e) => {
                 setPassword(e.target.value.trim());
               }}
-              placeholder="Password"
+              placeholder={getTranslation("Password")}
               className="p-3 w-full text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
             />
             <span
@@ -163,7 +167,7 @@ function App() {
               onChange={(e) => {
                 setConfirmPassword(e.target.value.trim());
               }}
-              placeholder="Confirm Password"
+              placeholder={getTranslation("Confirm Password")}
               className="p-3 w-full text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
             />
             <span
@@ -186,13 +190,13 @@ function App() {
 
           <button
             type="submit"
-            className=" mt-4 bg-transparent text-white text-center text-xs w-2/5 hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
+            className=" mt-4 bg-transparent text-white text-center text-xs px-6 w-fit hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
             onClick={(event) => {
               event.preventDefault();
               handleSubmit();
             }}
           >
-            Request OTP
+            <Translate>Request OTP</Translate>
           </button>
         </form>
       </main>

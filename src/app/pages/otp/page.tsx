@@ -19,14 +19,14 @@ function App() {
   const router = useRouter();
   return (
     <main
-      className={`grid place-content-center backdrop-blur-[50px] absolute z-10 w-svw h-svh text-white ${user.primaryColor}`}
+      className={`flex justify-center items-center backdrop-blur-[50px] w-svw h-svh text-white ${user.primaryColor}`}
     >
-      <div className="w-80">
+      <div className="w-fit">
         <h1 className="font-semibold text-2xl">
           <Translate>OTP is sent to your phone</Translate>
         </h1>
         <span className="text-xs opacity-80">
-          <Translate>dont share it with anyone!</Translate>
+          <Translate>don&apos;t share it with anyone!</Translate>
         </span>
         <form action="" className="mt-4 flex flex-col items-start gap-5 w-80">
           <div className="w-full flex flex-row justify-evenly ">
@@ -65,18 +65,19 @@ function App() {
             type="submit"
             className="bg-transparent text-white text-center text-xs w-2/5 hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
           >
-            Verify
+            <Translate>Verify</Translate>
           </button>
-          <span className="text-[10px]">
-            Didn&apos;t recieve an OTP?{" "}
+          <span className="text-[10px] flex gap-1">
+            <Translate>Didn&apos;t receive an OTP?</Translate>
+
             <button
               onClick={(e) => {
                 e.preventDefault();
                 router.back();
               }}
-              className=" underline"
+              className="font-medium underline"
             >
-              Try again
+              <Translate>Try again</Translate>
             </button>
           </span>
         </form>
