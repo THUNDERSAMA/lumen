@@ -28,7 +28,7 @@ async function createParentNode(aadhar: string, phoneNumber: string) {
   }
 }
 
-
+// Child Node Creation 
 async function createChildNode(aadhar: string , phoneNumber: string) {
   const neo4jSession = neo4jDriver.session();
 
@@ -47,49 +47,8 @@ async function createChildNode(aadhar: string , phoneNumber: string) {
 }
 
 
-// async function createRelationship(parentAadhar: string, childAadhar: string, phoneNumber: string) {
-//   const neo4jSession = neo4jDriver.session();
-//   try {
-//     const createRelationshipQuery = `
-//       MATCH (parent:Parent { aadhar: $parentAadhar })
-//       MATCH (child:User { aadhar: $childAadhar })
-//       CREATE (parent)-[:HAS_CHILD { phoneNumber: $phoneNumber }]->(child)
-//       RETURN child
-//     `;
-//     const result = await neo4jSession.run(createRelationshipQuery, { parentAadhar, childAadhar, phoneNumber });
-//     console.log('Relationship created between parent node and child node with phone number:', phoneNumber);
-//     return result;
-//   } catch (error) {
-//     console.error('Error creating relationship in Neo4j:', error);
-//     throw error;
-//   } finally {
-//     neo4jSession.close();
-//   }
-// }
 
-
-// async function createRelationship(parentAadhar: string, childAadhar: string, phoneNumber: string) {
-//   const neo4jSession = neo4jDriver.session();
-//   try {
-//     const createRelationshipQuery = `
-//       MATCH (parent:Parent { status: $phoneNumber })
-//       MATCH (child:User { aadhar: $childAadhar })
-//       CREATE (parent)-[:HAS_CHILD { phoneNumber: $phoneNumber }]->(child)
-//       RETURN child
-//     `;
-//     const result = await neo4jSession.run(createRelationshipQuery, { phoneNumber, childAadhar });
-//     console.log('Relationship created between parent node and child node with phone number:', phoneNumber);
-//     return result;
-//   } catch (error) {
-//     console.error('Error creating relationship in Neo4j:', error);
-//     throw error;
-//   } finally {
-//     neo4jSession.close();
-//   }
-// }
-
-
-// Function to create or update friend relationship in Neo4j
+// Function to create or update friend relationship in Neo4j(Here the relation Ship is created)
 const createRelationship = async (parentPhone: string, childPhone: string, phoneNumber: string) => {
   const neo4jSession = neo4jDriver.session();
 
