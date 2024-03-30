@@ -25,3 +25,10 @@ input[type="number"] {
   -moz-appearance: textfield; /* Firefox */
   appearance: textfield; /* Standard */
 }
+
+[contenteditable][data-placeholder]:empty:before {
+  content: "Welcome to the Prescription Lumen editor \aYour trusted companion in the noble art of healing! 🩺✨ \a Remember, a spoonful of humor can be the best medicine! Feel free to add your personal touch . 😉";
+  position: absolute;
+  white-space: pre;
+
+}

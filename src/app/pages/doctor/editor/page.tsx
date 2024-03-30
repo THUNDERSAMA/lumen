@@ -105,13 +105,14 @@ function App() {
           spellCheck="false"
           onInput={getTextContent}
           ref={myDivRef}
-          className={`mt-2 rounded-2xl p-2 px-3 h-full font-light text-sm bg-white ${
+          data-placeholder=" 🩺✨ \A Today's Prescription:"
+          className={` mt-2 rounded-2xl p-2 px-3 h-40 font-light text-sm bg-white ${
             colorMode
               ? "bg-opacity-10 placeholder:text-zinc-700"
               : "bg-opacity-80 placeholder:text-orange-700 placeholder:text-opacity-50"
           } placeholder:text-gray-500 resize-none`}
         >
-          {placeholderVisible && (
+          {/* {placeholderVisible && (
             <div
               className={`font-medium ${
                 colorMode
@@ -149,7 +150,7 @@ function App() {
                 and your patients a speedy recovery!
               </p>
             </div>
-          )}
+          )} */}
         </div>
         <div className="mt-4 flex gap-1 items-start justify-end">
           <button
