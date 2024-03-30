@@ -1,5 +1,7 @@
 "use client";
 import { Providers } from "@/app/Providers";
+import Translate from "@/app/Translate";
+import { getTranslation } from "@/app/utils/TranslationUtils";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -48,9 +50,11 @@ function App() {
           {error}
         </p>
         <div className=" w-80">
-          <h1 className="font-semibold text-2xl">Login as a patient</h1>
+          <h1 className="font-semibold text-2xl">
+            <Translate>Login as a patient</Translate>
+          </h1>
           <span className="text-xs opacity-80">
-            check your details before you login!
+            <Translate>check your details before you login!</Translate>
           </span>
         </div>
         <form
@@ -64,7 +68,7 @@ function App() {
             id="phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            placeholder="Phone"
+            placeholder={getTranslation("Phone")}
             className="p-3 text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
           />
           <div className="flex items-center justify-end relative">
@@ -75,7 +79,7 @@ function App() {
               onChange={(e) => {
                 setPassword(e.target.value.trim());
               }}
-              placeholder="Password"
+              placeholder={getTranslation("Password")}
               className="p-3 w-full text-xs rounded-full bg-white bg-opacity-20 placeholder:text-gray-300"
             />
             <span
@@ -95,13 +99,13 @@ function App() {
           </div>
           <button
             type="submit"
-            className="mt-4 bg-transparent text-white text-center text-xs w-1/3 hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
+            className="mt-4 bg-transparent text-white text-center text-xs px-6 w-fit hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
             onClick={(event) => {
               event.preventDefault();
               handleSubmit();
             }}
           >
-            Log In
+            <Translate>Log In</Translate>
           </button>
         </form>
       </main>
