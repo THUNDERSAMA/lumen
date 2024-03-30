@@ -19,7 +19,7 @@ function App() {
   const [patientID, setPatientID] = useState<string>("");
   const [presc, setPresc] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [colorMode, setColorMode] = useState<boolean>(true);
+  const [colorMode, setColorMode] = useState<boolean>(false); // true for dark and false for light
   const [placeholderVisible, setPlaceholderVisible] = useState(true);
   const myDivRef = useRef<HTMLDivElement>(null);
 
@@ -55,7 +55,7 @@ function App() {
     <main
       className={`${
         colorMode ? "bg-black" : " bg-orange-700"
-      } py-2 h-svh w-screen flex gap-10 flex-col justify-center items-center relative ${
+      } py-2 min-h-screen h-full w-screen flex gap-10 flex-col justify-center items-center relative ${
         error && "mobile:pt-7 tablet:pt-0 desktop:pt-0"
       }`}
     >
@@ -70,7 +70,7 @@ function App() {
           width={12}
           alt="error"
           className="invert"
-        />{" "}
+        />
         {error}
       </p>
 
@@ -113,12 +113,15 @@ function App() {
         >
           {placeholderVisible && (
             <div
-              style={{ color: "rgb(0 0 0 / 58%)" }}
-              className="text-lg font-mono"
+              className={`font-medium ${
+                colorMode
+                  ? " text-zinc-700"
+                  : " text-orange-700 text-opacity-50"
+              }`}
             >
               <h1>Welcome to the Prescription Lumen editor</h1>
               <p>Your trusted companion in the noble art of healing! 🩺✨</p>
-              <h2>Today`&apos`s Prescription:</h2>
+              <h2>Today&apos;s Prescription:</h2>
               <ul>
                 <li>
                   <strong>Patient:</strong> [Patient Name]
