@@ -30,6 +30,22 @@ const DoctorModel = mongoose.models.User || mongoose.model("Doctor", new Schema(
         required:true,
         unique:true
     },
+    language:{
+        type:String,
+        default:"En"
+    },
+    graphDB_id:{
+        type:String,
+        required:true,
+    },
+    unique_key:{
+        type:String,
+        required:true
+    },
+    lastLogin:{
+        type:Date,
+        default:null
+    }
 }, { timestamps: true }));
 
 export default DoctorModel;

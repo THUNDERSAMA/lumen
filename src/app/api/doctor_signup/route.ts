@@ -71,6 +71,7 @@ async function signUp(requestBody: { firstName: string, lastName: string, passwo
 
         // Creating the parent Node for the doctor
         await createParentNode(requestBody.aadhar, requestBody.phone.toString(), requestBody.license);
+        const hashedAadhar = await bcrypt.hash(requestBody.aadhar, 12);
         // Create leaf node for the new user
         const newUser = new Doctor({
             firstName: requestBody.firstName,
@@ -78,7 +79,9 @@ async function signUp(requestBody: { firstName: string, lastName: string, passwo
             phone: requestBody.phone,
             aadhar: requestBody.aadhar,
             password: await bcrypt.hash(requestBody.password, 10),
-            license:requestBody.license
+            license:requestBody.license,
+            unique_key:hashedAadhar,
+            graphDB_id:hashedAadhar
         });
 
         await newUser.save();
