@@ -27,8 +27,22 @@ input[type="number"] {
 }
 
 [contenteditable][data-placeholder]:empty:before {
-  content: "Welcome to the Prescription Lumen editor \aYour trusted companion in the noble art of healing! 🩺✨ \a Remember, a spoonful of humor can be the best medicine! Feel free to add your personal touch . 😉";
+  content: "Welcome to the Prescription editor \a\a Start typing here... \a\a [ Patient Name ] \a [ Diagnosis ] \a [ Medication & Dosage ] \a [ Instructions ] \a [ Additional Notes ]";
   position: absolute;
   white-space: pre;
+  text-wrap: wrap;
+  color: currentColor;
+  cursor: text;
+}
 
+.EDITOR::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(249 115 22 / 0.5);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
 }
