@@ -40,34 +40,13 @@ async function signUp(requestBody: { firstName: string, lastName: string, passwo
         }
 
         // Check if a user with the provided phone number already exists
-        //   const existingUser = await User.findOne({ phone: requestBody.phone });
-        //   if (existingUser) {
-        //     console.log("User with this phone number already exists:", existingUser._id);
+          const existingUser = await Doctor.findOne({ phone: requestBody.phone , aadhar : requestBody.aadhar });
+          if (existingUser) {
+            console.log("User with this phone number already exists:", existingUser._id);
 
-        //     // Create leaf node for the new user
-        //     const newUser = new User({
-        //       firstName: requestBody.firstName,
-        //       lastName: requestBody.lastName,
-        //       phone: requestBody.phone,
-        //       aadhar: requestBody.aadhar,
-        //       password: await bcrypt.hash(requestBody.password, 10)
-        //     });
+            return { success: false, message: 'User already exists' , statusCode: 409 };
+          } 
 
-        //     await newUser.save();
-        //     // await createParentNode(requestBody.aadhar, requestBody.phone.toString());
-        //     await createChildNode(requestBody.aadhar,requestBody.phone.toString());
-        //     await createRelationship(requestBody.phone.toString(), newUser.phone.toString(), requestBody.phone.toString());
-        //     // const childResult = await createChildNode(requestBody.aadhar);
-        //     // await createRelationship(requestBody.aadhar, newUser, requestBody.phone.toString());
-        //     // const childResult = await createChildNode(requestBody.aadhar);
-        //     // await createRelationship(requestBody.aadhar, newUser, requestBody.phone.toString());
-
-        //     // Create relationship between the new user and the existing user using phone number
-        //     // await createRelationship(existingUser._id, newUser._id, requestBody.phone.toString());
-
-        //     return { success: true, message: 'User signed in successfully' };
-        //   } 
-        //   else {
 
         // Creating the parent Node for the doctor
         await createParentNode(requestBody.aadhar, requestBody.phone.toString(), requestBody.license);
@@ -104,8 +83,11 @@ export async function POST(request: NextRequest) { //Post Request
         const result = signUp(requestBody);
 
         return NextResponse.json({
-            status: 'success',
-            message: 'Request processed successfully',
+            // status: 'success',
+            status: (await result).success ? 'success' : 'error',
+            message: (await result).message,
+            stattus: (await result).statusCode
+            // message: 'Request processed successfully',
         });
 
     } catch (error) {
@@ -113,6 +95,7 @@ export async function POST(request: NextRequest) { //Post Request
         return NextResponse.json({
             status: 'error',
             message: 'Request payload error',
+            statusCode: 400 
         });
     }
 }

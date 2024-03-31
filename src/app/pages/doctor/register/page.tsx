@@ -78,6 +78,10 @@ function App() {
       if (!response.ok) {
         throw new Error('Failed to login');
       }
+      else if (response.status == 409){
+        // setError("User already exists");
+        throw new Error('User Already Exists');
+      }
       const data = await response.json();
       console.log(data);
       // Handle success response
