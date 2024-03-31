@@ -67,7 +67,7 @@ async function updateDataOnBlockchain(walletAddress: any, privateKey: any) {
   });
 }
 
-export async function POST(request: { json: () => PromiseLike<{ type: any; data: any; userWalletaddress: any; userWalletprivateKey: any; }> | { type: any; data: any; userWalletaddress: any; userWalletprivateKey: any; }; }) {
+export async function POST( request: any ) {
   try {
     const { type, data, userWalletaddress, userWalletprivateKey } = await request.json();
     let mergedResults = {};
