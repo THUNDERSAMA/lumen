@@ -30,7 +30,8 @@ function App() {
   const [conEyeToggle, setConEyeToggle] = useState<boolean>(false);
 
   const router = useRouter();
-  function handleSubmit() {
+
+  async function handleSubmit() {
     if (
       firstName.trim() === "" ||
       phone.trim() === "" ||
@@ -47,7 +48,7 @@ function App() {
       return;
     }
     setError(null);
-    router.push("/pages/otp");
+    // router.push("/pages/otp");
     console.log({
       name: (firstName.trim() + " " + lastName.trim()).trim(),
       phone: phone.trim(),
@@ -56,6 +57,39 @@ function App() {
       password: password.trim(),
       confirmPassword: confirmPassword.trim(),
     });
+
+
+    try {
+      const response = await fetch('http://localhost:3000/api/doctor_signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName:firstName.trim(),
+          lastName:lastName.trim(),
+          aadhar: aadhar.trim(),
+          license: licenseNumber.trim(),
+          phone: phone.trim(),
+          password: password.trim(),
+          confirmPassword:confirmPassword.trim()
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to login');
+      }
+      else if (response.status == 409){
+        // setError("User already exists");
+        throw new Error('User Already Exists');
+      }
+      const data = await response.json();
+      console.log(data);
+      // Handle success response
+    } catch (error) {
+      setError('Failed to login');
+      console.error('Error:', error);
+    }
+
   }
 
   return (
