@@ -51,18 +51,11 @@ function App() {
     }
   }
 
-  const currentBg = "bg-[rgb(0,_0,_0,_0.0)]";
-  const previewBg = "bg-[rgb(0,_0,_0,_0.1)]";
-  const currentText = "text-black";
-
-  const hoverBg = "hover:bg-orange-100";
-  const hoverText = "hover:text-black";
-
   return (
     <main
       className={`${
         colorMode ? "bg-black" : " bg-[rgb(0,_0,_0,_0)]"
-      } p-4 h-svh w-screen flex gap-10 flex-col justify-center items-center relative ${
+      } p-4 h-svh w-screen flex flex-col justify-center items-center relative ${
         error && "pt-7"
       }`}
     >
@@ -80,13 +73,7 @@ function App() {
         />
         {error}
       </p>
-
-      <form
-        action=""
-        className={`relative ${
-          colorMode ? "text-white" : "text-black"
-        } bg-transparent flex flex-col items-end mobile:w-full tablet:w-3/4 h-full`}
-      >
+      <div className="w-full flex gap-1 mobile:flex-col tablet:flex-row tablet:items-center mobile:items-start">
         <input
           type="text"
           id="presText"
@@ -94,89 +81,187 @@ function App() {
           placeholder="Ask your patient for their Lumen ID"
           value={patientID}
           onChange={(e) => setPatientID(e.target.value)}
-          className={`px-3 py-2 text-sm mb-1 w-full rounded-full ${
+          className={`px-2 py-[5px] text-sm mobile:w-full tablet:min-w-[250px] leading-[30px] rounded-full placeholder:text-sm ${
             colorMode
-              ? "bg-opacity-10 placeholder:text-zinc-700"
-              : "bg-zinc-100 bg-opacity-100 placeholder:text-black placeholder:text-opacity-40"
+              ? "bg-zinc-900 bg-opacity-60 placeholder:text-zinc-600 placeholder:text-opacity-90"
+              : "bg-zinc-100 bg-opacity-100 placeholder:text-black placeholder:text-opacity-50"
           }`}
         />
         <div
           className={`${
-            colorMode ? "bg-orange-900" : "bg-white"
-          } w-full flex items-start justify-center`}
+            colorMode
+              ? "bg-zinc-900 bg-opacity-60"
+              : "bg-zinc-100 bg-opacity-100"
+          } p-[5px] rounded-full w-fit flex items-start justify-center`}
         >
           <button
             className={`${
-              colorMode ? "bg-orange-900" : currentBg + " hover:bg-orange-200"
-            } p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
+              colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
+            } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
             onClick={(event) => {
               event.preventDefault();
               setColorMode(!colorMode);
             }}
           >
             <Image
-              src={!colorMode ? "/light_icon.svg" : "/dark_icon.svg"}
-              height={20}
-              width={20}
-              alt="light mode"
-              className={""}
+              src={colorMode ? "/dark_icon.svg" : "/light_icon.svg"}
+              height={colorMode ? 12 : 20}
+              width={colorMode ? 12 : 20}
+              alt="dark mode"
+              className={`transition-none ${colorMode && "invert"}`}
             />
           </button>
           <button
             className={`${
-              colorMode ? "bg-orange-900" : currentBg + " hover:bg-orange-200"
-            } h-[30px] rounded-full text-xs text-black hover:text-black aspect-square`}
+              colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
+            } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
             onClick={(event) => {
               event.preventDefault();
               document.execCommand("bold");
             }}
           >
-            B
+            <Image
+              src={"/bold_icon.svg"}
+              height={11}
+              width={11}
+              alt="bold"
+              className={`transition-none ${colorMode && "invert"}`}
+            />
           </button>
           <button
             className={`${
-              colorMode ? "bg-orange-900" : currentBg + " hover:bg-orange-200"
-            } h-[30px] rounded-full text-xs text-black hover:text-black aspect-square`}
+              colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
+            } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
             onClick={(event) => {
               event.preventDefault();
               document.execCommand("underline");
             }}
           >
-            U
+            <Image
+              src={"/underline_icon.svg"}
+              height={12}
+              width={12}
+              alt="underline"
+              className={`transition-none ${colorMode && "invert"}`}
+            />
           </button>
           <button
             className={`${
-              colorMode ? "bg-orange-900" : currentBg + " hover:bg-orange-200"
-            } h-[30px] rounded-full text-xs text-black hover:text-black aspect-square`}
+              colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
+            } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
             onClick={(event) => {
               event.preventDefault();
               document.execCommand("italic");
             }}
           >
-            I
+            <Image
+              src={"/italic_icon.svg"}
+              height={12}
+              width={12}
+              alt="italic"
+              className={`transition-none ${colorMode && "invert"}`}
+            />
+          </button>
+          <button
+            className={`${
+              colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
+            } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
+            onClick={(event) => {
+              event.preventDefault();
+              document.execCommand("justifyleft");
+            }}
+          >
+            <Image
+              src={"/justify_both_icon.svg"}
+              height={20}
+              width={20}
+              alt="justify left"
+              className={`transition-none ${colorMode && "invert"}`}
+            />
+          </button>
+          <button
+            className={`${
+              colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
+            } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
+            onClick={(event) => {
+              event.preventDefault();
+              document.execCommand("justifycenter");
+            }}
+          >
+            <Image
+              src={"/justify_center_icon.svg"}
+              height={13}
+              width={13}
+              alt="justify center"
+              className={`transition-none ${colorMode && "invert"}`}
+            />
+          </button>
+          <button
+            className={`${
+              colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
+            } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
+            onClick={(event) => {
+              event.preventDefault();
+              document.execCommand("justifyright");
+            }}
+          >
+            <Image
+              src={"/justify_both_icon.svg"}
+              height={20}
+              width={20}
+              alt="justify right"
+              className={`transition-none rotate-180 ${colorMode && "invert"}`}
+            />
+          </button>
+          <button
+            className={`${
+              colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
+            } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
+            onClick={(event) => {
+              event.preventDefault();
+              document.execCommand("justifyfull");
+            }}
+          >
+            <Image
+              src={"/justify_full_icon.svg"}
+              height={12}
+              width={12}
+              alt="justify full"
+              className={`transition-none ${colorMode && "invert"}`}
+            />
           </button>
         </div>
+      </div>
+
+      <form
+        action=""
+        className={`relative ${
+          colorMode ? "text-white" : "text-black"
+        } mt-4 bg-transparent flex flex-col items-end mobile:w-full tablet:w-4/5 h-full`}
+      >
         <div
           id="prescription"
           spellCheck="false"
           onInput={getTextContent}
           ref={myDivRef}
-          data-placeholder="\A Today's Prescription:"
-          className={`EDITOR mb-2 outline-0 p-2 px-3 h-full w-full text-sm bg-white ${
+          data-placeholder="Today's Prescription:"
+          className={`mb-2 outline-0 p-2 px-3 h-full w-full text-sm bg-transparent ${
             colorMode
-              ? "bg-opacity-10 text-zinc-700"
-              : `bg-opacity-100 ${
-                  presc.length === 0 && "text-slate-500 text-opacity-50"
+              ? `editorDark ${
+                  presc.length === 0 && "text-zinc-500 text-opacity-50"
                 }`
-          } resize-none overflow-y-auto`}
+              : `editorLight ${
+                  presc.length === 0 && "text-zinc-500 text-opacity-50"
+                }`
+          } resize-none overflow-y-auto transition-none`}
         />
         <button
           type="submit"
           className={`${
             colorMode
-              ? "bg-orange-900"
-              : "bg-orange-500" + " hover:bg-orange-700 hover:text-white"
-          } text-white text-opacity-90 text-center text-xs w-[7rem] h-[40px] font-semibold p-[10px] px-4 rounded-full`}
+              ? "bg-transparent border-2 border-white hover:bg-orange-500 hover:border-transparent"
+              : "bg-orange-500 border-2 border-transparent hover:bg-orange-700"
+          } text-white text-opacity-90 text-center text-xs w-[7rem] font-semibold px-4 py-2 rounded-full`}
           onClick={(event) => {
             event.preventDefault();
             handleSubmit();

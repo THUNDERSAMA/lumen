@@ -18,8 +18,8 @@ const config: Config = {
       mobile: "0px",
       // => @media (min-width: 0px) { ... }
 
-      tablet: "480px",
-      // => @media (min-width: 480px) { ... }
+      tablet: "540px",
+      // => @media (min-width: 540px) { ... }
 
       desktop: "960px",
       // => @media (min-width: 960px) { ... }

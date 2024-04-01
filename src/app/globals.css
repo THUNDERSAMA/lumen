@@ -35,14 +35,26 @@ input[type="number"] {
   cursor: text;
 }
 
-.EDITOR::-webkit-scrollbar {
+.editorLight::-webkit-scrollbar {
   width: 10px;
 }
-::-webkit-scrollbar-thumb {
+.editorLight::-webkit-scrollbar-thumb {
   background: rgb(249 115 22 / 0.5);
   border-radius: 10px;
 }
-::-webkit-scrollbar-track {
+.editorLight::-webkit-scrollbar-track {
   background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.editorDark::-webkit-scrollbar {
+  width: 10px;
+}
+.editorDark::-webkit-scrollbar-thumb {
+  background: rgb(249 115 22 / 1);
+  border-radius: 10px;
+}
+.editorDark::-webkit-scrollbar-track {
+  background: #222;
   border-radius: 10px;
 }
