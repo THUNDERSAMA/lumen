@@ -1,0 +1,932 @@
+ [
+  {
+    "Common Abbreviation": "1/2 tablet",
+    "Meaning or Intended Meaning": "one-half tablet",
+    "Best practice / Notes on any confusion": "Spell out half tablet or use reduced font-size fractions (½ tablet)"
+  },
+  {
+    "Common Abbreviation": "5-ASA",
+    "Meaning or Intended Meaning": "5-aminosalicylic acid",
+    "Best practice / Notes on any confusion": "Better to spell out full drug name 5-aminosalicylic acid; may be misinterpreted as 5 aspirin tablets."
+  },
+  {
+    "Common Abbreviation": "ā",
+    "Meaning or Intended Meaning": "before",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "ac",
+    "Meaning or Intended Meaning": "before meals",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "achs",
+    "Meaning or Intended Meaning": "before meals and at bedtime",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "AD",
+    "Meaning or Intended Meaning": "right ear",
+    "Best practice / Notes on any confusion": "Spell out right ear; may be mistaken for OD (right eye)"
+  },
+  {
+    "Common Abbreviation": "AS",
+    "Meaning or Intended Meaning": "left ear",
+    "Best practice / Notes on any confusion": "Spell out left ear; may be mistaken for OS (left eye)"
+  },
+  {
+    "Common Abbreviation": "AU",
+    "Meaning or Intended Meaning": "each ear",
+    "Best practice / Notes on any confusion": "Spell out each ear; may be mistaken for OD (each eye)"
+  },
+  {
+    "Common Abbreviation": "A.M.",
+    "Meaning or Intended Meaning": "morning",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "APAP",
+    "Meaning or Intended Meaning": "acetaminophen",
+    "Best practice / Notes on any confusion": "Spell out acetaminophen; not everyone familiar with abbreviation."
+  },
+  {
+    "Common Abbreviation": "ASA",
+    "Meaning or Intended Meaning": "aspirin",
+    "Best practice / Notes on any confusion": "Better to spell out full drug name aspirin."
+  },
+  {
+    "Common Abbreviation": "AZT",
+    "Meaning or Intended Meaning": "zidovudine",
+    "Best practice / Notes on any confusion": "Better to spell out full drug name zidovudine; can be mistaken as azithromycin, azathioprine, or aztreonam."
+  },
+  {
+    "Common Abbreviation": "bid",
+    "Meaning or Intended Meaning": "twice a day",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "BMI",
+    "Meaning or Intended Meaning": "body mass index",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "BP",
+    "Meaning or Intended Meaning": "blood pressure",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "BSA",
+    "Meaning or Intended Meaning": "body surface area",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "c̅",
+    "Meaning or Intended Meaning": "with",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "C&S",
+    "Meaning or Intended Meaning": "culture and sensitivity",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "CaCO3",
+    "Meaning or Intended Meaning": "calcium carbonate",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "CAD",
+    "Meaning or Intended Meaning": "coronary artery disease",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "cap",
+    "Meaning or Intended Meaning": "capsule",
+    "Best practice / Notes on any confusion": "Spell out capsule; may be confused with cancer of the prostate (CAP)."
+  },
+  {
+    "Common Abbreviation": "CBC",
+    "Meaning or Intended Meaning": "complete blood count",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "cc",
+    "Meaning or Intended Meaning": "cubic centimeter",
+    "Best practice / Notes on any confusion": "Use mL; can be mistaken as \"u\" (units)."
+  },
+  {
+    "Common Abbreviation": "C&S",
+    "Meaning or Intended Meaning": "culture and sensitivity",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "cm",
+    "Meaning or Intended Meaning": "centimeters",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "CNS",
+    "Meaning or Intended Meaning": "central nervous system",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "CPZ",
+    "Meaning or Intended Meaning": "Compazine (generic: prochlorperazine)",
+    "Best practice / Notes on any confusion": "Better to spell drug name Compazine out; can be misinterpreted as chlorpromazine."
+  },
+  {
+    "Common Abbreviation": "CR",
+    "Meaning or Intended Meaning": "controlled release",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "cr, crm",
+    "Meaning or Intended Meaning": "cream",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "CV",
+    "Meaning or Intended Meaning": "cardiovascular",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "CXR",
+    "Meaning or Intended Meaning": "chest xray",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "D/C, dc, or disc",
+    "Meaning or Intended Meaning": "discontinue or discharge",
+    "Best practice / Notes on any confusion": "Multiple meanings; spell out discontinue or discharge."
+  },
+  {
+    "Common Abbreviation": "DAW",
+    "Meaning or Intended Meaning": "dispense as written",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "disp",
+    "Meaning or Intended Meaning": "dispense",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "DM",
+    "Meaning or Intended Meaning": "diabetes mellitus",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "DO",
+    "Meaning or Intended Meaning": "Doctor of Osteopathy",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "DOB",
+    "Meaning or Intended Meaning": "date of birth",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "DR",
+    "Meaning or Intended Meaning": "delayed release",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "DVT",
+    "Meaning or Intended Meaning": "deep vein thrombosis",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "EC",
+    "Meaning or Intended Meaning": "enteric coated",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "EENT",
+    "Meaning or Intended Meaning": "eye, ear, nose, throat",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "elix",
+    "Meaning or Intended Meaning": "elixir",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "ER",
+    "Meaning or Intended Meaning": "emergency room or extended release",
+    "Best practice / Notes on any confusion": "Best to spell out intended meaning"
+  },
+  {
+    "Common Abbreviation": "F",
+    "Meaning or Intended Meaning": "fahrenheit",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "FBS",
+    "Meaning or Intended Meaning": "fasting blood sugar",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "FDA",
+    "Meaning or Intended Meaning": "Food and Drug Administration",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "Fe",
+    "Meaning or Intended Meaning": "iron",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "G, g, gm",
+    "Meaning or Intended Meaning": "gram",
+    "Best practice / Notes on any confusion": "Use g as preferred symbol"
+  },
+  {
+    "Common Abbreviation": "gr.",
+    "Meaning or Intended Meaning": "grain",
+    "Best practice / Notes on any confusion": "Can be mistaken as gram; use metric system."
+  },
+  {
+    "Common Abbreviation": "garg",
+    "Meaning or Intended Meaning": "gargle",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "GERD",
+    "Meaning or Intended Meaning": "gastroesophageal reflux disease",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "GI",
+    "Meaning or Intended Meaning": "gastrointestinal",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "GU",
+    "Meaning or Intended Meaning": "genitourinary",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "gtt, gtts",
+    "Meaning or Intended Meaning": "drop, drops",
+    "Best practice / Notes on any confusion": "Use drop or drops; Can be confused with GTT for glucose tolerance test."
+  },
+  {
+    "Common Abbreviation": "h, hr",
+    "Meaning or Intended Meaning": "hour",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "h/o",
+    "Meaning or Intended Meaning": "history of",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "H2O",
+    "Meaning or Intended Meaning": "water",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "HCP",
+    "Meaning or Intended Meaning": "health care professional",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "HCT",
+    "Meaning or Intended Meaning": "hydrocortisone",
+    "Best practice / Notes on any confusion": "Spell out hydrocortisone; can be mistaken as hydrochlorothiazide."
+  },
+  {
+    "Common Abbreviation": "HCTZ",
+    "Meaning or Intended Meaning": "hydrochlorothiazide",
+    "Best practice / Notes on any confusion": "Spell out hydrochlorothiazide; can be mistaken as hydrocortisone."
+  },
+  {
+    "Common Abbreviation": "HDL",
+    "Meaning or Intended Meaning": "high density lipoprotein",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "HS",
+    "Meaning or Intended Meaning": "half-strength",
+    "Best practice / Notes on any confusion": "Spell out half strength; HS may be mistaken as bedtime."
+  },
+  {
+    "Common Abbreviation": "hs",
+    "Meaning or Intended Meaning": "bedtime",
+    "Best practice / Notes on any confusion": "Use upper case HS for bedtime; hs may be mistaken for half-strength."
+  },
+  {
+    "Common Abbreviation": "HTN",
+    "Meaning or Intended Meaning": "hypertension",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "hx",
+    "Meaning or Intended Meaning": "history",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "IBW",
+    "Meaning or Intended Meaning": "ideal body weight",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "IM",
+    "Meaning or Intended Meaning": "intramuscular",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "IN",
+    "Meaning or Intended Meaning": "intranasal",
+    "Best practice / Notes on any confusion": "Spell out intranasal or use NAS (all uppercase letters); can be confused with IV or IM."
+  },
+  {
+    "Common Abbreviation": "IJ",
+    "Meaning or Intended Meaning": "injection",
+    "Best practice / Notes on any confusion": "Spell out injection; can be confused with intrajugular or IV."
+  },
+  {
+    "Common Abbreviation": "IR",
+    "Meaning or Intended Meaning": "immediate-release",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "IU**",
+    "Meaning or Intended Meaning": "international unit",
+    "Best practice / Notes on any confusion": "Mistaken as IV (intravenous) or \"ten\"; instead spell out \"units\" per Joint Commission's \"Do Not Use\" List of Abbreviations."
+  },
+  {
+    "Common Abbreviation": "IUD",
+    "Meaning or Intended Meaning": "intrauterine device",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "IV",
+    "Meaning or Intended Meaning": "intravenous",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "IVP",
+    "Meaning or Intended Meaning": "intravenous push",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "K",
+    "Meaning or Intended Meaning": "potassium",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "KOH",
+    "Meaning or Intended Meaning": "potassium hydroxide",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "L",
+    "Meaning or Intended Meaning": "liter",
+    "Best practice / Notes on any confusion": "Use upper case L"
+  },
+  {
+    "Common Abbreviation": "LA",
+    "Meaning or Intended Meaning": "long-acting",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "lab",
+    "Meaning or Intended Meaning": "laboratory",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "Lack of leading zero (.X mg)**",
+    "Meaning or Intended Meaning": "0.X mg",
+    "Best practice / Notes on any confusion": "Decimal point is missed; Write 0.X mg; per Joint Commission's \"Do Not Use\" List of Abbreviations."
+  },
+  {
+    "Common Abbreviation": "lb",
+    "Meaning or Intended Meaning": "pound",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "LDL",
+    "Meaning or Intended Meaning": "low density lipoprotein",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "LFT",
+    "Meaning or Intended Meaning": "liver function tests",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "liq",
+    "Meaning or Intended Meaning": "liquid",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "lot",
+    "Meaning or Intended Meaning": "lotion",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "LPN",
+    "Meaning or Intended Meaning": "licensed practical nurse",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "mcg, µg",
+    "Meaning or Intended Meaning": "microgram",
+    "Best practice / Notes on any confusion": "Can be misinterpreted to mean mg or milligram, better to spell out microgram."
+  },
+  {
+    "Common Abbreviation": "MD",
+    "Meaning or Intended Meaning": "medical doctor, muscular dystrophy",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "MDI",
+    "Meaning or Intended Meaning": "metered dose inhaler",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "Mg",
+    "Meaning or Intended Meaning": "magnesium",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "mg",
+    "Meaning or Intended Meaning": "milligram",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "MgSO4**",
+    "Meaning or Intended Meaning": "magnesium sulfate",
+    "Best practice / Notes on any confusion": "Spell out magnesium sulfate per Joint Commission's \"Do Not Use\" List of Abbreviations. Can be confused with MSO4 (morphine sulfate)."
+  },
+  {
+    "Common Abbreviation": "mL",
+    "Meaning or Intended Meaning": "milliliter",
+    "Best practice / Notes on any confusion": "Use mL; use lower case m and upper case L for milliliter."
+  },
+  {
+    "Common Abbreviation": "mm",
+    "Meaning or Intended Meaning": "millimeter",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "MS, MSO4**",
+    "Meaning or Intended Meaning": "morphine sulfate",
+    "Best practice / Notes on any confusion": "Spell out morphine sulfate per Joint Commission's \"Do Not Use\" List of Abbreviations. Can be confused with magnesium sulfate (MgSO4). MS can also stand for multiple sclerosis."
+  },
+  {
+    "Common Abbreviation": "N&V",
+    "Meaning or Intended Meaning": "nausea and vomiting",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "Na",
+    "Meaning or Intended Meaning": "sodium",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "NAS",
+    "Meaning or Intended Meaning": "intranasal",
+    "Best practice / Notes on any confusion": "Use NAS (all upper case letters) or spell out intranasal."
+  },
+  {
+    "Common Abbreviation": "NDC",
+    "Meaning or Intended Meaning": "National Drug Code",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "NGT",
+    "Meaning or Intended Meaning": "nasogastric tube",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "NH3",
+    "Meaning or Intended Meaning": "ammonia",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "NKA",
+    "Meaning or Intended Meaning": "No known allergies",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "NKDA",
+    "Meaning or Intended Meaning": "No known drug allergies",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "NPO",
+    "Meaning or Intended Meaning": "Nothing by mouth",
+    "Best practice / Notes on any confusion": "Spell out nothing by mouth - preferred by American Medical Association (AMA)."
+  },
+  {
+    "Common Abbreviation": "NS",
+    "Meaning or Intended Meaning": "normal saline",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "NSAID",
+    "Meaning or Intended Meaning": "nonsteroidal anti-inflammatory drug",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "OC",
+    "Meaning or Intended Meaning": "oral contraceptive",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "OD",
+    "Meaning or Intended Meaning": "right eye",
+    "Best practice / Notes on any confusion": "Spell out right eye; may be confused for overdose or once daily"
+  },
+  {
+    "Common Abbreviation": "OJ",
+    "Meaning or Intended Meaning": "orange juice",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "OM",
+    "Meaning or Intended Meaning": "otitis media",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "OS",
+    "Meaning or Intended Meaning": "left eye",
+    "Best practice / Notes on any confusion": "Spell out left eye; may be mistaken for AS (right ear)"
+  },
+  {
+    "Common Abbreviation": "OTC",
+    "Meaning or Intended Meaning": "over-the-counter",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "OU",
+    "Meaning or Intended Meaning": "both eyes",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "oz",
+    "Meaning or Intended Meaning": "ounce",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "p (with line on top)",
+    "Meaning or Intended Meaning": "after",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "prn",
+    "Meaning or Intended Meaning": "as needed",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "PA",
+    "Meaning or Intended Meaning": "physician assistant",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "pc",
+    "Meaning or Intended Meaning": "after meals",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "PCA",
+    "Meaning or Intended Meaning": "patient-controlled analgesia",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "PE",
+    "Meaning or Intended Meaning": "pulmonary embolism or physical exam",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "per neb",
+    "Meaning or Intended Meaning": "by nebulizer",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "per os",
+    "Meaning or Intended Meaning": "by mouth",
+    "Best practice / Notes on any confusion": "May be preferred to spell out by mouth or orally; can be mistaken as os (left eye) per FDA"
+  },
+  {
+    "Common Abbreviation": "PFT",
+    "Meaning or Intended Meaning": "pulmonary function tests",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "PharmD",
+    "Meaning or Intended Meaning": "Doctor of Pharmacy",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "PM",
+    "Meaning or Intended Meaning": "evening",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "PMH",
+    "Meaning or Intended Meaning": "past medical history",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "PO, p.o.",
+    "Meaning or Intended Meaning": "by mouth or orally",
+    "Best practice / Notes on any confusion": "May be preferred to spell out by mouth or orally"
+  },
+  {
+    "Common Abbreviation": "PR",
+    "Meaning or Intended Meaning": "per rectum",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "PRN",
+    "Meaning or Intended Meaning": "as needed",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "PT",
+    "Meaning or Intended Meaning": "prothrombin time",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "PV",
+    "Meaning or Intended Meaning": "per vagina",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "q",
+    "Meaning or Intended Meaning": "every",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "qs",
+    "Meaning or Intended Meaning": "as much as needed; a sufficient quantity",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "q12h",
+    "Meaning or Intended Meaning": "every 12 hours",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "qd",
+    "Meaning or Intended Meaning": "every day",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "q6h",
+    "Meaning or Intended Meaning": "every 6 hours",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "q8h",
+    "Meaning or Intended Meaning": "every 8 hours",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "qam",
+    "Meaning or Intended Meaning": "every morning",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "qd, QD**",
+    "Meaning or Intended Meaning": "every day",
+    "Best practice / Notes on any confusion": "Mistaken as q.i.d; Instead write daily per Joint Commission's \"Do Not Use\" List of Abbreviations."
+  },
+  {
+    "Common Abbreviation": "qh",
+    "Meaning or Intended Meaning": "every hour",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "qhs",
+    "Meaning or Intended Meaning": "each night at bedtime",
+    "Best practice / Notes on any confusion": "Can be confused with qh (every hour); better to spell out each night at bedtime."
+  },
+  {
+    "Common Abbreviation": "qid, QID",
+    "Meaning or Intended Meaning": "four times a day",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "qod, q.o.d, QOD, Q.O.D**",
+    "Meaning or Intended Meaning": "every other day",
+    "Best practice / Notes on any confusion": "Can be mistaken as qd (daily) or qid (four times daily); Period after the Q mistaken for \"I\" and the \"O\" mistaken for \"I\". Instead spell out \"every other day\" per Joint Commission's \"Do Not Use\" List of Abbreviations."
+  },
+  {
+    "Common Abbreviation": "RA",
+    "Meaning or Intended Meaning": "rheumatoid arthritis",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "RN",
+    "Meaning or Intended Meaning": "registered nurse",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "RPh",
+    "Meaning or Intended Meaning": "Pharmacist",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "Rx",
+    "Meaning or Intended Meaning": "prescription",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "s (with line over s)",
+    "Meaning or Intended Meaning": "without",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "SA",
+    "Meaning or Intended Meaning": "sustained action",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "SL, s.l.",
+    "Meaning or Intended Meaning": "sublingual (under the tongue)",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "SNRI",
+    "Meaning or Intended Meaning": "serotonin norepinephrine reuptake inhibitor",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "sol",
+    "Meaning or Intended Meaning": "solution, in solution",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "SQ, SC, sub q",
+    "Meaning or Intended Meaning": "subcutaneous",
+    "Best practice / Notes on any confusion": "Use caution as SC can be mistaken for SL (sublingual) per FDA."
+  },
+  {
+    "Common Abbreviation": "SR",
+    "Meaning or Intended Meaning": "sustained release",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "SSI",
+    "Meaning or Intended Meaning": "sliding scale insulin",
+    "Best practice / Notes on any confusion": "Write out sliding scale insulin"
+  },
+  {
+    "Common Abbreviation": "SSRI",
+    "Meaning or Intended Meaning": "selective serotonin reuptake inhibitor",
+    "Best practice / Notes on any confusion": "Spell out to avoid confusion"
+  },
+  {
+    "Common Abbreviation": "stat",
+    "Meaning or Intended Meaning": "immediately",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "supp",
+    "Meaning or Intended Meaning": "suppository",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "susp.",
+    "Meaning or Intended Meaning": "suspension",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "syr.",
+    "Meaning or Intended Meaning": "syrup",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "T",
+    "Meaning or Intended Meaning": "temperature",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "tab",
+    "Meaning or Intended Meaning": "tablet",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "tbsp",
+    "Meaning or Intended Meaning": "tablespoon",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "TID, t.i.d.",
+    "Meaning or Intended Meaning": "three times a day",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "tid ac",
+    "Meaning or Intended Meaning": "three times a day before meals",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "tinct., tr",
+    "Meaning or Intended Meaning": "tincture",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "top",
+    "Meaning or Intended Meaning": "topical",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "TR",
+    "Meaning or Intended Meaning": "timed-release",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "Trailing zero (X.0 mg)**",
+    "Meaning or Intended Meaning": "X mg",
+    "Best practice / Notes on any confusion": "Decimal point may be missed; Write X mg; per Joint Commission's \"Do Not Use\" List of Abbreviations. See exception to Trailing Zero above."
+  },
+  {
+    "Common Abbreviation": "TSH",
+    "Meaning or Intended Meaning": "thyroid stimulating hormone",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "troche",
+    "Meaning or Intended Meaning": "lozenge",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "tsp",
+    "Meaning or Intended Meaning": "teaspoon",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "Tx",
+    "Meaning or Intended Meaning": "treatment",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "U or u**",
+    "Meaning or Intended Meaning": "unit",
+    "Best practice / Notes on any confusion": "Mistaken as the number \"0\" (zero), the number \"4\" (four), or \"cc\". Prescriber should instead spell out \"unit\" per Joint Commission's \"Do Not Use\" List of Abbreviations"
+  },
+  {
+    "Common Abbreviation": "UA",
+    "Meaning or Intended Meaning": "urinalysis",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "ud, ut dict, UD",
+    "Meaning or Intended Meaning": "as directed",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "ung",
+    "Meaning or Intended Meaning": "ointment",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "UTI",
+    "Meaning or Intended Meaning": "urinary tract infection",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "vol",
+    "Meaning or Intended Meaning": "volume",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "WBC",
+    "Meaning or Intended Meaning": "white blood cell",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "WNL",
+    "Meaning or Intended Meaning": "within normal limits",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "XL, XR, XT",
+    "Meaning or Intended Meaning": "extended-release",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "yo",
+    "Meaning or Intended Meaning": "years old",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "yr",
+    "Meaning or Intended Meaning": "year",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "Zn",
+    "Meaning or Intended Meaning": "zinc",
+    "Best practice / Notes on any confusion": ""
+  },
+  {
+    "Common Abbreviation": "μg, mcg",
+    "Meaning or Intended Meaning": "microgram",
+    "Best practice / Notes on any confusion": "spell out microgram"
+  }
+]
