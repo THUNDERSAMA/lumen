@@ -4,7 +4,6 @@ import type { RootState } from "@/app/utils/store";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-import $ from "jquery";
 import EditorHint from "@/app/components/EditorHint";
 
 export default function Editor() {
