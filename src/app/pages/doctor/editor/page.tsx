@@ -4,6 +4,7 @@ import type { RootState } from "@/app/utils/store";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
+import EditorHint from "@/app/components/EditorHint";
 
 export default function Editor() {
   return (
@@ -21,23 +22,22 @@ function App() {
   const [error, setError] = useState<string>("");
   const [colorMode, setColorMode] = useState<boolean>(false); // true for dark and false for light
   // const [placeholderVisible, setPlaceholderVisible] = useState(true);
-  const myDivRef = useRef<HTMLDivElement>(null);
-
+  const contentEditableRef = useRef<HTMLDivElement>(null);
+  const [hintList, setHintList] = useState<string[]>([
+    "Suggestions",
+    "Will Appear",
+    "For The Doctors",
+  ]);
   useEffect(() => {
-    if (myDivRef.current) {
-      myDivRef.current.contentEditable = "true";
+    if (contentEditableRef.current) {
+      contentEditableRef.current.contentEditable = "true";
     }
   }, []);
 
   const getTextContent = () => {
-    const text = myDivRef.current?.innerHTML || "";
+    const text = contentEditableRef.current?.innerHTML || "";
     setPresc(text);
     console.log(text);
-    // if (placeholderVisible && text.trim().length > 0) {
-    //   setPlaceholderVisible(false);
-    // } else if (!placeholderVisible && text.trim().length === 0) {
-    //   setPlaceholderVisible(true);
-    // }
   };
 
   function handleSubmit() {
@@ -51,13 +51,39 @@ function App() {
     }
   }
 
+  const [caretPosition, setCaretPosition] = useState<{
+    top: number;
+    left: number;
+  }>({
+    top: 0,
+    left: 0,
+  });
+
+  useEffect(() => {
+    const handleCaretPosition = () => {
+      const selection = window.getSelection();
+      if (selection && selection.rangeCount > 0) {
+        // const range = selection.getRangeAt(0);
+        const rect = selection.getRangeAt(0).getBoundingClientRect();
+        setCaretPosition({ top: rect.top, left: rect.left });
+      }
+    };
+    const contentEditable = contentEditableRef.current;
+    if (contentEditable) {
+      contentEditable.addEventListener("mouseup", handleCaretPosition);
+      contentEditable.addEventListener("keyup", handleCaretPosition);
+      return () => {
+        contentEditable.removeEventListener("mouseup", handleCaretPosition);
+        contentEditable.removeEventListener("keyup", handleCaretPosition);
+      };
+    }
+  }, []);
+  console.log(caretPosition);
   return (
     <main
-      className={`${
+      className={`relative overflow-hidden ${
         colorMode ? "bg-black" : " bg-[rgb(0,_0,_0,_0)]"
-      } p-4 h-svh w-screen flex flex-col justify-center items-center relative ${
-        error && "pt-7"
-      }`}
+      } p-4 w-screen h-svh flex flex-col gap-5 items-center ${error && "pt-7"}`}
     >
       <p
         className={`py-1 px-2 text-[.8rem] font-normal text-white w-full text-center bg-red-600 flex items-center justify-center gap-1.5 shadow-md fixed ${
@@ -235,15 +261,15 @@ function App() {
 
       <form
         action=""
-        className={`relative ${
+        className={`${
           colorMode ? "text-white" : "text-black"
-        } mt-4 bg-transparent flex flex-col items-end mobile:w-full tablet:w-4/5 h-full`}
+        } bg-transparent flex flex-col items-end mobile:w-full tablet:w-4/5 h-full mobile:max-h-[calc(100%-(2*40px+20px))] tablet:max-h-[calc(100%-40px-20px)]`}
       >
         <div
           id="prescription"
           spellCheck="false"
           onInput={getTextContent}
-          ref={myDivRef}
+          ref={contentEditableRef}
           data-placeholder="Today's Prescription:"
           className={`mb-2 outline-0 p-2 px-3 h-full w-full text-sm bg-transparent ${
             colorMode
@@ -253,7 +279,7 @@ function App() {
               : `editorLight ${
                   presc.length === 0 && "text-zinc-500 text-opacity-50"
                 }`
-          } resize-none overflow-y-auto transition-none`}
+          } overflow-y-auto transition-none`}
         />
         <button
           type="submit"
@@ -261,7 +287,7 @@ function App() {
             colorMode
               ? "bg-transparent border-2 border-white hover:bg-orange-500 hover:border-transparent"
               : "bg-orange-500 border-2 border-transparent hover:bg-orange-700"
-          } text-white text-opacity-90 text-center text-xs w-[7rem] font-semibold px-4 py-2 rounded-full`}
+          } text-white text-opacity-90 text-center text-xs w-[7rem] h-[40px] font-semibold px-4 py-2 rounded-full`}
           onClick={(event) => {
             event.preventDefault();
             handleSubmit();
@@ -270,6 +296,11 @@ function App() {
           Preview
         </button>
       </form>
+      <EditorHint
+        hintList={hintList}
+        colorMode={colorMode}
+        caretPosition={caretPosition}
+      />
     </main>
   );
 }
