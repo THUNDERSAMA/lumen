@@ -1,10 +1,11 @@
 "use client";
 import { Providers } from "@/app/Providers";
 import type { RootState } from "@/app/utils/store";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import EditorHint from "@/app/components/EditorHint";
+import { getSuggestion } from "@/app/utils/suggestion";
 
 export default function Editor() {
   return (
@@ -20,24 +21,32 @@ function App() {
   const [patientID, setPatientID] = useState<string>("");
   const [presc, setPresc] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [colorMode, setColorMode] = useState<boolean>(false); // true for dark and false for light
-  // const [placeholderVisible, setPlaceholderVisible] = useState(true);
+  const [colorMode, setColorMode] = useState<boolean>(false); // true: dark | false: light
   const contentEditableRef = useRef<HTMLDivElement>(null);
-  const [hintList, setHintList] = useState<string[]>([
-    "Suggestions",
-    "Will Appear",
-    "For The Doctors",
-  ]);
+  // const [hintRequest, setHintRequest] = useState<string>("");
+  const [hintList, setHintList] = useState<string[]>([]);
+
   useEffect(() => {
     if (contentEditableRef.current) {
       contentEditableRef.current.contentEditable = "true";
     }
   }, []);
 
+  const separators = /<div>|<\/div>|<br>| |&nbsp;/;
+
   const getTextContent = () => {
     const text = contentEditableRef.current?.innerHTML || "";
-    setPresc(text);
+    const textList = text.split(separators).filter((item) => item !== "");
+    setPresc(textList.join(" "));
+    const hintRequest = textList[textList.length - 1] || "";
+    const _hintList = getSuggestion(hintRequest).map(
+      (item) => item["Medicine Name"]
+    );
+    setHintList(_hintList);
+    // console.log(textList[textList.length - 1]);
     console.log(text);
+    console.log(textList);
+    console.log(hintList);
   };
 
   function handleSubmit() {
@@ -48,6 +57,27 @@ function App() {
     if (presc.trim() === "") {
       setError("An empty prescription won't help anyone");
       return;
+    }
+  }
+
+  function onHintClick(hint: string) {
+    const textList = (contentEditableRef.current?.innerHTML || "").split(
+      separators
+    );
+    textList[textList.length - 1] = hint;
+    if (contentEditableRef.current) {
+      contentEditableRef.current.innerHTML = textList.join(" ");
+      contentEditableRef.current.focus();
+      // focus at the end of the text
+      const range = document.createRange();
+      const selection = window.getSelection();
+      if (selection) {
+        range.selectNodeContents(contentEditableRef.current);
+        range.collapse(false);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+      getTextContent();
     }
   }
 
@@ -63,7 +93,6 @@ function App() {
     const handleCaretPosition = () => {
       const selection = window.getSelection();
       if (selection && selection.rangeCount > 0) {
-        // const range = selection.getRangeAt(0);
         const rect = selection.getRangeAt(0).getBoundingClientRect();
         setCaretPosition({ top: rect.top, left: rect.left });
       }
@@ -78,7 +107,7 @@ function App() {
       };
     }
   }, []);
-  console.log(caretPosition);
+  // console.log(caretPosition);
   return (
     <main
       className={`relative overflow-hidden ${
@@ -121,6 +150,7 @@ function App() {
           } p-[5px] rounded-full w-fit flex items-start justify-center`}
         >
           <button
+            title="Color Mode"
             className={`${
               colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
             } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
@@ -138,6 +168,7 @@ function App() {
             />
           </button>
           <button
+            title="Bold"
             className={`${
               colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
             } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
@@ -155,6 +186,7 @@ function App() {
             />
           </button>
           <button
+            title="Underline"
             className={`${
               colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
             } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
@@ -172,6 +204,7 @@ function App() {
             />
           </button>
           <button
+            title="Italic"
             className={`${
               colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
             } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
@@ -189,6 +222,7 @@ function App() {
             />
           </button>
           <button
+            title="Justify Left"
             className={`${
               colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
             } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
@@ -206,6 +240,7 @@ function App() {
             />
           </button>
           <button
+            title="Justify Center"
             className={`${
               colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
             } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
@@ -223,6 +258,7 @@ function App() {
             />
           </button>
           <button
+            title="Justify Right"
             className={`${
               colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
             } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
@@ -240,6 +276,7 @@ function App() {
             />
           </button>
           <button
+            title="Justify Full"
             className={`${
               colorMode ? "hover:bg-orange-500" : "hover:bg-orange-200"
             } bg-transparent p-2 rounded-full h-[30px] aspect-square grid place-content-center`}
@@ -270,6 +307,13 @@ function App() {
           spellCheck="false"
           onInput={getTextContent}
           ref={contentEditableRef}
+          onKeyDown={(e) => {
+            if (hintList.length !== 0 && e.key === "Enter") {
+              e.preventDefault();
+              onHintClick(hintList[0]);
+            }
+          }}
+          onClick={() => setHintList([])}
           data-placeholder="Today's Prescription:"
           className={`mb-2 outline-0 p-2 px-3 h-full w-full text-sm bg-transparent ${
             colorMode
@@ -300,6 +344,7 @@ function App() {
         hintList={hintList}
         colorMode={colorMode}
         caretPosition={caretPosition}
+        onHintClick={onHintClick}
       />
     </main>
   );
