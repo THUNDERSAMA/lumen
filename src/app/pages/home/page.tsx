@@ -104,6 +104,12 @@ function App() {
         >
           <Translate>Log In</Translate>
         </Link>
+        <Link
+          href={`/${user.userType}/profile`}
+          className="bg-transparent text-white text-center text-xs w-full hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
+        >
+          <Translate>Profile</Translate>
+        </Link>
       </div>
       <Dropdown items={items} checked={isChecked} onSelect={handleSelect} />
     </main>
