@@ -19,6 +19,10 @@ async function rewrites() {
       destination: "/pages/patient/:slug*",
     },
     {
+      source: "/main/:slug*",
+      destination: "/pages/main/:slug*",
+    },
+    {
       source: "/home/:slug*",
       destination: "/pages/home/:slug*",
     },
