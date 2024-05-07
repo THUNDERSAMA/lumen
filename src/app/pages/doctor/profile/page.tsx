@@ -48,7 +48,7 @@ const App = () => {
           {/* {doctor.firstName} {doctor.lastName} */}
           firstName lastName
         </h1>
-        <p className="text-xs opacity-80 text-center">Patient Profile</p>
+        <p className="text-xs opacity-80 text-center">Doctor Profile</p>
       </div>
       <div className="w-80 flex flex-col gap-1 text-white font-medium">
         <div className="w-full p-3 text-xs rounded-full bg-white bg-opacity-20">
