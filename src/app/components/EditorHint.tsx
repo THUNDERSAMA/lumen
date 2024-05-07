@@ -51,7 +51,7 @@ export default function EditorHint({
                   ? `text-white ${index === 0 && "bg-orange-700 bg-opacity-10"}`
                   : `text-black ${index === 0 && "bg-orange-200 bg-opacity-50"}`
               } 
-                px-2 py-2 w-fit text-[8px] text-center text-ellipsis whitespace-nowrap overflow-hidden mobile:rounded-3xl -tablet:rounded-2xl cursor-pointer select-none`}
+                px-2 py-2 w-fit text-xs text-center text-ellipsis whitespace-nowrap overflow-hidden mobile:rounded-3xl -tablet:rounded-2xl cursor-pointer select-none`}
               onClick={() => onHintClick(hint)}
             >
               {hint}
