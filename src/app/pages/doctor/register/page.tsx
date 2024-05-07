@@ -4,7 +4,7 @@ import Translate from "@/app/Translate";
 import { getTranslation } from "@/app/utils/TranslationUtils";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { MouseEventHandler, useState } from "react";
 
 export default function PatientReg() {
@@ -58,38 +58,36 @@ function App() {
       confirmPassword: confirmPassword.trim(),
     });
 
-
     try {
-      const response = await fetch('http://localhost:3000/api/doctor_signup', {
-        method: 'POST',
+      const response = await fetch("http://localhost:3000/api/doctor_signup", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          firstName:firstName.trim(),
-          lastName:lastName.trim(),
+          firstName: firstName.trim(),
+          lastName: lastName.trim(),
           aadhar: aadhar.trim(),
           license: licenseNumber.trim(),
           phone: phone.trim(),
           password: password.trim(),
-          confirmPassword:confirmPassword.trim()
+          confirmPassword: confirmPassword.trim(),
         }),
       });
       if (!response.ok) {
-        throw new Error('Failed to login');
-      }
-      else if (response.status == 409){
+        throw new Error("Failed to login");
+      } else if (response.status == 409) {
         // setError("User already exists");
-        throw new Error('User Already Exists');
+        throw new Error("User Already Exists");
       }
+
       const data = await response.json();
       console.log(data);
-      // Handle success response
+      router.push("/pages/otp");
     } catch (error) {
-      setError('Failed to login');
-      console.error('Error:', error);
+      setError("Failed to login");
+      console.error("Error:", error);
     }
-
   }
 
   return (

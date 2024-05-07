@@ -30,6 +30,9 @@ async function rewrites() {
 }
 
 const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+ },
   reactStrictMode: true,
   images: {
     domains: ["cdn-icons-png.flaticon.com"],

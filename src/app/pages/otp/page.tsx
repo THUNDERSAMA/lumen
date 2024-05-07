@@ -6,15 +6,26 @@ import { Providers } from "@/app/Providers";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/utils/store";
+//import { checkAuth } from "@/app/middleware/checkAuth";
+import Cookies from "js-cookie";
+//import { getSession } from "@/lib/auth";
 
 export default function OneTimePass() {
+  const router = useRouter();
+
+  const session = Cookies.get("session");
+  if (!session) {
+    router.push("/home");
+  }
   return (
     <Providers>
       <App />
     </Providers>
   );
 }
-function App() {
+async function App() {
+  // const session = await getSession();
+  // console.log(session);
   const user = useSelector((state: RootState) => state.user.value);
   const router = useRouter();
   return (
