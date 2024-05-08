@@ -45,7 +45,7 @@ function App() {
       return;
     }
     setError(null);
-    router.push("/pages/otp");
+    router.push("/patient/otp");
 
     console.log({
       name: (firstName.trim() + " " + lastName.trim()).trim(),

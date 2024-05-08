@@ -11,12 +11,12 @@ import Cookies from "js-cookie";
 //import { getSession } from "@/lib/auth";
 
 export default function OneTimePass() {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const session = Cookies.get("session");
-  if (!session) {
-    router.push("/home");
-  }
+  // const session = Cookies.get("session");
+  // if (!session) {
+  //   router.push("/home");
+  // }
   return (
     <Providers>
       <App />

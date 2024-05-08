@@ -12,19 +12,13 @@ export default function Main() {
   const [width, setWidth] = useState(0);
   const [toggleMenu, setToggleMenu] = useState(false);
   const [blurValue, setBlurValue] = useState(0);
-  interface UserData {
-    user: {
-      firstName: string;
-      lastName: string;
-      phone: number;
-      m_id: string;
-      a_id: string;
-    };
-    expires: string;
-    iat: number;
-    exp: number;
+  interface User {
+    user: any;
+    firstName: string;
+    // Add other properties if needed
   }
-  const [localValue, setlocalValue] = useState<any[]>([]);
+
+  const [localValue, setlocalValue] = useState<{ [key: string]: User }>({});
   const session = Cookies.get("session");
   async function checking() {
     if (!session) {
@@ -38,8 +32,14 @@ export default function Main() {
     checking();
   }, []);
   //const session = Cookies.get("session");
+  const firstName = localValue.user?.firstName;
+  if (firstName) {
+    console.log("First Name:", firstName);
+  } else {
+    console.log("First name not found in localValue");
+  }
 
-  const firstName = (localValue["user"] as { firstName: string }).firstName;
+  //const firstName = "ddwsd";
   console.log(firstName);
   useEffect(() => {
     const handleScroll = () => {

@@ -3,6 +3,7 @@ import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
  import Cookies from "js-cookie";
+import { redirect, useRouter } from "next/navigation";
 const secretKey = "secret";
 const key = new TextEncoder().encode(secretKey);
 
@@ -15,10 +16,18 @@ export async function encrypt(payload: any) {
 }
 
 export async function decrypt(input: string): Promise<any> {
+  const router=useRouter
+  try {
   const { payload } = await jwtVerify(input, key, {
     algorithms: ["HS256"],
   });
   return payload;
+}
+catch(error)
+{
+  console.log(error);
+  // router.push('/home');
+}
 }
 
 
@@ -36,6 +45,7 @@ export async function updateSession(request: NextRequest) {
 
   // Refresh the session so it doesn't expire
   const parsed = await decrypt(session);
+  if (parsed) {
   parsed.expires = new Date(Date.now() + 10 * 60 * 60 * 1000);
   const res = NextResponse.next();
   res.cookies.set({
@@ -44,6 +54,8 @@ export async function updateSession(request: NextRequest) {
     httpOnly:false,
     expires: parsed.expires,
   });
- //await getSession();
   return res;
+}
+ //await getSession();
+  
 }
