@@ -16,27 +16,8 @@ export default function DoctorProfile() {
 }
 
 const App = () => {
-  // const [doctor, setDoctor] = useState(null);
-
-  // useEffect(() => {
-  //   const fetchPatient = async () => {
-  //     try {
-  //       const response = await axios.get("/api/doctors/profile");
-  //       setDoctor(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching doctor profile:", error);
-  //     }
-  //   };
-
-  //   fetchDoctor();
-  // }, []);
-
-  // if (!doctor) {
-  //   return <div>Loading...</div>;
-  // }
-
   return (
-    <div className="bg-slate-100 p-4">
+    <div className="bg-slate-100 h-screen w-screen">
       <h1 className="font-bold">Account & Details</h1>
       <div className="columns-2xs">
         <div className="w-full aspect-auto bg-slate-200 rounded-lg p-4 m-4  shadow-inner border-4 border-indigo-200 border-r-indigo-500">
