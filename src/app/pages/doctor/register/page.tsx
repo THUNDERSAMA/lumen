@@ -59,7 +59,7 @@ function App() {
     });
 
     try {
-      const response = await fetch("http://localhost:3000/api/doctor_signup", {
+      const response = await fetch("/api/doctor_signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

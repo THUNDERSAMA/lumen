@@ -55,7 +55,7 @@ function App() {
       confirmPassword: confirmPassword.trim(),
     });
     try {
-      const response = await fetch("http://localhost:3000/api/patient_signup", {
+      const response = await fetch("/api/patient_signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
