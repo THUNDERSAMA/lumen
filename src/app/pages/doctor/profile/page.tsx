@@ -38,7 +38,7 @@ const App = () => {
   return (
     <div className="bg-slate-100 m-2 rounded-lg border-r-4 border-indigo-500">
       <h1 className="font-bold">Account & Details</h1>
-      <div className="flex flex-col items-center h-screen md:flex-row items-center">
+      <div className="flex flex-col items-center h-screen items-center">
         <div className="w-80 bg-slate-200 rounded-lg p-4 m-4 shadow-xl shadow-inner border-4 border-indigo-200 border-r-indigo-500">
           <h2 className="font-bold">Personal Details</h2>
           <div className="flex justify-center item-center">
