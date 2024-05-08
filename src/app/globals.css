@@ -74,3 +74,29 @@ input[type="number"] {
   position: absolute;
   z-index: -1;
 }
+
+.scanBtn {
+  background: radial-gradient(circle, #fff 50%, transparent 60%);
+  /* transition: all 0.2s ease; */
+}
+
+/* .scanBtn::after {
+  content: "Upload";
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  opacity: 0;
+}
+
+.scanBtn:hover::after {
+  content: "Upload";
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  opacity: 1;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+} */
