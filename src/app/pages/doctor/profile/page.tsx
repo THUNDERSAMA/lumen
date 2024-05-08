@@ -39,7 +39,7 @@ const App = () => {
     <div className="bg-slate-100 p-4">
       <h1 className="font-bold">Account & Details</h1>
       <div className="columns-2xs">
-        <div className="w-full aspect-auto bg-slate-200 rounded-lg p-4 m-4 shadow-xl shadow-inner border-4 border-indigo-200 border-r-indigo-500">
+        <div className="w-full aspect-auto bg-slate-200 rounded-lg p-4 m-4  shadow-inner border-4 border-indigo-200 border-r-indigo-500">
           <h2 className="font-bold">Personal Details</h2>
           <div className="w-full h-full flex items-center justify-center">
             <div>
@@ -58,7 +58,7 @@ const App = () => {
           </div>
         </div>
 
-        <div className="w-full aspect-auto bg-slate-200 rounded-lg p-4 m-4 shadow-xl shadow-inner border-4 border-indigo-200 border-r-indigo-500">
+        <div className="w-full aspect-auto bg-slate-200 rounded-lg p-4 m-4 shadow-inner border-4 border-indigo-200 border-r-indigo-500">
           <h2 className="font-bold">Contact Details</h2>
           <div className="w-full h-full flex items-center justify-center">
             <div className="w-full p-3 text-xs rounded-lg bg-white bg-opacity-20 m-2">
@@ -78,7 +78,7 @@ const App = () => {
             </div>
           </div>
         </div>
-        <div className="w-full aspect-auto bg-slate-200 rounded-lg p-4 m-4 shadow-xl shadow-inner border-4 border-indigo-200 border-r-indigo-500 mr-2">
+        <div className="w-full aspect-auto bg-slate-200 rounded-lg p-4 m-4 shadow-inner border-4 border-indigo-200 border-r-indigo-500 mr-2">
           <h2 className="font-bold">Other Details</h2>
           <div className="w-full p-3 text-xs rounded-lg bg-white bg-opacity-20 m-2">
             <label
@@ -142,7 +142,7 @@ const App = () => {
               />
             </div>
           </div>
-          <div className="m-4 flex flex-row justify-between rounded-lg p-3 text-xs rounded-full bg-white bg-opacity-20 w-full">
+          <div className="m-4 flex flex-row justify-between rounded-lg p-3 text-xs bg-white bg-opacity-20 w-full">
             <label
               htmlFor="2auth"
               className="placeholder:text-gray-300 font-semibold"
