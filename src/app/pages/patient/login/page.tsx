@@ -3,8 +3,8 @@ import { Providers } from "@/app/Providers";
 import Translate from "@/app/Translate";
 import { getTranslation } from "@/app/utils/TranslationUtils";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-
 export default function PatientLogin() {
   return (
     <Providers>
@@ -20,13 +20,38 @@ function App() {
   const [error, setError] = useState<string | null>();
 
   const [eyeToggle, setEyeToggle] = useState<boolean>(false);
+  const router = useRouter();
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (phone.trim() === "" || password.trim() === "") {
       setError("Please fill all the fields");
       return;
     }
     setError(null);
+    const response = await fetch("/api/patient_signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        phone: phone.trim(),
+        password: password.trim(),
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    if (!response.ok) {
+      throw new Error("Failed to login");
+    } else if (data.stattus == 400) {
+      setError(data.message);
+    } else if (data.stattus == 600) {
+      router.push(`/patient/choose-account?data=${data.message}`);
+    } else if (data.stattus == 500) {
+      setError(data.message);
+    } else {
+      router.push(`/patient/main`);
+    }
+
     console.log({
       phone: phone.trim(),
       password: password.trim(),

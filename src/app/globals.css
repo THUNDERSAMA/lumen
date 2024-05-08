@@ -58,3 +58,19 @@ input[type="number"] {
   background: #222;
   border-radius: 10px;
 }
+
+.mainMain::before {
+  content: "";
+  background: url("/main_bg_2.jpg");
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}

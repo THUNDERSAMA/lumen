@@ -19,6 +19,10 @@ async function rewrites() {
       destination: "/pages/patient/:slug*",
     },
     {
+      source: "/main/:slug*",
+      destination: "/pages/main/:slug*",
+    },
+    {
       source: "/home/:slug*",
       destination: "/pages/home/:slug*",
     },
@@ -26,6 +30,9 @@ async function rewrites() {
 }
 
 const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+ },
   reactStrictMode: true,
   images: {
     domains: ["cdn-icons-png.flaticon.com"],

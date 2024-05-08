@@ -3,7 +3,7 @@ import { Providers } from "@/app/Providers";
 import Translate from "@/app/Translate";
 import { getTranslation } from "@/app/utils/TranslationUtils";
 import Image from "next/image";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export default function DoctorLogin() {
   return (
@@ -21,12 +21,33 @@ function App() {
 
   const [eyeToggle, setEyeToggle] = useState<boolean>(false);
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (phone.trim() === "" || password.trim() === "") {
       setError("Please fill all the fields");
       return;
     }
     setError(null);
+
+    const response = await fetch("/api/doctor_signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        phone: phone.trim(),
+        password: password.trim(),
+      }),
+    });
+    const data = await response.json();
+    // console.log(await response.json());
+    if (!response.ok) {
+      throw new Error("Failed to login");
+    } else if (data.stattus == 400) {
+      setError(data.message);
+    } else if (data.stattus == 500) {
+      setError(data.message);
+    }
+
     console.log({
       phone: phone.trim(),
       password: password.trim(),
@@ -60,6 +81,7 @@ function App() {
         <form
           action=""
           className="w-80 flex flex-col gap-1 text-white font-medium"
+          onSubmit={handleSubmit}
         >
           <input
             type="number"

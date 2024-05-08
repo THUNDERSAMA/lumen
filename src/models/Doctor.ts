@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 // Check if the model already exists in Mongoose, otherwise create a new one
-const DoctorModel = mongoose.models.User || mongoose.model("Doctor", new Schema({
+const DoctorSchema =  new Schema({
     firstName:{
         type:String,
         required:true,
@@ -26,7 +26,7 @@ const DoctorModel = mongoose.models.User || mongoose.model("Doctor", new Schema(
     license:{
         type:String,
         required:true,
-        unique:true
+        
     },
     language:{
         type:String,
@@ -44,6 +44,6 @@ const DoctorModel = mongoose.models.User || mongoose.model("Doctor", new Schema(
         type:Date,
         default:null
     }
-}, { timestamps: true }));
-
+}, { timestamps: true });
+const DoctorModel=mongoose.models.Doctor || mongoose.model("Doctor",DoctorSchema);
 export default DoctorModel;
