@@ -36,73 +36,63 @@ const App = () => {
   // }
 
   return (
-    <div className="bg-slate-100 m-2 rounded-lg border-r-4 border-indigo-500">
+    <div className="bg-slate-100 p-4">
       <h1 className="font-bold">Account & Details</h1>
-      <div className="flex flex-col items-center h-screen items-center">
-        <div className="w-80 bg-slate-200 rounded-lg p-4 m-4 shadow-xl shadow-inner border-4 border-indigo-200 border-r-indigo-500">
+      <div className="columns-2xs">
+        <div className="w-full aspect-square bg-slate-200 rounded-lg p-4 m-4 shadow-xl shadow-inner border-4 border-indigo-200 border-r-indigo-500">
           <h2 className="font-bold">Personal Details</h2>
-          <div className="flex justify-center item-center">
-            <div className="w-[calc(20%-0.1rem)] p-3 text-xs rounded-full bg-white bg-opacity-20 ">
-              {/* <img src={patient.image} alt="Patient" className="cover" /> */}
-              <img src="/demo.img" alt="Doctor" className="cover" />
+          <div className="w-full h-full flex items-center justify-center">
+            <div>
+              <div className="flex justify-center item-center">
+                <div className="w-[calc(40%-0.1rem)] p-3 text-xs rounded-full bg-white bg-opacity-20 ">
+                  {/* <img src={patient.image} alt="Patient" className="cover" /> */}
+                  <img src="/demo.img" alt="patient" className="cover" />
+                </div>
+              </div>
+              <h6 className="font-semibold text-l text-center">
+                {/* {doctor.firstName} {doctor.lastName} */}
+                firstName lastName
+              </h6>
+              <p className="text-xs opacity-80 text-center">Patient Profile</p>
             </div>
           </div>
-          <h6 className="font-semibold text-l text-center">
-            {/* {doctor.firstName} {doctor.lastName} */}
-            firstName lastName
-          </h6>
-          <p className="text-xs opacity-80 text-center">Doctor Profile</p>
         </div>
 
-        <div className="w-80 bg-slate-200 rounded-lg p-4 m-4 shadow-xl shadow-inner border-4 border-indigo-200 border-r-indigo-500">
+        <div className="w-full aspect-video bg-slate-200 rounded-lg p-4 m-4 shadow-xl shadow-inner border-4 border-indigo-200 border-r-indigo-500">
           <h2 className="font-bold">Contact Details</h2>
-          <div className="w-full p-3 text-xs rounded-lg bg-white bg-opacity-20 m-2">
-            <label
-              htmlFor="email"
-              className="placeholder:text-gray-300 font-semibold"
-            >
-              Email
-            </label>
-            {/* <p>{doctor.email}</p> */}
-            <input
-              type="email"
-              name="email"
-              className=" bg-white bg-opacity-0 text-xs w-full"
-              id="email"
-              placeholder="email of doctor"
-            />
-          </div>
-          <div className="w-full p-3 text-xs rounded-lg bg-white bg-opacity-20 m-2">
-            <label
-              htmlFor="phone"
-              className="placeholder:text-gray-300 font-semibold"
-            >
-              Phone Number
-            </label>
-            <input
-              type="text"
-              name="phone"
-              id="phone"
-              className=" bg-white bg-opacity-0 text-xs w-full"
-              placeholder="phone number of doctor"
-            />
+          <div className="w-full h-full flex items-center justify-center">
+            <div className="w-full p-3 text-xs rounded-lg bg-white bg-opacity-20 m-2">
+              <label
+                htmlFor="phone"
+                className="placeholder:text-gray-300 font-semibold"
+              >
+                Phone Number
+              </label>
+              <input
+                type="text"
+                name="phone"
+                id="phone"
+                className=" bg-white bg-opacity-0 text-xs w-full"
+                placeholder="phone number of doctor"
+              />
+            </div>
           </div>
         </div>
-        <div className="w-80 bg-slate-200 rounded-lg p-4 m-4 shadow-xl shadow-inner border-4 border-indigo-200 border-r-indigo-500">
+        <div className="w-full aspect-video bg-slate-200 rounded-lg p-4 m-4 shadow-xl shadow-inner border-4 border-indigo-200 border-r-indigo-500">
           <h2 className="font-bold">Other Details</h2>
           <div className="w-full p-3 text-xs rounded-lg bg-white bg-opacity-20 m-2">
             <label
               htmlFor="lisence"
               className="placeholder:text-gray-300 font-semibold"
             >
-              Lisence
+              Lisence Number
             </label>
             <input
               type="text"
               name="lisence"
               id="lisence"
               className=" bg-white bg-opacity-0 text-xs w-full"
-              placeholder="lisense number"
+              placeholder="lisence number of doctor"
             />
           </div>
           <div className="flex flex-row justify-between m-4">
