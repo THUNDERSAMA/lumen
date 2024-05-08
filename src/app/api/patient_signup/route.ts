@@ -63,16 +63,17 @@ async function signUp(requestBody: { firstName: string, lastName: string, passwo
         await connectToDatabase(uri);
 
         console.log("Signup function called with name:", requestBody.firstName);
-
+ const hashedAadhar = await bcrypt.hash(requestBody.aadhar, 12);
         // Check if a user with the provided phone number already exists
           const existingUser = await Patient.findOne({ phone: requestBody.phone , aadhar : requestBody.aadhar });
           if (existingUser) {
             console.log("User with this phone number already exists:", existingUser._id);
 
-            return { success: false, message: 'User already exists' , statusCode: 409 };
+            return { success: true, message: 'User already exists with phone no nad aadhar' , statusCode: 409 };
           } 
+          else{
           const existingPatient = await Patient.findOne({ phone: requestBody.phone  });
-          const hashedAadhar = await bcrypt.hash(requestBody.aadhar, 12);
+         
        if(existingPatient)
        {
         await createLeafNode(requestBody.aadhar, requestBody.phone.toString(),hashedAadhar);
@@ -80,7 +81,7 @@ async function signUp(requestBody: { firstName: string, lastName: string, passwo
        else{
         await createParentNode(requestBody.aadhar, requestBody.phone.toString(),hashedAadhar);
        }
-        
+    }
         
         
         const newUser = new Patient({
@@ -109,7 +110,7 @@ async function signUp(requestBody: { firstName: string, lastName: string, passwo
        const expires=new Date(Date.now()*10*10*60*1000);
        const session=await encrypt({user,expires});
        cookies().set('session',session,{expires,httpOnly:false})
-        return { success: true, message: 'User signed in successfully' };
+        return { success: true, message: 'User signed in successfully' ,statusCode:200};
         //   }
     } catch (error) {
         console.error('Error signing up user:', error);
