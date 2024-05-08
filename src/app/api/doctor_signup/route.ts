@@ -84,7 +84,7 @@ async function signUp(requestBody: { firstName: string, lastName: string, passwo
        cookies().set('session',session,{expires,httpOnly:false})
 
 
-        return { success: true, message: 'User signed up successfully' };
+        return { success: true, message: 'User signed up successfully',statusCode: 200};
         //   }
     } catch (error) {
         console.error('Error signing up user:', error);

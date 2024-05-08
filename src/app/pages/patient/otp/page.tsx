@@ -23,7 +23,7 @@ export default function OneTimePass() {
     </Providers>
   );
 }
-async function App() {
+function App() {
   // const session = await getSession();
   // console.log(session);
   const user = useSelector((state: RootState) => state.user.value);

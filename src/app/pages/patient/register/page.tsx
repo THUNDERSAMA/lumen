@@ -45,7 +45,7 @@ function App() {
       return;
     }
     setError(null);
-    router.push("/patient/otp");
+    // router.push("/patient/otp");
 
     console.log({
       name: (firstName.trim() + " " + lastName.trim()).trim(),
@@ -69,16 +69,19 @@ function App() {
           confirmPassword: confirmPassword.trim(),
         }),
       });
+      const data = await response.json();
+      console.log(data.stattus);
       if (!response.ok) {
         throw new Error("Failed to login");
-      } else if (response.status == 409) {
-        // setError("User already exists");
-        throw new Error("User Already Exists");
+      } else if (data.stattus == 409) {
+        setError("User already exists");
+        throw new Error(data.message);
+      } else if (data.stattus == 200) {
+        console.log(data);
+        router.push("/patient/otp");
+      } else {
+        setError("Failed to login");
       }
-
-      const data = await response.json();
-      console.log(data);
-      router.push("/pages/otp");
     } catch (error) {
       setError("Failed to login");
       console.error("Error:", error);
