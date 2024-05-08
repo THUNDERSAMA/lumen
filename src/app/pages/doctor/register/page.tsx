@@ -3,8 +3,8 @@ import { Providers } from "@/app/Providers";
 import Translate from "@/app/Translate";
 import { getTranslation } from "@/app/utils/TranslationUtils";
 import Image from "next/image";
-import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
+//import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { MouseEventHandler, useState } from "react";
 
 export default function PatientReg() {
@@ -48,7 +48,7 @@ function App() {
       return;
     }
     setError(null);
-    // router.push("/pages/otp");
+    router.push("/doctor/otp");
     console.log({
       name: (firstName.trim() + " " + lastName.trim()).trim(),
       phone: phone.trim(),
@@ -59,7 +59,7 @@ function App() {
     });
 
     try {
-      const response = await fetch("http://localhost:3000/api/doctor_signup", {
+      const response = await fetch("/api/doctor_signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

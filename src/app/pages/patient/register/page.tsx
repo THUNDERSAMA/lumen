@@ -45,7 +45,7 @@ function App() {
       return;
     }
     setError(null);
-    router.push("/pages/otp");
+    router.push("/patient/otp");
 
     console.log({
       name: (firstName.trim() + " " + lastName.trim()).trim(),
@@ -55,7 +55,7 @@ function App() {
       confirmPassword: confirmPassword.trim(),
     });
     try {
-      const response = await fetch("http://localhost:3000/api/patient_signup", {
+      const response = await fetch("/api/patient_signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
