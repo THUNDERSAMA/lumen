@@ -16,7 +16,7 @@ export default function Main() {
     else if (hours >= 12 && hours < 17) setGreeting("Good Afternoon,");
     else if (hours >= 17 && hours < 23) setGreeting("Good Evening,");
     else setGreeting("Goodnight,");
-  }, []);
+  }, [greeting]);
 
   useEffect(() => {
     const handleScroll = () => {
