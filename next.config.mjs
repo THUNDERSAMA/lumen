@@ -36,6 +36,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ["cdn-icons-png.flaticon.com"],
+    domains: ['flaticon.com']
   },
   rewrites,
 };
