@@ -108,7 +108,7 @@ const App = () => {
     <div className="pl-8 pr-8 pt-8 bg-slate-100  ">
       <h1 className="font-bold text-xl">Account & Details</h1>
       <div className="constainer mx-auto h-screen">
-        <div className="gap-8 columns-1 h-screen ">
+        <div className="gap-8 h-screen ">
           <div className="w-full bg-slate-200 rounded-lg p-4 m-4  shadow-inner border-4 border-indigo-200 border-r-indigo-500">
             <h2 className="font-bold text-base">Personal Details</h2>
             <div className="w-full flex items-center justify-center break-inside-avoid-column">
