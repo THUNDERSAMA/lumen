@@ -3,6 +3,7 @@ import { Providers } from "@/app/Providers";
 import Translate from "@/app/Translate";
 import { getTranslation } from "@/app/utils/TranslationUtils";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 export default function DoctorLogin() {
@@ -14,6 +15,7 @@ export default function DoctorLogin() {
 }
 
 function App() {
+  const router = useRouter();
   const [phone, setPhone] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -46,6 +48,8 @@ function App() {
       setError(data.message);
     } else if (data.stattus == 500) {
       setError(data.message);
+    } else {
+      router.push("/doctor/main");
     }
 
     console.log({
