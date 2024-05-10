@@ -22,7 +22,7 @@ export default function Main() {
   const session = Cookies.get("session");
   async function checking() {
     if (!session) {
-      router.push("/home");
+      // router.push("/home");
     } else {
       setlocalValue(await decrypt(session));
       //console.log(await decrypt(session));

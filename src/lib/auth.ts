@@ -41,8 +41,9 @@ export async function getSession() {
 
 export async function updateSession(request: NextRequest) {
   const session = request.cookies.get("session")?.value;
+  
   if (!session) return;
-
+//console.log(session);
   // Refresh the session so it doesn't expire
   const parsed = await decrypt(session);
   if (parsed) {

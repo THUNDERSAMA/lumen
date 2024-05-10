@@ -6,10 +6,11 @@ import {SignJWT,jwtVerify} from 'jose'
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { NextApiRequest, NextApiResponse } from "next";
-
+import Cookies from "js-cookie";
 const secretKey = "secret";
 const key = new TextEncoder().encode(secretKey);
 export async function encrypt(payload:any) {
+    console.log(payload);
     return await new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256'})
     .setIssuedAt()
@@ -23,38 +24,63 @@ export async function decrypt(input: string): Promise<any> {
     return payload;
   }
   export async function GET(req: NextRequest) {
+    try {
+          //const requestBody = await request.json();
+          const result = multisign(req);
+          const expires = new Date(Date.now() + 8000 * 60 * 1000);
 
+          cookies().set('sessiondd','dsazzsd',{expires,httpOnly:false});
+
+          return NextResponse.json({
+              status: (await result).success ? 'success' : 'error',
+              message: (await result).message,
+              stattus: (await result).statusCode
+          });
+  
+      } catch (error) {
+          console.error("Error:", error);
+          return NextResponse.json({
+              status: 'error',
+              message: 'Request payload error',
+              statusCode: 400 
+          });
+      }
+  
+  }
+  async function multisign(req:any) {
     const ids = req.nextUrl.searchParams.get('m_id');
-     console.log(ids);
-     try {
-        let uri: string = process.env.MONGODB_URI as string;
-        await connectToDatabase(uri);
-          const existingUser = await Patient.findOne({ _id: ids  });
-          if(!existingUser)
-          {
-            return redirect(`/patient/login`);
-          }
-          else{
-            let user = {
-                firstName: existingUser.firstName,
-                lastName: existingUser.lastName,
-                phone: existingUser.phone,
-                m_id: existingUser._id,
-                a_id: existingUser.aadhar
-            };
-            console.log(user);
-            const expires=new Date(Date.now()*10*10*60*1000);
-   const session=await encrypt({user,expires});
-   cookies().set('session',session,{expires,httpOnly:false})
-
-   console.log("sign in successfully:53");
-   
-   return NextResponse.json({message:"login success"},{status:200});
-          }
-     } catch (error) {
-        console.log(error);
-        return redirect('/home');
-     }
+    console.log(ids);
+    try {
+       let uri: string = process.env.MONGODB_URI as string;
+       await connectToDatabase(uri);
+         const existingUser = await Patient.findOne({ _id: ids  });
+         if(!existingUser)
+         {
+           return redirect(`/patient/login`);
+         }
+         else{
+           let user = {
+               firstName: existingUser.firstName,
+               lastName: existingUser.lastName,
+               phone: existingUser.phone,
+               m_id: existingUser._id,
+               a_id: existingUser.aadhar
+           };
+           console.log(user);
+           const expires = new Date(Date.now() + 8000 * 60 * 1000);
+           const session=await encrypt({user,expires});
+            cookies().set('session',session,{expires,httpOnly:false});
+           // console.log(Cookies.set('session', session, { expires: expires }));
+        console.log(session);
+            
+  console.log("sign in successfully:72");
+  
+  return { success: true, message: session, statusCode: 200 };
+}
+    } catch (error) {
+       console.log(error);
+       return redirect('/home');
+    }
   }
 export async function POST(request: NextRequest) { //Post Request
     
@@ -132,7 +158,7 @@ async function signUp(requestBody: {  password: string, phone: number }) {
         
    const expires=new Date(Date.now()*10*10*60*1000);
    const session=await encrypt({user,expires});
-   cookies().set('session',session,{expires,httpOnly:true})
+   cookies().set('session',session,{expires,httpOnly:false})
 
    console.log("sign in successfully:101");
     return { success: true, message: 'User signed in successfully', statusCode: 200 };
