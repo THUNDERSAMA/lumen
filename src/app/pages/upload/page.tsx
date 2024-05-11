@@ -8,7 +8,7 @@ export default function Upload() {
   const [nextClicked, setNextClicked] = useState(false);
   return (
     <>
-      <Navbar scrollValue={0} />
+      <Navbar />
       <main className="mainMain flex flex-col items-center justify-start gap-20 min-h-screen h-full w-screen">
         <section className="mt-36 w-96 max-w-[90vw] flex flex-col items-start">
           <h1 className="text-center text-xl font-normal">Upload</h1>
@@ -92,7 +92,7 @@ export default function Upload() {
                       alt="back"
                     />
                   </button>
-                  <Link href={"#"}>
+                  <Link href={"/scan"}>
                     <Image
                       src={"/arrow.png"}
                       height={50}

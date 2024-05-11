@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import ElementBound from "./ElementBound";
 
-export default function Navbar({ scrollValue }: { scrollValue: number }) {
+export default function Navbar() {
   const [width, setWidth] = useState(0);
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [scrollValue, setScrollValue] = useState(0);
 
   function handleOutsideClick(clickedOutside: boolean) {
     if (clickedOutside) setToggleMenu(false);
@@ -17,6 +18,19 @@ export default function Navbar({ scrollValue }: { scrollValue: number }) {
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setScrollValue(Math.min(1, scrollTop / 50));
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   if (width == 0) return null;
@@ -49,11 +63,11 @@ export default function Navbar({ scrollValue }: { scrollValue: number }) {
           style={{
             // backdropFilter: `blur(${scrollValue * 10}px)`,
             backgroundColor: `rgba(255 255 255 / ${scrollValue})`,
-            borderBottom: `1px solid rgba(0 0 0 / ${scrollValue / 2})`,
+            borderBottom: `1px solid rgba(0 0 0 / ${scrollValue / 10})`,
           }}
         >
           <button
-            className="w-[50px] h-[50px]"
+            className="w-[50px] h-[50px] scanBtn rounded-full"
             onClick={() => setToggleMenu(true)}
           >
             <Image src={"/menu.png"} height={50} width={50} alt="menu" />
@@ -73,7 +87,7 @@ export default function Navbar({ scrollValue }: { scrollValue: number }) {
         style={{
           // backdropFilter: `blur(${scrollValue * 10}px)`,
           backgroundColor: `rgba(255 255 255 / ${scrollValue})`,
-          borderBottom: `1px solid rgba(0 0 0 / ${scrollValue / 2})`,
+          borderBottom: `1px solid rgba(0 0 0 / ${scrollValue / 10})`,
         }}
       >
         <Link href={"/main"} className="font-extrabold text-3xl text-blue-900">
