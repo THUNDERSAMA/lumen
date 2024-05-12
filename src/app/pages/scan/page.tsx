@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
 import { Preview, PreviewAll } from "@/app/components/Preview";
-import { Document, Page, pdfjs } from "react-pdf";
 import { set } from "mongoose";
 
 interface FileWithPreview {
@@ -141,7 +140,7 @@ function CameraCapture() {
           </section>
           <section className="w-full flex flex-col items-center justify-center gap-2">
             {isMobile && (
-              <div className="w-96 max-w-[90%] relative border-slate-700 border-2 border-dashed rounded-xl">
+              <div className="w-96 max-w-[90%] relative border-slate-700 border-2 border-dashed rounded-xl bg-white">
                 <h2 className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center gap-2 w-full font-semibold">
                   {files.length > 0 && files[0].file.type.startsWith("image/")
                     ? "Capture to add"
@@ -165,7 +164,7 @@ function CameraCapture() {
             )}
             {!enableExtendedMenu && (
               <button
-                className="h-20 w-96 max-w-[90%] relative border-slate-700 border-2 border-dashed rounded-xl"
+                className="h-20 w-96 max-w-[90%] relative border-slate-700 border-2 border-dashed rounded-xl bg-white"
                 onClick={() => setEnableExtendedMenu(true)}
               >
                 <h2 className="h-full flex justify-center items-center gap-2 w-full font-semibold">
@@ -187,7 +186,7 @@ function CameraCapture() {
                     : "flex-col"
                 }`}
               >
-                <div className="w-full relative border-slate-700 border-2 border-dashed rounded-xl">
+                <div className="w-full relative border-slate-700 border-2 border-dashed rounded-xl bg-white">
                   <h2 className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center gap-2 w-full font-semibold">
                     {files.length > 0 && files[0].file.type.startsWith("image/")
                       ? "Add images"
@@ -208,7 +207,7 @@ function CameraCapture() {
                     className="opacity-0 w-full h-20"
                   />
                 </div>
-                <div className="w-full relative border-slate-700 border-2 border-dashed rounded-xl">
+                <div className="w-full relative border-slate-700 border-2 border-dashed rounded-xl bg-white">
                   <h2 className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center gap-2 w-full font-semibold">
                     {files.length > 0 &&
                     files[0].file.type === "application/pdf"
@@ -262,7 +261,7 @@ function CameraCapture() {
                           //   alt={image.size.toString()}
                           alt={fileObj.file.name}
                           onClick={() => handlePreview(fileObj)}
-                          className="w-auto aspect-square object-cover"
+                          className="w-auto aspect-square object-cover bg-white"
                         />
                         <button
                           onClick={() => handleRemove(index)}
@@ -332,7 +331,7 @@ function CameraCapture() {
               <button
                 onClick={handleSubmit}
                 disabled={files.length === 0}
-                className="w-full mt-8 p-4 px-6 rounded-xl border-2 border-dashed border-green-600 text-green-600 font-semibold"
+                className="w-full mt-8 p-4 px-6 rounded-xl border-2 border-dashed border-green-600 text-green-600 font-semibold bg-white"
               >
                 Submit
               </button>

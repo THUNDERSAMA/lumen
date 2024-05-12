@@ -10,7 +10,7 @@ export default function Main() {
   const router = useRouter();
 
   const [width, setWidth] = useState(0);
-  const [scrollValue, setScrollValue] = useState(0);
+  // const [scrollValue, setScrollValue] = useState(0);
   const [greeting, setGreeting] = useState("");
   interface User {
     user: any;
@@ -41,18 +41,18 @@ export default function Main() {
     else setGreeting("Goodnight,");
   }, [greeting]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setScrollValue(Math.min(1, scrollTop / 50));
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  //     setScrollValue(Math.min(1, scrollTop / 50));
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);

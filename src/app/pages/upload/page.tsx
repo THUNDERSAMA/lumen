@@ -6,6 +6,11 @@ import { useState } from "react";
 
 export default function Upload() {
   const [nextClicked, setNextClicked] = useState(false);
+
+  const [title, setTitle] = useState("");
+  const [type, setType] = useState("");
+  const [description, setDescription] = useState("");
+
   return (
     <>
       <Navbar />
@@ -20,20 +25,20 @@ export default function Upload() {
               !nextClicked ? "after:left-1" : "after:left-[calc(100%-3.75rem)]"
             }`}
           >
-            <button
-              onClick={() => setNextClicked(false)}
+            <span
+              // onClick={() => setNextClicked(false)}
               className="absolute z-10 left-1 rounded-full aspect-square p-2 w-14 place-content-center text-center font-semibold"
               style={!nextClicked ? { opacity: 1 } : { opacity: 0.3 }}
             >
               1
-            </button>
-            <button
-              onClick={() => setNextClicked(true)}
+            </span>
+            <span
+              // onClick={() => setNextClicked(true)}
               className="absolute z-10 right-1 rounded-full aspect-square p-2 w-14 place-content-center text-center font-semibold"
               style={nextClicked ? { opacity: 1 } : { opacity: 0.3 }}
             >
               2
-            </button>
+            </span>
           </span>
           <br />
           <br />
@@ -46,11 +51,16 @@ export default function Upload() {
                 <input
                   type="text"
                   placeholder="Prescription Title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
                   className="w-full p-4 rounded-full border-[1px] border-black bg-white"
                 />
                 <input
                   type="text"
                   placeholder="Type"
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
                   className="w-full p-4 rounded-full border-[1px] border-black bg-white"
                 />
                 <button
@@ -75,7 +85,9 @@ export default function Upload() {
                   name=""
                   id=""
                   rows={3}
-                  placeholder="description"
+                  placeholder="Description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                   className="w-full h-40 p-4 rounded-3xl border-[1px] border-black bg-white"
                 />
                 <span className="w-full flex flex-row justify-between px-2">
