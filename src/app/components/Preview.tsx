@@ -15,7 +15,7 @@ export function Preview({
     toggle && setEnablePreview(null);
   }
   return enablePreview ? (
-    <main className="fixed z-50 top-0 left-0 w-screen h-full bg-black flex justify-center items-center">
+    <main className="fixed z-50 top-0 left-0 w-screen min-h-screen h-full bg-black flex justify-center items-center">
       <ElementBound onOutsideClick={handlePreview}>
         <div className="bg-white">
           <Image

@@ -6,17 +6,177 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useCookies } from "next-client-cookies";
+import Navbar from "@/app/components/Navbar";
+import List from "@/app/components/List";
 
 export default function Main() {
   const router = useRouter();
-  const [width, setWidth] = useState(0);
-  const [toggleMenu, setToggleMenu] = useState(false);
-  const [blurValue, setBlurValue] = useState(0);
+  const [isMobileWidth, setIsMobileWidth] = useState<boolean | null>(null);
+
+  const [prescriptions, setPrescriptions] = useState<object[]>([
+    {
+      name: "Prescription 1",
+      type: "Dr. John Doe",
+      extra: "12/12/2021",
+    },
+    {
+      name: "Prescription 2",
+      type: "Dr. John Doe2",
+      extra: "12/12/2022",
+    },
+    {
+      name: "Prescription 3",
+      type: "Dr. John Doe3",
+      extra: "12/12/2023",
+    },
+    {
+      name: "Prescription 4",
+      type: "Dr. John Doe4",
+      extra: "12/12/2024",
+    },
+    {
+      name: "Prescription 5",
+      type: "Dr. John Doe5",
+      extra: "12/12/2025",
+    },
+    {
+      name: "Prescription 6",
+      type: "Dr. John Doe6",
+      extra: "12/12/2026",
+    },
+    {
+      name: "Prescription 7",
+      type: "Dr. John Doe7",
+      extra: "12/12/2027",
+    },
+    {
+      name: "Prescription 8",
+      type: "Dr. John Doe8",
+      extra: "12/12/2028",
+    },
+    {
+      name: "Prescription 9",
+      type: "Dr. John Doe9",
+      extra: "12/12/2029",
+    },
+    {
+      name: "Prescription 10",
+      type: "Dr. John Doe10",
+      extra: "12/12/2030",
+    },
+  ]);
+  const [doctors, setDoctors] = useState<object[]>([
+    {
+      name: "Dr. John Doe",
+      type: "General Physician",
+      extra: 1234567890,
+    },
+    {
+      name: "Dr. John Doe2",
+      type: "General Physician",
+      extra: 1234567890,
+    },
+    {
+      name: "Dr. John Doe3",
+      type: "General Physician",
+      extra: 1234567890,
+    },
+    {
+      name: "Dr. John Doe4",
+      type: "General Physician",
+      extra: 1234567890,
+    },
+    {
+      name: "Dr. John Doe5",
+      type: "General Physician",
+      extra: 1234567890,
+    },
+    {
+      name: "Dr. John Doe6",
+      type: "General Physician",
+      extra: 1234567890,
+    },
+    {
+      name: "Dr. John Doe7",
+      type: "General Physician",
+      extra: 1234567890,
+    },
+  ]);
+  const [medicines, setMedicines] = useState<object[]>([
+    {
+      name: "Medicine 1",
+      type: "Tablet",
+      extra: "1-0-1",
+    },
+    {
+      name: "Medicine 2",
+      type: "Tablet",
+      extra: "1-0-1",
+    },
+    {
+      name: "Medicine 3",
+      type: "Tablet",
+      extra: "1-0-1",
+    },
+    {
+      name: "Medicine 4",
+      type: "Tablet",
+      extra: "1-0-1",
+    },
+    {
+      name: "Medicine 5",
+      type: "Tablet",
+      extra: "1-0-1",
+    },
+    {
+      name: "Medicine 6",
+      type: "Tablet",
+      extra: "1-0-1",
+    },
+    {
+      name: "Medicine 7",
+      type: "Tablet",
+      extra: "1-0-1",
+    },
+    {
+      name: "Medicine 8",
+      type: "Tablet",
+      extra: "1-0-1",
+    },
+    {
+      name: "Medicine 9",
+      type: "Tablet",
+      extra: "1-0-1",
+    },
+    {
+      name: "Medicine 10",
+      type: "Tablet",
+      extra: "1-0-1",
+    },
+  ]);
+
+  const [onTileClick, setOnTileClick] = useState<"pre" | "doc" | "med" | null>(
+    null
+  );
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const [greeting, setGreeting] = useState("");
   interface User {
-    user: any;
+    a_id: string;
     firstName: string;
-    // Add other properties if needed
+    lastName: string;
+    m_id: string;
+    phone: number;
   }
+
+  useEffect(() => {
+    const date = new Date();
+    const hours = date.getHours();
+    if (hours >= 4 && hours < 12) setGreeting("Good Morning,");
+    else if (hours >= 12 && hours < 17) setGreeting("Good Afternoon,");
+    else if (hours >= 17 && hours < 23) setGreeting("Good Evening,");
+    else setGreeting("Goodnight,");
+  }, [greeting]);
 
   const [localValue, setlocalValue] = useState<{ [key: string]: User }>({});
   const session = Cookies.get("session");
@@ -25,13 +185,16 @@ export default function Main() {
       // router.push("/home");
     } else {
       setlocalValue(await decrypt(session));
-      //console.log(await decrypt(session));
+      // console.log(await decrypt(session));
     }
   }
+
   useEffect(() => {
     checking();
   }, []);
-  //const session = Cookies.get("session");
+
+  console.log(localValue);
+
   const firstName = localValue.user?.firstName;
   if (firstName) {
     console.log("First Name:", firstName);
@@ -39,162 +202,257 @@ export default function Main() {
     console.log("First name not found in localValue");
   }
 
-  //const firstName = "ddwsd";
   console.log(firstName);
-  useEffect(() => {
-    const handleScroll = () => {
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setBlurValue(Math.min(1, scrollTop / 50));
-      //   console.log(scrollTop);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
+    const handleResize = () => setIsMobileWidth(window.innerWidth <= 840);
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  if (isMobileWidth == null || greeting == "")
+    return (
+      <div className="h-screen grid place-items-center text-center">
+        Loading...
+      </div>
+    );
+
   return (
     <>
-      <section
-        className={`fixed z-30 ${
-          toggleMenu ? "top-0 shadow-lg" : " top-[-272px]"
-        } w-screen bg-white p-4`}
-      >
-        <button onClick={() => setToggleMenu(false)}>
-          <Image
-            src={
-              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACSklEQVR4nO2awU4TURSGv5WDCw0mCu5k6QJXuNSdgZhoZFngGYiEt0BcaDQxbn0EtVHegBjXQgsrkBKMuBYhHHOTQ9KUmWk7c+6dO4Q/+ZM2bc+cP/+d23POHbjExcUNYBZYBZrAJvAHOFK61xv6mfvOM2CUSJAAC8AacALIkHS/+QLMa6zguAosA3sFks/iT2AJGAkl4jGwbSigl1vAjE8BzvrXHgX08oM6b4px4HtAEaL8BoxZiZhQu6UitjWHUril26hUzG3gdlERIxUtJ8lZZoW26HcRJC89fFNki5VIOT2oCGdfK4KEJYNbg/5pLntK4ACYAh4YxHo+iBt7nkRM6jXuG8Tb7XfjL3gWManvLeLO5QlZMxbxC7inse8C+4axm3n9xEkNnBDlMXA9TchsTZyQLj5JE/KyJk5IF1+kCWnWyAlRfkwT0q6RE6J0Be05HNbICem67jkclQg4FdgJUf690EIODZdWp8ql1arhzb4RavvtVLH9rhoFD+nMSugSpROyRBmtWdH4L6todPhqfDGfznwmB/Me7PflTCNPSKJT8dhb3R3gCn2w5EHImRgn4qFBrMV+Is5ciWFMKhlsDzNxnIkgYUnhKfCIIfE2gsSlh68ogEQHxxIJ1we5wbNwM6JjhXFKYsKgDS7DFnAHI4xVtMzW9bDJy2HoaSAR732fvU97XmqbRbbYokh0tL9rKMCVHYtVPQGR6FS8qbPYYZM/1iq2UWZrtYbrDZ7qGPOT9tO/ux6qca9/aHu6ok3RNfMsLkEc+A+TWzlJWK35FAAAAABJRU5ErkJggg=="
-            }
-            height={45}
-            width={45}
-            alt="back"
-          />
-        </button>
-        <ul className="flex flex-col items-center gap-4">
-          <li>
-            <Link href={""}>Option1</Link>
-          </li>
-          <li>
-            <Link href={""}>Option2</Link>
-          </li>
-          <li>
-            <Link href={""}>Option3</Link>
-          </li>
-          <li>
-            <Link href={""}>Option4</Link>
-          </li>
-          <li>
-            <Link href={""}>Option5</Link>
-          </li>
-        </ul>
-      </section>
-      <nav
-        className="fixed z-20 flex items-center w-screen gap-2 p-4"
-        style={{
-          backgroundColor: `rgba(255 255 255 / ${blurValue})`,
-          boxShadow: `0 2px 4px 0 rgba(0 0 0 / ${blurValue / 10})`,
-        }}
-      >
-        <button onClick={() => setToggleMenu(true)}>
-          <Image
-            src={
-              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACNklEQVR4nO2azUocURCFv1XGLJQREs1OnyOaXVACEV368wwhg2+hZpGQQMg2j5A4RN9AxLVxRldqNkGz9g9LLlQgTLqnu3puT5eDBw409Mztc/pWV9+q2/CAwcUosABsAE3gAPgDXCrD8U89F34zD9RxghqwAmwDN4AYGf7zA1jWsfqOx8Aq8KuA+DSeAg1gqF8mXgFHEQ108hCYLdNAmPoPJRro5Fed+agYB/b6aEKUu8BYLBOTOt1SEduqoSc81TQqFfMIeFbUxFBF4SRdwqxQiv7sQLx08GORFCtOOZPXRJi+lgPBksLDvC/NVQdiJYNv88zGqQOhksGTrAd/xYFIycmlbka2HQiUnAzlQGo9YVmKPyc+pgzXvwZGkgZZMN6R6RKMvDBqmEsa5J2DcBEj15OMNB0IEyO/JRlpOxAmRoYF7X84dyBMjPydZOTSOEjVWUuAixhGPGSti4EOrZYDYWJkaPgNbvrdcCBMjFxLMjJ/D7PW66RB6sZFY7hobEwbrn+VtmgM2HIQLpKTm93uyLIDgZKTi4NS6j7KitOGA6GSwTdZJv7Oioc2qaSwbek4zjoQLAm8BV5ixCcHwqWD7ymAmjaOxQl38jzgaXjiaFthnB4xWXEZ3AImiISxisJsRzebStkMve2TiS9l773PlBxqB0VSbFHUtLV/EtHAsb6xK/kCoqZd8ab2Yq3ir3UVu9hLao2NEe3Fhjbmd62nz/75qCYc72t5uqZF0XB0FQ/AB+4Avh/z0Htx8AEAAAAASUVORK5CYII="
-            }
-            height={50}
-            width={50}
-            alt="menu"
-          />
-        </button>
-        <input
-          type="text"
-          placeholder="Search on Rxkeep"
-          className="h-[46px] px-3 font-light text-sm text-left border-[1.5px] border-black rounded-full bg-transparent"
-        />
-      </nav>
-      <main className="relative mainMain h-full w-screen flex flex-col gap-4 p-4">
-        {/* <nav className="fixed w-screen h-20 border-t-orange-600 border-t-8 flex items-center justify-around">
-        <h1 className="font-extrabold text-3xl text-blue-900">
-          R<sub>x</sub> <span className="text-2xl font-black">KEEP</span>
-        </h1>
-        <ul className="flex gap-8">
-          <li className="hover:text-orange-700">
-            <Link href={""}>Option1</Link>
-          </li>
-          <li className="hover:text-orange-700">
-            <Link href={""}>Option2</Link>
-          </li>
-          <li className="hover:text-orange-700">
-            <Link href={""}>Option3</Link>
-          </li>
-          <li className="hover:text-orange-700">
-            <Link href={""}>Option4</Link>
-          </li>
-          <li className="hover:text-orange-700">
-            <Link href={""}>Option5</Link>
-          </li>
-        </ul>
-      </nav> */}
+      <Navbar />
+      {isMobileWidth ? (
+        <>
+          <Link
+            href={"/upload"}
+            className="scanBtn fixed z-30 bottom-4 right-4 flex border-black bg-transparent rounded-full aspect-square"
+          >
+            <Image src={"/add.png"} height={70} width={70} alt="add" />
+          </Link>
+          <main
+            className={`relative mainMain min-h-screen h-full w-screen flex flex-col justify-center gap-4 ${
+              (!isExpanded || !onTileClick) && "p-4"
+            }`}
+          >
+            <section className="flex flex-col gap-4 mt-12">
+              <div className="flex flex-col m-10 mx-2">
+                <span className="mb-4 text-4xl">{greeting}</span>
+                <span className="font-bold text-5xl">{firstName}</span>
+              </div>
+            </section>
+            <main
+              className={`${
+                !isExpanded && "relative"
+              } flex w-[calc(100vw-32px)] aspect-square mb-28`}
+            >
+              <section className="absolute z-0 flex flex-1 w-full aspect-square gap-2 text-black text-opacity-90">
+                <button
+                  // href={""}
+                  onClick={() => setOnTileClick("pre")}
+                  className="relative flex-1 bg-red-300 text-red-950 rounded-xl overflow-hidden"
+                >
+                  <div className="absolute top-4 left-4 z-10 flex flex-col items-start pl-2">
+                    <span className="text-sm drop-shadow-sm">
+                      Prescriptions
+                    </span>
+                    <h1 className="text-6xl font-bold drop-shadow-sm">102</h1>
+                  </div>
+                  <Image
+                    src={"/prescriptions.svg"}
+                    height={500}
+                    width={500}
+                    alt="prescriptions"
+                    className="absolute z-0 bottom-0"
+                  />
+                </button>
+                <div className="flex-1 flex flex-col gap-2">
+                  <button
+                    // href={""}
+                    onClick={() => setOnTileClick("doc")}
+                    className="relative flex-1 bg-green-300 text-green-950 rounded-xl overflow-hidden"
+                  >
+                    <div className="absolute top-4 left-4 z-10 flex flex-col items-start pl-2">
+                      <span className="text-sm drop-shadow-sm">Doctors</span>
+                      <h1 className="text-6xl font-bold drop-shadow-sm">7</h1>
+                    </div>
+                    <Image
+                      src={"/doctors.svg"}
+                      height={500}
+                      width={500}
+                      alt="doctors"
+                      className="scale-75 absolute z-0 bottom-[-10%] right-[-20%]"
+                    />
+                  </button>
+                  <button
+                    // href={""}
+                    onClick={() => setOnTileClick("med")}
+                    className="relative flex-1 bg-orange-300 text-orange-950 rounded-xl overflow-hidden"
+                  >
+                    <div className="absolute top-4 left-4 z-10 flex flex-col items-start pl-2">
+                      <span className="text-sm drop-shadow-sm">Medicines</span>
+                      <h1 className="text-6xl font-bold drop-shadow-sm">69</h1>
+                    </div>
+                    <Image
+                      src={"/medicines.svg"}
+                      height={500}
+                      width={500}
+                      alt="medicines"
+                      className="scale-75 absolute z-0 bottom-[-10%] right-[-10%]"
+                    />
+                  </button>
+                </div>
+              </section>
+              <section
+                className={`${
+                  isExpanded
+                    ? "z-50 top-0 w-screen h-screen rounded-none"
+                    : "z-10 flex-1 w-full rounded-xl aspect-square"
+                } ${
+                  onTileClick ? "opacity-100" : "opacity-0 pointer-events-none"
+                } absolute overflow-hidden ${
+                  onTileClick === "pre"
+                    ? "bg-red-300"
+                    : onTileClick === "doc"
+                    ? "bg-green-300"
+                    : onTileClick === "med"
+                    ? "bg-orange-300"
+                    : "bg-transparent opacity-0"
+                } grid place-items-center`}
+              >
+                <button
+                  className="w-[25px] aspect-square grid place-content-center bg-white absolute top-3 left-3 rounded-full"
+                  onClick={() => setIsExpanded(!isExpanded)}
+                >
+                  <Image
+                    src={isExpanded ? "/compress.png" : "/decompress.png"}
+                    height={13}
+                    width={13}
+                    alt={isExpanded ? "minimize" : "maximize"}
+                  />
+                </button>
+                <button
+                  className="scanBtn absolute top-3 right-3 rounded-full invert"
+                  onClick={() => {
+                    setOnTileClick(null);
+                    setIsExpanded(false);
+                  }}
+                >
+                  <Image src={"/close.svg"} height={25} width={25} alt="back" />
+                </button>
 
-        <section className="flex flex-col gap-4 mt-12">
-          <div className="flex flex-col m-10 mx-2">
-            <span className="mb-4 text-4xl">Good Morning,</span>
-            <span className="font-medium text-5xl">{firstName}</span>
-          </div>
-        </section>
-        <section className="flex w-full aspect-square gap-4 text-white">
-          <div className="relative flex-1 bg-red-300 rounded-xl">
-            <div className="absolute top-4 left-4 z-10">
-              <span className="text-sm drop-shadow-sm">Prescriptions</span>
-              <h1 className="text-6xl font-bold drop-shadow-sm">102</h1>
+                {onTileClick && (
+                  <List
+                    list={
+                      onTileClick === "pre"
+                        ? prescriptions
+                        : onTileClick === "doc"
+                        ? doctors
+                        : onTileClick === "med"
+                        ? medicines
+                        : []
+                    }
+                    code={onTileClick}
+                  />
+                )}
+              </section>
+            </main>
+          </main>
+        </>
+      ) : (
+        <main
+          className={`relative mainMain min-h-screen h-full w-screen flex flex-row ${
+            onTileClick ? "gap-4" : ""
+          } py-10 px-28`}
+        >
+          <section className="w-[calc(50%-0.5rem)] flex-1 flex flex-col gap-4 mt-12 text-black text-opacity-90">
+            <div className="flex flex-col gap-4 ">
+              <div className="relative flex flex-col m-10 mx-2">
+                <span className="mb-4 text-4xl">{greeting}</span>
+                <span className="font-bold text-5xl">{firstName}</span>
+                <Link
+                  href={"/upload"}
+                  title="Add Prescription"
+                  className="h-[50px] absolute z-30 bottom-0 right-5 grid place-content-center rounded-full aspect-square bg-black"
+                >
+                  <Image
+                    src={"/add_document.png"}
+                    height={25}
+                    width={25}
+                    alt="add prescription"
+                    className="invert"
+                  />
+                </Link>
+              </div>
             </div>
-            <Image
-              src={"/prescriptions.svg"}
-              height={500}
-              width={500}
-              alt="prescriptions"
-              className="absolute z-0 bottom-[-18.5px]"
-            />
-          </div>
-          <div className="flex-1 flex flex-col gap-4">
-            <div className="relative flex-1 bg-green-300 rounded-xl">
-              <div className="absolute top-4 left-4 z-10">
-                <span className="text-sm drop-shadow-sm">Doctors</span>
-                <h1 className="text-6xl font-bold drop-shadow-sm">6</h1>
+            <button
+              // href={"#"}
+              onClick={() => setOnTileClick("pre")}
+              className="relative flex-1 bg-red-300 rounded-2xl overflow-hidden"
+            >
+              <div className="absolute top-4 left-4 z-10 flex flex-col items-start pl-2">
+                <span className="drop-shadow-sm">Prescriptions</span>
+                <h1 className="text-8xl font-bold drop-shadow-sm">102</h1>
               </div>
               <Image
-                src={"/doctors.svg"}
-                height={500}
-                width={750}
-                alt="doctors"
-                className="absolute z-0 bottom-[-10px]"
-              />
-            </div>
-            <div className="relative flex-1 bg-orange-300 rounded-xl">
-              <div className="absolute top-4 left-4 z-10">
-                <span className="text-sm drop-shadow-sm">Medicines</span>
-                <h1 className="text-6xl font-bold drop-shadow-sm">69</h1>
-              </div>
-              <Image
-                src={"/medicines.svg"}
+                src={"/prescriptions.svg"}
                 height={500}
                 width={500}
-                alt="medicines"
-                className="scale-75 absolute z-0 bottom-[-20px] right-[-20px]"
+                alt="prescriptions"
+                className="scale-125 h-full absolute z-0 bottom-0 right-[-10%]"
               />
+            </button>
+            <div className="flex-1 flex flex-row gap-4">
+              <button
+                // href={"#"}
+                onClick={() => setOnTileClick("doc")}
+                className="relative flex-1 bg-green-300 rounded-2xl overflow-hidden"
+              >
+                <div className="absolute top-4 left-4 z-10 flex flex-col items-start pl-2">
+                  <span className="drop-shadow-sm">Doctors</span>
+                  <h1 className="text-8xl font-bold drop-shadow-sm">7</h1>
+                </div>
+                <Image
+                  src={"/doctors.svg"}
+                  height={500}
+                  width={500}
+                  alt="doctors"
+                  className="h-full absolute z-0 bottom-0 right-[-20%]"
+                />
+              </button>
+              <button
+                // href={"#"}
+                onClick={() => setOnTileClick("med")}
+                className="relative flex-1 bg-orange-300 rounded-2xl overflow-hidden"
+              >
+                <div className="absolute top-4 left-4 z-10 flex flex-col items-start pl-2">
+                  <span className="drop-shadow-sm">Medicines</span>
+                  <h1 className="text-8xl font-bold drop-shadow-sm">69</h1>
+                </div>
+                <Image
+                  src={"/medicines.svg"}
+                  height={500}
+                  width={500}
+                  alt="medicines"
+                  className="h-full absolute z-0 bottom-[-10%] right-[-20%]"
+                />
+              </button>
             </div>
-          </div>
-        </section>
-        <section className="w-full aspect-square bg-blue-300 rounded-xl"></section>
-      </main>
+          </section>
+          <section
+            className={`${
+              onTileClick ? "w-[calc(50%-0.5rem)]" : "w-0"
+            } relative overflow-hidden mt-12 bg-blue-300 rounded-2xl grid place-items-center`}
+          >
+            <button
+              className="scanBtn absolute top-3 right-3 rounded-full invert"
+              onClick={() => setOnTileClick(null)}
+            >
+              <Image src={"/close.svg"} height={25} width={25} alt="back" />
+            </button>
+            more...
+          </section>
+        </main>
+      )}
     </>
   );
 }
