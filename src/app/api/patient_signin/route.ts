@@ -28,8 +28,7 @@ export async function decrypt(input: string): Promise<any> {
           //const requestBody = await request.json();
           const result = multisign(req);
           const expires = new Date(Date.now() + 8000 * 60 * 1000);
-
-          cookies().set('sessiondd','dsazzsd',{expires,httpOnly:false});
+          
 
           return NextResponse.json({
               status: (await result).success ? 'success' : 'error',
@@ -69,7 +68,7 @@ export async function decrypt(input: string): Promise<any> {
            console.log(user);
            const expires = new Date(Date.now() + 8000 * 60 * 1000);
            const session=await encrypt({user,expires});
-            cookies().set('session',session,{expires,httpOnly:false});
+           cookies().set('session', session, { expires: expires,httpOnly:false });
            // console.log(Cookies.set('session', session, { expires: expires }));
         console.log(session);
             
