@@ -2,13 +2,36 @@
 import Navbar from "@/app/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
+import { decrypt } from "@/app/middleware/checkAuth";
 import { useEffect, useState } from "react";
-
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 export default function Main() {
+  const router = useRouter();
+
   const [width, setWidth] = useState(0);
   // const [scrollValue, setScrollValue] = useState(0);
   const [greeting, setGreeting] = useState("");
+  interface User {
+    user: any;
+    firstName: string;
+  }
 
+  const [localValue, setlocalValue] = useState<{ [key: string]: User }>({});
+  const session = Cookies.get("session");
+  async function checking() {
+    if (!session) {
+      router.push("/home");
+    } else {
+      setlocalValue(await decrypt(session));
+      //console.log(await decrypt(session));
+    }
+  }
+  useEffect(() => {
+    checking();
+  }, []);
+  //const session = Cookies.get("session");
+  const firstName = localValue.user?.firstName;
   useEffect(() => {
     const date = new Date();
     const hours = date.getHours();
@@ -60,7 +83,7 @@ export default function Main() {
             <section className="flex flex-col gap-4 mt-12">
               <div className="flex flex-col m-10 mx-2">
                 <span className="mb-4 text-4xl">{greeting}</span>
-                <span className="font-bold text-5xl">Parthib</span>
+                <span className="font-bold text-5xl">Dr {firstName}</span>
               </div>
             </section>
             <section className="flex w-full aspect-square gap-2 text-black text-opacity-90">
