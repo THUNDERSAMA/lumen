@@ -1,39 +1,40 @@
 from flask import Flask, request, jsonify
 from deepface import DeepFace
 import base64
+import uuid
 
-app = Flask(__name__)
+#create class
+class ImageVerifier:
+    def __init__(self):
+        pass
 
-@app.route('/verify', methods=['POST'])
-def verify_images():
-   
-    base64_string = request.json.get('base64_string')
-    id_string = request.json.get('id_string')
-    image_data = base64.b64decode(base64_string)
-    with open("input_image.jpg", "wb") as f:
-        f.write(image_data)
-    input_image_path = "input_image.jpg"
-    similar_name_count = 11
-    verified_count = 0
-    for i in range(1, similar_name_count + 1):
-        # .jpeg to be changed to jpg during production or testing
-        image_check = id_string+"_"+"% s" % i+".jpeg"
+    def verify_images(self,x,id_string):
+    
+        base64_string = x
+        image_data = base64.b64decode(base64_string)
+        input_image_path= str(uuid.uuid4())+".jpg"
+        with open(input_image_path, "wb") as f:
+            f.write(image_data)
+        similar_name_count = 7
+        verified_count = 0
+        for i in range(1, similar_name_count + 1):
+            # .jpeg to be changed to jpg during production or testing
+            image_check = "ph/"+id_string+"_"+"% s" % i+".jpg"
 
-        try:
-            result = DeepFace.verify(input_image_path, image_check, model_name='ArcFace', enforce_detection=False)
-            print(result)
-            if result["verified"]:
-                verified_count += 1
+            try:
+                result = DeepFace.verify(input_image_path, image_check, model_name='ArcFace', enforce_detection=False)
+                print(result)
+                if result["verified"]:
+                    verified_count += 1
 
-        except ValueError as ve:
-            print(f"Error processing {image_check}: {ve}")
-    accuracy = (verified_count / similar_name_count) * 100 if similar_name_count != 0 else 0
+            except ValueError as ve:
+                print(f"Error processing {image_check}: {ve}")
+        accuracy = (verified_count / similar_name_count) * 100 if similar_name_count != 0 else 0
 
-    return jsonify({
-        "verified_count": verified_count,
-        "total_count": similar_name_count,
-        "accuracy": accuracy
-    })
+        return jsonify({
+            "verified_count": verified_count,
+            "total_count": similar_name_count,
+            "accuray": accuracy
+        })
 
-if __name__ == '__main__':
-    app.run(debug=True)
+

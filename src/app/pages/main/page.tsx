@@ -83,7 +83,7 @@ export default function Main() {
             <section className="flex flex-col gap-4 mt-12">
               <div className="flex flex-col m-10 mx-2">
                 <span className="mb-4 text-4xl">{greeting}</span>
-                <span className="font-bold text-5xl">Dr {firstName}</span>
+                <span className="font-bold text-5xl">{firstName}</span>
               </div>
             </section>
             <section className="flex w-full aspect-square gap-2 text-black text-opacity-90">
@@ -149,7 +149,7 @@ export default function Main() {
             <div className="flex flex-col gap-4 ">
               <div className="relative flex flex-col m-10 mx-2">
                 <span className="mb-4 text-4xl">{greeting}</span>
-                <span className="font-bold text-5xl">Parthib</span>
+                <span className="font-bold text-5xl">{firstName}</span>
                 <Link
                   href={"/upload"}
                   title="Upload Prescription"
