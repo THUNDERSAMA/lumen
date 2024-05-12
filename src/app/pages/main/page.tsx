@@ -70,11 +70,11 @@ export default function Main() {
 
   return (
     <>
-      <Navbar scrollValue={scrollValue} />
+      <Navbar />
       {width <= 840 ? (
         <>
           <Link
-            href={""}
+            href={"/upload"}
             className="scanBtn fixed z-30 bottom-4 right-4 flex border-black bg-transparent rounded-full aspect-square"
           >
             <Image src={"/add.png"} height={70} width={70} alt="add" />
@@ -151,7 +151,7 @@ export default function Main() {
                 <span className="mb-4 text-4xl">{greeting}</span>
                 <span className="font-bold text-5xl">Parthib</span>
                 <Link
-                  href={""}
+                  href={"/upload"}
                   title="Upload Prescription"
                   className="h-[50px] scanBtn absolute z-30 bottom-0 right-5 flex border-black bg-transparent rounded-full aspect-square"
                 >

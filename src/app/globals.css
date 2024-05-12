@@ -21,13 +21,13 @@ ul::-webkit-scrollbar {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #888;
-  border-radius: 5px;
+  background: #ccc;
+  /* border-radius: 5px; */
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #000;
+  background: #0000009a;
   border-radius: 5px;
 }
 
@@ -94,7 +94,7 @@ input[type="number"] {
   position: absolute;
   z-index: -1;
 }
-.vbn::before{
+.vbn::before {
   content: "";
   background: url("/main_bg_2.jpg");
   background-color: #fff;
