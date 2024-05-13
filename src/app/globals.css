@@ -92,7 +92,7 @@ input[type="number"] {
   border-radius: 10px;
 }
 
-/* .vbn::before {
+.vbn::before {
   content: "";
   background: url("/main_bg_2.jpg");
   background-color: #fff;
@@ -106,7 +106,7 @@ input[type="number"] {
   right: 0;
   position: absolute;
   z-index: -1;
-} */
+}
 
 .scanBtn {
   background: radial-gradient(circle, #fff 50%, transparent 60%);
