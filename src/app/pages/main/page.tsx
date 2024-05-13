@@ -6,8 +6,10 @@ import { decrypt } from "@/app/middleware/checkAuth";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import Notification from "@/app/components/Notification";
 export default function Main() {
   const router = useRouter();
+  const [error, setError] = useState<string | null>(null);
 
   const [width, setWidth] = useState(0);
   // const [scrollValue, setScrollValue] = useState(0);
@@ -29,7 +31,7 @@ export default function Main() {
   }
   useEffect(() => {
     checking();
-  }, []);
+  });
   //const session = Cookies.get("session");
   const firstName = localValue.user?.firstName;
   useEffect(() => {
@@ -40,19 +42,6 @@ export default function Main() {
     else if (hours >= 17 && hours < 23) setGreeting("Good Evening,");
     else setGreeting("Goodnight,");
   }, [greeting]);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  //     setScrollValue(Math.min(1, scrollTop / 50));
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -67,20 +56,31 @@ export default function Main() {
         Loading...
       </div>
     );
-
   return (
     <>
       <Navbar />
+
+      <Notification
+        message={error} // notification message
+        setMessage={setError} // function to alter notification message
+        type={"warning"} // regular, success, warning, error, info
+        position={"top"} // either top or bottom
+        time={2000} // time in ms; 0 or ignore for infinite time
+      />
+
       {width <= 840 ? (
         <>
-          <Link
+          {/* <Link
             href={"/upload"}
             className="scanBtn fixed z-30 bottom-4 right-4 flex border-black bg-transparent rounded-full aspect-square"
           >
             <Image src={"/add.png"} height={70} width={70} alt="add" />
-          </Link>
+          </Link> */}
           <main className="relative mainMain h-full w-screen flex flex-col gap-4 p-4 pb-24">
-            <section className="flex flex-col gap-4 mt-12">
+            <section
+              className="flex flex-col gap-4 mt-12"
+              onClick={() => setError("clicked section")}
+            >
               <div className="flex flex-col m-10 mx-2">
                 <span className="mb-4 text-4xl">{greeting}</span>
                 <span className="font-bold text-5xl">{firstName}</span>
@@ -147,7 +147,10 @@ export default function Main() {
         <main className="relative mainMain min-h-screen h-full w-screen flex flex-row gap-4 py-10 px-28">
           <section className="w-[calc(50%-0.5rem)] flex-1 flex flex-col gap-4 mt-12 text-black text-opacity-90">
             <div className="flex flex-col gap-4 ">
-              <div className="relative flex flex-col m-10 mx-2">
+              <div
+                className="relative flex flex-col m-10 mx-2"
+                onClick={() => setError("clicked section")}
+              >
                 <span className="mb-4 text-4xl">{greeting}</span>
                 <span className="font-bold text-5xl">{firstName}</span>
                 <Link
