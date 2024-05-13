@@ -344,9 +344,9 @@ const App = () => {
                       <button
                         type="button"
                         id="2auth"
-                        className="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 rounded-full"
+                        className="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white {data.data.auth == true ? dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-900 : dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900}  rounded-full"
                       >
-                        {data.data.auth == true ? <KeyOffIcon /> : <KeyIcon />}
+                        {data.data.auth == true ? <KeyIcon /> : <KeyOffIcon />}
                       </button>
                     </div>
                   </div>
