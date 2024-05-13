@@ -8,7 +8,7 @@ export async function POST(req:NextRequest)
     const { gId ,type} = requestBody;
     const session = neo4jDriver.session();
     try {
-        // Check if the patient with the given gId exists and retrieve the count of keys in the data field
+        
         const result = await session.run(`
         MATCH (p:Patient {g_id: $gId})
         RETURN p.data AS data`,
@@ -17,10 +17,9 @@ export async function POST(req:NextRequest)
 
 
         if (result.records.length === 0) {
-            // If no patient with the given gId exists, return a message indicating the data field has not been created
             return NextResponse.json({ message: 'Data field not created for the patient' });
         } else {
-            // Extract the count of keys from the result
+            
             const dataCount = result.records[0].get('dataCount');
             return NextResponse.json({ message: 'Number of keys in data field', dataCount });
         }

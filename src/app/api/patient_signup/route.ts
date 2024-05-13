@@ -6,6 +6,7 @@ import neo4j from 'neo4j-driver';
 import {SignJWT,jwtVerify} from 'jose'
 import { cookies } from "next/headers";
 import Cookies from "js-cookie";
+import RecordModel from "@/models/Record";
 
 const neo4jDriver = neo4j.driver('neo4j+s://45c4756c.databases.neo4j.io', neo4j.auth.basic('neo4j', 'cJuC379i53EG4aYz10x7LXjBJKAmhupuNd_l8xJv9pg'));
 
@@ -96,8 +97,21 @@ async function signUp(requestBody: { firstName: string, lastName: string, passwo
             auth:"false",
             authType:"null"
         });
-
         const savedUser = await newUser.save();
+        const jsonrec = {
+            "data":[]
+        };
+        const createRecord =new RecordModel({
+            mid:savedUser._id,
+            doctorCount:0,
+            presciCount:0,
+            medicineCount:0,
+            doctorids:JSON.stringify(jsonrec),
+            medids:JSON.stringify(jsonrec)
+
+
+        })
+        const savedRec = await createRecord.save();
         const user = {
             firstName: requestBody.firstName,
             lastName: requestBody.lastName,
