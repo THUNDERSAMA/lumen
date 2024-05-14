@@ -109,12 +109,9 @@ function App() {
   //     setError(null);
   //   };
   function extractName(text: string) {
-    // Regular expression pattern to match names with prefixes like "pr.", "dr.", "*r.", "d*."
-    // Regular expression pattern to match names after a word similar to "dr."
     const regex = /(r\.|dr\.|Dr\.|br\.|Br\.|pr\.)\s+(\w+)\s+(\w+)/i;
     const match = text.match(regex);
 
-    // Extract the name from the matched result
     console.log(match);
     const name = match ? match[2] + " " + match[3] : null;
 
