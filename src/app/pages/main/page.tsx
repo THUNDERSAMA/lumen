@@ -63,9 +63,9 @@ export default function Main() {
       <Notification
         message={error} // notification message
         setMessage={setError} // function to alter notification message
-        type={"warning"} // regular, success, warning, error, info
+        type={"success"} // regular, success, warning, error, info
         position={"top"} // either top or bottom
-        time={2000} // time in ms; 0 or ignore for infinite time
+        time={0} // time in ms; 0 or ignore for infinite time
       />
 
       {width <= 840 ? (
@@ -77,13 +77,20 @@ export default function Main() {
             <Image src={"/add.png"} height={70} width={70} alt="add" />
           </Link> */}
           <main className="relative mainMain h-full w-screen flex flex-col gap-4 p-4 pb-24">
-            <section
-              className="flex flex-col gap-4 mt-12"
-              onClick={() => setError("clicked section")}
-            >
+            <section className="flex flex-col gap-4 mt-12">
               <div className="flex flex-col m-10 mx-2">
-                <span className="mb-4 text-4xl">{greeting}</span>
-                <span className="font-bold text-5xl">{firstName}</span>
+                <span
+                  onClick={() => setError("clicked section")}
+                  className="mb-4 text-4xl"
+                >
+                  {greeting}
+                </span>
+                <span
+                  onClick={() => setError(null)}
+                  className="font-bold text-5xl"
+                >
+                  {firstName}
+                </span>
               </div>
             </section>
             <section className="flex w-full aspect-square gap-2 text-black text-opacity-90">
