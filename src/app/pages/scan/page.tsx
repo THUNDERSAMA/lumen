@@ -17,7 +17,7 @@ function App() {
   const formPrevdata = useSelector(
     (state: RootState) => state.Uploaddata.value
   );
-  console.log(formPrevdata);
+
   const [error, setError] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [enablePreview, setEnablePreview] = useState<FileWithPreview | null>(
@@ -108,10 +108,65 @@ function App() {
   //     console.log(files);
   //     setError(null);
   //   };
+  function extractName(text: string) {
+    const regex = /(r\.|dr\.|Dr\.|br\.|Br\.|pr\.)\s+(\w+)\s+(\w+)/i;
+    const match = text.match(regex);
 
-  const handleSubmit = () => {
+    console.log(match);
+    const name = match ? match[2] + " " + match[3] : null;
+
+    return "Dr. " + name;
+  }
+  const handleSubmit = async () => {
     if (files) {
-      // upload to ipfs
+      // upload to ipf
+      if (
+        files[0].file.type === "image/png" ||
+        files[0].file.type == "image/jpeg"
+      ) {
+        let base64imgCode = "";
+        if (files[0].file.type === "image/jpeg") {
+          base64imgCode = files[0].previewUrl.substring(
+            23,
+            files[0].previewUrl.length
+          );
+        } else {
+          base64imgCode = files[0].previewUrl.substring(
+            22,
+            files[0].previewUrl.length
+          );
+        }
+        try {
+          console.log(base64imgCode);
+          const metaResponse = await fetch(
+            "http://127.0.0.1:5000/processimage",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                imagecode: base64imgCode,
+              }),
+            }
+          );
+          if (!metaResponse.ok) {
+            throw new Error("Failed to get");
+          } else {
+            // const meta = await metaResponse.json();
+            console.log(await metaResponse);
+            const metaText = await metaResponse.text();
+            console.log(metaText);
+            const extractedInfo = extractName(metaText);
+            console.log(extractedInfo);
+          }
+        } catch (error) {
+          console.log(error);
+          console.log(" python script not properly loaded");
+        }
+      }
+      // console.log(files);
+      //console.log(formPrevdata);
     }
   };
 
