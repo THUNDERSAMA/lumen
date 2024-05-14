@@ -4,12 +4,20 @@ import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
 import { Preview, PreviewAll } from "@/app/components/Preview";
 import { set } from "mongoose";
+import { useSelector, useDispatch } from "react-redux";
+import { updateByValue } from "../../utils/slices/UploaddataState";
+import { RootState } from "@/app/utils/store";
+import { Providers } from "../../Providers";
 
 interface FileWithPreview {
   file: File;
   previewUrl: string;
 }
-function CameraCapture() {
+function App() {
+  const formPrevdata = useSelector(
+    (state: RootState) => state.Uploaddata.value
+  );
+  console.log(formPrevdata);
   const [error, setError] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [enablePreview, setEnablePreview] = useState<FileWithPreview | null>(
@@ -342,5 +350,13 @@ function CameraCapture() {
     </>
   );
 }
-
-export default CameraCapture;
+export default function CameraCapture() {
+  return (
+    <>
+      <Providers>
+        <App />
+      </Providers>
+    </>
+  );
+}
+//export default ;

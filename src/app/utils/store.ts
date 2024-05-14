@@ -3,10 +3,12 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import LanguageState from "./slices/LanguageState";
 import UserState from "./slices/UserState";
+import UploaddataState from "./slices/UploaddataState";
 
 const rootReducer = combineReducers({
   language: LanguageState,
   user: UserState,
+  Uploaddata:UploaddataState,
 });
 
 export const store = configureStore({

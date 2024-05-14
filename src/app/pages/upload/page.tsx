@@ -2,15 +2,40 @@
 import Navbar from "@/app/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateByValue } from "../../utils/slices/UploaddataState";
+import type { RootState } from "../../utils/store";
+import { Providers } from "../../Providers";
 
 export default function Upload() {
+  return (
+    <>
+      <Providers>
+        <App />
+      </Providers>
+    </>
+  );
+}
+function App() {
+  const dispatch = useDispatch();
+
   const [nextClicked, setNextClicked] = useState(false);
 
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
 
+  useMemo(() => {
+    let crjson = {};
+    crjson = {
+      title: title,
+      type: type,
+      description: description,
+    };
+    console.log(crjson);
+    dispatch(updateByValue(JSON.stringify(crjson)));
+  }, [title, type, description, dispatch]);
   return (
     <>
       <Navbar />
