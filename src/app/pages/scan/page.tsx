@@ -8,12 +8,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateByValue } from "../../utils/slices/UploaddataState";
 import { RootState } from "@/app/utils/store";
 import { Providers } from "../../Providers";
+import { extractDoctorInfo } from "@/app/utils/nlp";
 
 interface FileWithPreview {
   file: File;
   previewUrl: string;
 }
 function App() {
+  // interface UploaddataState {
+  //   title: string;
+  // }
   const formPrevdata = useSelector(
     (state: RootState) => state.Uploaddata.value
   );
@@ -108,15 +112,7 @@ function App() {
   //     console.log(files);
   //     setError(null);
   //   };
-  function extractName(text: string) {
-    const regex = /(r\.|dr\.|Dr\.|br\.|Br\.|pr\.)\s+(\w+)\s+(\w+)/i;
-    const match = text.match(regex);
 
-    console.log(match);
-    const name = match ? match[2] + " " + match[3] : null;
-
-    return "Dr. " + name;
-  }
   const handleSubmit = async () => {
     if (files) {
       // upload to ipf
@@ -137,7 +133,7 @@ function App() {
           );
         }
         try {
-          console.log(base64imgCode);
+          //console.log(base64imgCode);
           const metaResponse = await fetch(
             "http://127.0.0.1:5000/processimage",
             {
@@ -154,11 +150,73 @@ function App() {
             throw new Error("Failed to get");
           } else {
             // const meta = await metaResponse.json();
-            console.log(await metaResponse);
+            const formPrev = JSON.parse(formPrevdata);
+            console.log(formPrev.title);
+            interface Packet {
+              Datafiles: any[];
+              metaText: String;
+              uploadType: String;
+              title: any;
+              description: any;
+              type: any;
+              doctor: String;
+              m_id: String;
+              metaRaw: String;
+            }
+            let packet: Packet = {
+              metaText: "",
+              Datafiles: [],
+              uploadType: "image",
+              title: formPrev.title || "",
+              description: formPrev.description || "",
+              type: formPrev.type || "",
+              doctor: "null",
+              m_id: formPrev.cookieId || "m_id fetched from cookie",
+              metaRaw: "",
+            };
+
             const metaText = await metaResponse.text();
-            console.log(metaText);
-            const extractedInfo = extractName(metaText);
+            //console.log(metaText);
+            packet.metaRaw = metaText;
+            const extractedInfo = await extractDoctorInfo(metaText);
+            packet.metaText = extractedInfo || "";
             console.log(extractedInfo);
+            let formData = new FormData();
+            files.forEach((filec) => {
+              formData.append("file", filec.file);
+            });
+            const respCnv = await fetch("http://127.0.0.1:5000/cnvimg", {
+              method: "POST",
+              body: formData,
+            });
+            if (respCnv.ok) {
+              const result = await respCnv.json();
+              //console.log(result.data.data[0]);
+              result.data.data.forEach((element: any) => {
+                packet.Datafiles.push(element);
+                //console.log(element);
+              });
+              console.log("rec successful:", result);
+            } else {
+              console.error("rec failed:", respCnv.statusText);
+            }
+            console.log(packet);
+            const sentData = await fetch("api/wallet", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                type: "STORE",
+                data: JSON.stringify(packet),
+              }),
+            });
+            if (sentData.ok) {
+              const result = await sentData.json();
+              console.log(result);
+            } else {
+              console.error("send failed:", sentData.statusText);
+            }
           }
         } catch (error) {
           console.log(error);
