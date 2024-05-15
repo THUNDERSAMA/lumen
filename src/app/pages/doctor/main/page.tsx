@@ -13,6 +13,7 @@ export default function Main() {
   const router = useRouter();
   const [isMobileWidth, setIsMobileWidth] = useState<boolean | null>(null);
 
+  // example data
   const [prescriptions, setPrescriptions] = useState<object[]>([
     {
       name: "Prescription 1",
@@ -332,7 +333,7 @@ export default function Main() {
                   {firstName || "Indian"}
                 </span>
               </div>
-              <Link
+              {/* <Link
                 href={"/upload"}
                 className="absolute z-10 bg-red-950 text-white text-center font-medium text-lg w-24 bottom-0 right-0 rounded-xl p-3 flex items-center justify-center gap-2"
               >
@@ -344,66 +345,87 @@ export default function Main() {
                   className="invert"
                 />
                 Add
-              </Link>
-              <Image
+              </Link> */}
+              {/* <Image
                 src={"/curly_arrow.png"}
                 height={64}
                 width={64}
                 alt="arrow"
                 className="absolute z-20 bottom-[-60px] right-[10px] rotate-[256deg] pointer-events-none"
-              />
+              /> */}
             </div>
-            <div className="relative flex flex-1 bg-red-300 text-red-950 rounded-2xl overflow-hidden">
+            <div className="relative flex flex-1 bg-blue-300 text-blue-950 rounded-2xl">
               <button
-                onClick={() => setOnTileClick("pre")}
+                onClick={() => setOnTileClick("pat")}
                 className="w-full h-full"
               >
                 <div className="absolute top-4 left-4 z-10 flex flex-col items-start pl-2">
-                  <span className="drop-shadow-sm">Prescriptions</span>
+                  <span className="drop-shadow-sm">Patients</span>
                   <h1 className="text-8xl font-bold drop-shadow-sm">102</h1>
                 </div>
                 <Image
-                  src={"/prescriptions.svg"}
+                  src={"/patients.svg"}
                   height={500}
                   width={500}
                   alt="prescriptions"
-                  className="opacity-70 scale-125 h-full absolute z-0 bottom-0 right-[-15%]"
+                  className="opacity-70 h-full absolute z-0 bottom-0 right-[-10%]"
                 />
               </button>
+              {/* {onTileClick && (
+                <>
+                  <span className="absolute bg-white z-10 rounded-full h-8 w-8 -top-8 -right-4" />
+                  <span className="absolute bg-blue-300 h-4 w-4 -top-4 -right-4" />
+                  <div className="tileConnect h-full absolute bg-blue-300 w-8 -right-4" />
+                  <span className="absolute bg-blue-300 h-4 w-4 -bottom-4 -right-4" />
+                  <span className="absolute bg-white z-10 rounded-full h-8 w-8 -bottom-8 -right-4" />
+                </>
+              )} */}
             </div>
             <div className="flex-1 flex flex-row gap-4">
               <button
-                onClick={() => setOnTileClick("pat")}
-                className="relative flex-1 bg-green-300 text-green-950 rounded-2xl overflow-hidden"
+                onClick={() => setOnTileClick("pre")}
+                className="relative flex-1 bg-red-300 text-red-950 rounded-2xl overflow-hidden"
               >
                 <div className="absolute top-4 left-4 z-10 flex flex-col items-start pl-2">
-                  <span className="drop-shadow-sm">Doctors</span>
+                  <span className="drop-shadow-sm">Prescriptions</span>
                   <h1 className="text-8xl font-bold drop-shadow-sm">7</h1>
                 </div>
                 <Image
-                  src={"/doctors.svg"}
+                  src={"/prescriptions.svg"}
                   height={500}
                   width={500}
                   alt="doctors"
                   className="opacity-70 h-full absolute z-0 bottom-0 right-[-20%]"
                 />
               </button>
-              <button
-                // onClick={() => setOnTileClick("med")}
-                className="relative flex-1 bg-orange-300 text-orange-950 rounded-2xl overflow-hidden"
+              <Link
+                href={"/doctor/editor"}
+                className="relative z-10 flex-1 bg-orange-300 text-orange-950 rounded-xl overflow-hidden"
               >
-                <div className="absolute top-4 left-4 z-10 flex flex-col items-start pl-2">
-                  <span className="drop-shadow-sm">Medicines</span>
-                  <h1 className="text-8xl font-bold drop-shadow-sm">69</h1>
+                <div className="relative z-10 flex flex-col items-start justify-start h-full m-6 gap-4">
+                  <span className="flex items-center gap-1 text-4xl font-bold drop-shadow-sm">
+                    Editor
+                    <Image
+                      src={"/link.svg"}
+                      height={22}
+                      width={22}
+                      alt="edit"
+                      className="inline-block ml-2"
+                    />
+                  </span>
+                  <p className="text-sm max-w-[75%]">
+                    Write prescriptions with assistance, and more.
+                  </p>
                 </div>
+
                 <Image
-                  src={"/medicines.svg"}
+                  src={"/editor.svg"}
                   height={500}
                   width={500}
                   alt="medicines"
-                  className="opacity-70 h-full absolute z-0 bottom-[-10%] right-[-20%]"
+                  className="h-full scale-110 opacity-70 absolute z-0 bottom-[-7%] right-[-20%]"
                 />
-              </button>
+              </Link>
             </div>
           </section>
           <section
