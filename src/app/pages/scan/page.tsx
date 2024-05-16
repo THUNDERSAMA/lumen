@@ -112,7 +112,17 @@ function App() {
   //     console.log(files);
   //     setError(null);
   //   };
-
+  interface Packet {
+    Datafiles: any[];
+    metaText: String;
+    uploadType: String;
+    title: any;
+    description: any;
+    type: any;
+    doctor: String;
+    m_id: String;
+    metaRaw: String;
+  }
   const handleSubmit = async () => {
     if (files) {
       // upload to ipf
@@ -152,17 +162,7 @@ function App() {
             // const meta = await metaResponse.json();
             const formPrev = JSON.parse(formPrevdata);
             console.log(formPrev.title);
-            interface Packet {
-              Datafiles: any[];
-              metaText: String;
-              uploadType: String;
-              title: any;
-              description: any;
-              type: any;
-              doctor: String;
-              m_id: String;
-              metaRaw: String;
-            }
+
             let packet: Packet = {
               metaText: "",
               Datafiles: [],
@@ -221,6 +221,60 @@ function App() {
         } catch (error) {
           console.log(error);
           console.log(" python script not properly loaded");
+        }
+      } else {
+        try {
+          const formPrev = JSON.parse(formPrevdata);
+          console.log(formPrev.title);
+          let packet: Packet = {
+            metaText: "",
+            Datafiles: [],
+            uploadType: "pdf",
+            title: formPrev.title || "",
+            description: formPrev.description || "",
+            type: formPrev.type || "",
+            doctor: "null",
+            m_id: formPrev.cookieId || "m_id fetched from cookie",
+            metaRaw: "",
+          };
+          let formData = new FormData();
+          files.forEach((filec) => {
+            formData.append("file", filec.file);
+          });
+          const respCnv = await fetch("http://127.0.0.1:5000/cnvimg", {
+            method: "POST",
+            body: formData,
+          });
+          if (respCnv.ok) {
+            const result = await respCnv.json();
+            //console.log(result.data.data[0]);
+            result.data.data.forEach((element: any) => {
+              packet.Datafiles.push(element);
+              //console.log(element);
+            });
+            console.log("rec successful:", result);
+          } else {
+            console.error("rec failed:", respCnv.statusText);
+          }
+          console.log(packet);
+          const sentData = await fetch("api/wallet", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              type: "STORE",
+              data: JSON.stringify(packet),
+            }),
+          });
+          if (sentData.ok) {
+            const result = await sentData.json();
+            console.log(result);
+          } else {
+            console.error("send failed:", sentData.statusText);
+          }
+        } catch (error) {
+          console.log(error);
         }
       }
       // console.log(files);
