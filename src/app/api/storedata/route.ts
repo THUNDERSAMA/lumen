@@ -29,30 +29,39 @@ export async function POST(req:NextRequest)
         console.log(gId);
 
         const result = await session.run(`
-        MATCH (p:Patient {g_id: $gId})
-        RETURN p.data AS data`,
-        { gId }
-    );
+        MATCH (p {g_id: $gId})
+        RETURN p.data AS data
+    `, { gId });
 
-
-        if (result.records.length === 0) {
+console.log(JSON.stringify(result));
+        if (result.records[0].get('data')== null) {
 
             const res = await session.run(`
-        MATCH (p:Patient {g_id: $gId})
-SET p.data = [$key]
-RETURN p`,
+            MATCH (p {g_id: $gId})
+            SET p.data = [$key]
+            RETURN p`,
         { gId,key }
     );
-    return NextResponse.json({ message: 'sucessfully stored', code:200 });
+    // MATCH (p:Patient)
+    //         OPTIONAL MATCH (p)-[:HAS_CHILD]->(c:ChildNode {g_id: $gId})
+    //         WITH p, c
+    //         WHERE p.g_id = $gId OR c.g_id IS NOT NULL
+    //         WITH p, COALESCE(c, p) AS node
+    //         SET p.data = [$key]
+    //         RETURN p
+    console.log("here");
+    return NextResponse.json({ message: 'sucessfully stored 0', code:200 ,data:res });
 } else {
             const res = await session.run(`
-            MATCH (p:Patient {g_id: $gId})
-            SET p.data = p.data+[$key]
+            MATCH (p {g_id: $gId})
+            SET p.data = p.data+$key
             RETURN p`,
             { gId,key }
         );
+        console.log("here 1");
+        console.log(JSON.stringify(res));
             //const dataCount = result.records[0].get('dataCount');
-            return NextResponse.json({ message: 'sucessfully stored', code:200 });
+            return NextResponse.json({ message: 'sucessfully stored', code:200,data:res });
         }
     } catch (error) {
         console.error('Error retrieving data count:', error);
