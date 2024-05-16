@@ -30,6 +30,14 @@ const patientModel = mongoose.models.patient || mongoose.model("patient", new Sc
         type:String,
         required:true,
     },
+    graphDB_id:{
+        type:String,
+        required:true,
+    },
+    unique_key:{
+        type:String,
+        required:true
+    },
     auth:{
         type:String,
         required:true,

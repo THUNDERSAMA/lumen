@@ -10,17 +10,17 @@ export async function POST(req:NextRequest)
     try {
         
         const result = await session.run(`
-        MATCH (p:Patient {g_id: $gId})
+        MATCH (p {g_id: $gId})
         RETURN p.data AS data`,
         { gId }
     );
+         console.log(JSON.stringify(result));
 
-
-        if (result.records.length === 0) {
-            return NextResponse.json({ message: 'Data field not created for the patient' });
+        if (result.records[0].get('data')== null) {
+            return NextResponse.json({ message: 'Data field not created for the patient',dataCount:0 });
         } else {
             
-            const dataCount = result.records[0].get('dataCount');
+            const dataCount = result.records[0].get('data');
             return NextResponse.json({ message: 'Number of keys in data field', dataCount });
         }
     } catch (error) {

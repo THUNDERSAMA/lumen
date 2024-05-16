@@ -3,7 +3,7 @@ import type { RootState } from "../store";
 import Cookies from "js-cookie";
 
 export interface UploaddataState {
-  value: String;
+  value: string;
 }
 
 const initialState: UploaddataState = {

@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateByValue } from "../../utils/slices/UploaddataState";
 import type { RootState } from "../../utils/store";
 import { Providers } from "../../Providers";
+import Cookies from "js-cookie";
+import { decrypt } from "@/lib/auth";
 import { set } from "mongoose";
 import ElementBound from "@/app/components/ElementBound";
 
@@ -21,13 +23,34 @@ export default function Upload() {
 }
 function App() {
   const dispatch = useDispatch();
-
+  interface User {
+    a_id: string;
+    firstName: string;
+    lastName: string;
+    m_id: string;
+    phone: number;
+  }
   const [nextClicked, setNextClicked] = useState(false);
 
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
+  const [localValue, setlocalValue] = useState<{ [key: string]: User }>({});
+  const session = Cookies.get("session");
+  async function checking() {
+    if (!session) {
+      // router.push("/home");
+    } else {
+      setlocalValue(await decrypt(session));
+      // console.log(await decrypt(session));
+    }
+  }
 
+  useEffect(() => {
+    checking();
+  });
+  //console.log(localValue);
+  //const firstName = localValue.user?.firstName;
   const [onSelectClick, setOnSelectClick] = useState(false);
   const [inputDisabled, setInputDisabled] = useState(true);
 
@@ -40,10 +63,11 @@ function App() {
       title: title,
       type: type,
       description: description,
+      cookieId: localValue.user?.m_id || " ",
     };
-    console.log(crjson);
+    // console.log(crjson);
     dispatch(updateByValue(JSON.stringify(crjson)));
-  }, [title, type, description, dispatch]);
+  }, [title, type, description, localValue.user?.m_id, dispatch]);
 
   useEffect(() => {
     if (!inputDisabled) {
