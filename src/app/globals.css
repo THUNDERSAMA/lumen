@@ -132,3 +132,48 @@ input[type="number"] {
 .noScroll::-webkit-scrollbar {
   display: none;
 }
+
+.sWitch {
+  position: relative;
+}
+
+.sWitch:after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  /* background-color: rgb(255 255 255 / 1); */
+  /* background-color: red; */
+  aspect-ratio: 1/1;
+  width: 24px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  /* outline: 2px solid #000000; */
+}
+
+.lUmen {
+  position: relative;
+}
+
+.lUmen:before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  background-color: rgb(22 101 52 /1);
+  /* background-color: red; */
+  left: -7px;
+  bottom: 0;
+  height: 32px;
+  width: 5px;
+}
+
+.lUmen:after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  background-color: rgb(22 101 52 /1);
+  /* background-color: red; */
+  left: -7px;
+  bottom: -2px;
+  width: 52.5px;
+  height: 5px;
+}

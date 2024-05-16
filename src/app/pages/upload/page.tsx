@@ -2,11 +2,13 @@
 import Navbar from "@/app/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateByValue } from "../../utils/slices/UploaddataState";
 import type { RootState } from "../../utils/store";
 import { Providers } from "../../Providers";
+import { set } from "mongoose";
+import ElementBound from "@/app/components/ElementBound";
 
 export default function Upload() {
   return (
@@ -26,6 +28,12 @@ function App() {
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
 
+  const [onSelectClick, setOnSelectClick] = useState(false);
+  const [inputDisabled, setInputDisabled] = useState(true);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const selectRef = useRef<HTMLDivElement>(null);
+
   useMemo(() => {
     let crjson = {};
     crjson = {
@@ -36,6 +44,13 @@ function App() {
     console.log(crjson);
     dispatch(updateByValue(JSON.stringify(crjson)));
   }, [title, type, description, dispatch]);
+
+  useEffect(() => {
+    if (!inputDisabled) {
+      inputRef.current?.focus();
+    }
+  }, [inputDisabled]);
+
   return (
     <>
       <Navbar />
@@ -45,7 +60,7 @@ function App() {
           <h2 className="text-center text-5xl font-bold">Prescription</h2>
         </section>
         <section className="">
-          <span
+          {/* <span
             className={`relative w-28 h-16 flex flex-row items-center justify-center bg-purple-50 rounded-full bgSwitch ${
               !nextClicked ? "after:left-1" : "after:left-[calc(100%-3.75rem)]"
             }`}
@@ -65,8 +80,7 @@ function App() {
               2
             </span>
           </span>
-          <br />
-          <br />
+          <br /> */}
           <form
             action=""
             className="relative flex flex-row w-full justify-center"
@@ -79,15 +93,95 @@ function App() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   required
-                  className="w-full p-4 rounded-full border-[1px] border-black bg-white"
+                  className="w-full h-14 p-4 rounded-full border-[1px] border-black bg-white"
                 />
-                <input
+                {/* <input
                   type="text"
                   placeholder="Type"
                   value={type}
                   onChange={(e) => setType(e.target.value)}
                   className="w-full p-4 rounded-full border-[1px] border-black bg-white"
-                />
+                /> */}
+                <div className="relative w-full" ref={selectRef}>
+                  <span
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setOnSelectClick(!onSelectClick);
+                    }}
+                    className="bg-white w-full h-14 p-4 rounded-full border-[1px] border-black flex justify-between items-center gap-2 cursor-pointer"
+                  >
+                    <input
+                      ref={inputRef}
+                      className={`w-full bg-white outline-none relative z-10 ${
+                        inputDisabled ? "pointer-events-none" : ""
+                      }`}
+                      placeholder={
+                        inputDisabled ? "Select Type" : "Mention the Type"
+                      }
+                      type="text"
+                      value={type}
+                      onChange={(e) => setType(e.target.value)}
+                      disabled={inputDisabled}
+                    />
+                    <Image
+                      src={"/back.png"}
+                      height={35}
+                      width={35}
+                      alt="next"
+                      className="invert scanBtn aspect-square -rotate-90"
+                    />
+                  </span>
+                  <ElementBound
+                    onOutsideClick={setOnSelectClick}
+                    extraRef={selectRef}
+                  >
+                    <div
+                      className={`absolute overflow-hidden ${
+                        onSelectClick
+                          ? "h-36 opacity-100 gap-0.5"
+                          : "h-0 opacity-0 gap-0"
+                      } w-1/2 p-1 ml-1 rounded-2xl border-[1px] border-black bg-white flex flex-col justify-between top-16`}
+                    >
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setType("Prescription");
+                          setOnSelectClick(false);
+                          setInputDisabled(true);
+                        }}
+                        className="hover:bg-purple-200 p-2 w-full rounded-xl text-left pl-4"
+                      >
+                        Prescription
+                      </button>
+                      <hr />
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setType("Report");
+                          setOnSelectClick(false);
+                          setInputDisabled(true);
+                        }}
+                        className="hover:bg-purple-200 p-2 w-full rounded-xl text-left pl-4"
+                      >
+                        Report
+                      </button>
+                      <hr />
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setInputDisabled(false);
+                          setOnSelectClick(false);
+                          setType("");
+
+                          // inputRef.current?.focus();
+                        }}
+                        className="hover:bg-purple-200 p-2 w-full rounded-xl text-left pl-4"
+                      >
+                        Other
+                      </button>
+                    </div>
+                  </ElementBound>
+                </div>
                 <button
                   onClick={(e) => {
                     e.preventDefault();

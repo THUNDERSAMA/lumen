@@ -9,9 +9,9 @@ export default function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [scrollValue, setScrollValue] = useState(0);
 
-  function handleOutsideClick(clickedOutside: boolean) {
-    if (clickedOutside) setToggleMenu(false);
-  }
+  // function handleOutsideClick(clickedOutside: boolean) {
+  //   if (clickedOutside) setToggleMenu(false);
+  // }
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -38,7 +38,7 @@ export default function Navbar() {
   if (width <= 840)
     return (
       <>
-        <ElementBound onOutsideClick={handleOutsideClick}>
+        <ElementBound onOutsideClick={setToggleMenu}>
           <section
             className={`fixed z-30 ${
               toggleMenu
@@ -90,10 +90,14 @@ export default function Navbar() {
           borderBottom: `1px solid rgba(0 0 0 / ${scrollValue / 10})`,
         }}
       >
-        <Link href={"/main"} className="font-extrabold text-3xl text-blue-900">
-          R<sub>x</sub>
+        <Link
+          href={"/main"}
+          className="lUmen font-extrabold text-3xl text-green-800"
+        >
+          {/* R<sub>x</sub>
           {width >= 950 && " "}
-          <span className="text-2xl font-black">K{width >= 950 && `EEP`}</span>
+          <span className="text-2xl font-black">K{width >= 950 && `EEP`}</span> */}
+          mn
         </Link>
         <ul className="flex gap-2">
           <Link
@@ -110,6 +114,14 @@ export default function Navbar() {
             className="hover:text-orange-700"
           >
             Settings
+          </Link>
+          <span className="text-slate-300">|</span>
+          <Link
+            href={""}
+            title="Account & settings"
+            className="hover:text-orange-700"
+          >
+            Profile
           </Link>
         </ul>
         <input
