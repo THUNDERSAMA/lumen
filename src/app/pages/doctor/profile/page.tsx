@@ -1,19 +1,13 @@
 "use client";
 import { Providers } from "@/app/Providers";
-import Translate from "@/app/Translate";
-import { getTranslation } from "@/app/utils/TranslationUtils";
 import { decrypt } from "@/lib/auth";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import router from "next/router";
 import Cookies from "js-cookie";
-import { MouseEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import KeyOffIcon from "@mui/icons-material/KeyOff";
 import KeyIcon from "@mui/icons-material/Key";
 import Typography, { TypographyProps } from "@mui/material/Typography";
 import Skeleton from "@mui/material/Skeleton";
-import Grid from "@mui/material/Grid";
 
 export default function DoctorProfile() {
   return (

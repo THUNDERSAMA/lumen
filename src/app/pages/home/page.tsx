@@ -110,6 +110,12 @@ function App() {
         >
           <Translate>Profile</Translate>
         </Link>
+        <Link
+          href={`/medicine`}
+          className="bg-transparent text-white text-center text-xs w-full hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
+        >
+          <Translate>Medicine</Translate>
+        </Link>
       </div>
       <Dropdown items={items} checked={isChecked} onSelect={handleSelect} />
     </main>
