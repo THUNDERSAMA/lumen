@@ -4,12 +4,26 @@ import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
 import { Preview, PreviewAll } from "@/app/components/Preview";
 import { set } from "mongoose";
+import { useSelector, useDispatch } from "react-redux";
+import { updateByValue } from "../../utils/slices/UploaddataState";
+import { RootState } from "@/app/utils/store";
+import { Providers } from "../../Providers";
+import { extractDoctorInfo } from "@/app/utils/nlp";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 interface FileWithPreview {
   file: File;
   previewUrl: string;
 }
-function CameraCapture() {
+function App() {
+  // interface UploaddataState {
+  //   title: string;
+  // }
+  const formPrevdata = useSelector(
+    (state: RootState) => state.Uploaddata.value
+  );
+
   const [error, setError] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [enablePreview, setEnablePreview] = useState<FileWithPreview | null>(
@@ -17,7 +31,7 @@ function CameraCapture() {
   );
   const [isPreviewAll, setIsPreviewAll] = useState<boolean>(false);
   const [enableExtendedMenu, setEnableExtendedMenu] = useState<boolean>(false);
-
+  const [open, setOpen] = useState(false);
   const handlePreview = (file: FileWithPreview) => {
     setEnablePreview(file);
   };
@@ -100,10 +114,181 @@ function CameraCapture() {
   //     console.log(files);
   //     setError(null);
   //   };
-
-  const handleSubmit = () => {
+  interface Packet {
+    Datafiles: any[];
+    metaText: String;
+    uploadType: String;
+    title: any;
+    description: any;
+    type: any;
+    doctor: String;
+    m_id: String;
+    metaRaw: String;
+  }
+  const handleSubmit = async () => {
     if (files) {
-      // upload to ipfs
+      // upload to ipf
+      if (
+        files[0].file.type === "image/png" ||
+        files[0].file.type == "image/jpeg"
+      ) {
+        let base64imgCode = "";
+        if (files[0].file.type === "image/jpeg") {
+          base64imgCode = files[0].previewUrl.substring(
+            23,
+            files[0].previewUrl.length
+          );
+        } else {
+          base64imgCode = files[0].previewUrl.substring(
+            22,
+            files[0].previewUrl.length
+          );
+        }
+        try {
+          setOpen(true);
+          //console.log(base64imgCode);
+          const metaResponse = await fetch(
+            "http://127.0.0.1:5000/processimage",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                imagecode: base64imgCode,
+              }),
+            }
+          );
+          if (!metaResponse.ok) {
+            throw new Error("Failed to get");
+          } else {
+            // const meta = await metaResponse.json();
+            const formPrev = JSON.parse(formPrevdata);
+            console.log(formPrev.title);
+
+            let packet: Packet = {
+              metaText: "",
+              Datafiles: [],
+              uploadType: "image",
+              title: formPrev.title || "",
+              description: formPrev.description || "",
+              type: formPrev.type || "",
+              doctor: "null",
+              m_id: formPrev.cookieId || "m_id fetched from cookie",
+              metaRaw: "",
+            };
+
+            const metaText = await metaResponse.text();
+            //console.log(metaText);
+            packet.metaRaw = metaText;
+            const extractedInfo = await extractDoctorInfo(metaText);
+            packet.metaText = extractedInfo || "";
+            console.log(extractedInfo);
+            let formData = new FormData();
+            files.forEach((filec) => {
+              formData.append("file", filec.file);
+            });
+            const respCnv = await fetch("http://127.0.0.1:5000/cnvimg", {
+              method: "POST",
+              body: formData,
+            });
+            if (respCnv.ok) {
+              const result = await respCnv.json();
+              //console.log(result.data.data[0]);
+              result.data.data.forEach((element: any) => {
+                packet.Datafiles.push(element);
+                //console.log(element);
+              });
+              console.log("rec successful:", result);
+            } else {
+              console.error("rec failed:", respCnv.statusText);
+            }
+            console.log(packet);
+            const sentData = await fetch("api/wallet", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                type: "STORE",
+                data: JSON.stringify(packet),
+              }),
+            });
+            if (sentData.ok) {
+              const result = await sentData.json();
+              console.log(result);
+              if (result.status == "success") {
+                setOpen(false);
+              }
+            } else {
+              console.error("send failed:", sentData.statusText);
+            }
+          }
+        } catch (error) {
+          console.log(error);
+          console.log(" python script not properly loaded");
+        }
+      } else {
+        try {
+          setOpen(true);
+          const formPrev = JSON.parse(formPrevdata);
+          console.log(formPrev.title);
+          let packet: Packet = {
+            metaText: "",
+            Datafiles: [],
+            uploadType: "pdf",
+            title: formPrev.title || "",
+            description: formPrev.description || "",
+            type: formPrev.type || "",
+            doctor: "null",
+            m_id: formPrev.cookieId || "m_id fetched from cookie",
+            metaRaw: "",
+          };
+          let formData = new FormData();
+          files.forEach((filec) => {
+            formData.append("file", filec.file);
+          });
+          const respCnv = await fetch("http://127.0.0.1:5000/cnvimg", {
+            method: "POST",
+            body: formData,
+          });
+          if (respCnv.ok) {
+            const result = await respCnv.json();
+            //console.log(result.data.data[0]);
+            result.data.data.forEach((element: any) => {
+              packet.Datafiles.push(element);
+              //console.log(element);
+            });
+            console.log("rec successful:", result);
+          } else {
+            console.error("rec failed:", respCnv.statusText);
+          }
+          console.log(packet);
+          const sentData = await fetch("api/wallet", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              type: "STORE",
+              data: JSON.stringify(packet),
+            }),
+          });
+          if (sentData.ok) {
+            const result = await sentData.json();
+            console.log(result);
+            if (result.status == "success") {
+              setOpen(false);
+            }
+          } else {
+            console.error("send failed:", sentData.statusText);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      // console.log(files);
+      //console.log(formPrevdata);
     }
   };
 
@@ -134,6 +319,12 @@ function CameraCapture() {
           //       : { display: "flex" }
           //   }
         >
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
           <section className="w-96 max-w-[90vw] flex flex-col items-start">
             <h1 className="text-center text-xl font-normal">Upload</h1>
             <h2 className="text-center text-5xl font-bold">Prescription</h2>
@@ -342,5 +533,13 @@ function CameraCapture() {
     </>
   );
 }
-
-export default CameraCapture;
+export default function CameraCapture() {
+  return (
+    <>
+      <Providers>
+        <App />
+      </Providers>
+    </>
+  );
+}
+//export default ;

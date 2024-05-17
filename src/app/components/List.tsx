@@ -21,6 +21,12 @@ export default function List({ list, code }: { list: any[]; code: string }) {
         secondary: "text-green-700",
         tertiary: "text-green-400",
       });
+    } else if (code === "pat") {
+      setColor({
+        primary: "text-blue-900",
+        secondary: "text-blue-700",
+        tertiary: "text-blue-400",
+      });
     } else {
       setColor({
         primary: "text-orange-900",

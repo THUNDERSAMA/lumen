@@ -58,32 +58,47 @@ function App() {
 
   return (
     <main
-      className={`${user.primaryColor} h-svh w-screen flex gap-10 flex-col justify-center items-center text-white`}
+      className={`
+      mainMain
+      h-svh w-screen flex gap-10 flex-col justify-center items-center text-black`}
     >
-      <h1 className=" font-bold text-6xl drop-shadow-xl">
+      {/* <main
+      className={`
+      ${user.primaryColor} 
+      h-svh w-screen flex gap-10 flex-col justify-center items-center text-white`}
+    > */}
+      <h1 className="font-bold text-7xl drop-shadow-xl">
         <Translate>LUMEN</Translate>
       </h1>
 
       <form>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-4">
           <label
             htmlFor="tog"
-            onClick={() => setIsChecked(true)}
+            onClick={() => setIsChecked(false)}
             className="leading-none select-none cursor-pointer"
           >
             <Translate>Doctor</Translate>
           </label>
-          <Switch.Root
+          {/* <Switch.Root
             checked={isChecked}
             onCheckedChange={(checked) => setIsChecked(checked)}
             className="w-[42px] h-[25px] rounded-full relative shadow-[0_2px_10px bg-black outline-none cursor-pointer"
             id="tog"
           >
             <Switch.Thumb className="block w-[21px] h-[21px] bg-white rounded-full transition-transform duration-100 translate-x-0.5 will-change-transform data-[state=checked]:translate-x-[19px]" />
-          </Switch.Root>
+          </Switch.Root> */}
+          <div
+            onClick={() => setIsChecked(!isChecked)}
+            className={`sWitch h-8 w-12 outline outline-2 outline-black rounded-full cursor-pointer flex items-center ${
+              isChecked
+                ? "after:bg-purple-700 after:left-5"
+                : "after:bg-orange-700 after:left-1"
+            }`}
+          />
           <label
             htmlFor="tog"
-            onClick={() => setIsChecked(false)}
+            onClick={() => setIsChecked(true)}
             className="leading-none select-none cursor-pointer"
           >
             <Translate>Patient</Translate>
@@ -91,31 +106,25 @@ function App() {
         </div>
       </form>
 
-      <div className=" w-40 flex flex-col gap-2 justify-center items-center">
+      <div className=" w-40 flex flex-col gap-1 justify-center items-center">
         <Link
           href={`/${user.userType}/register`}
-          className="bg-transparent text-white text-center text-xs w-full hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
+          className="bg-white hover:bg-black hover:text-white text-center w-full text-black font-semibold p-[10px] rounded-full border-[1px] border-black"
         >
           <Translate>Register</Translate>
         </Link>
         <Link
           href={`/${user.userType}/login`}
-          className="bg-transparent text-white text-center text-xs w-full hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
+          className="bg-white hover:bg-black hover:text-white text-center w-full text-black font-semibold p-[10px] rounded-full border-[1px] border-black"
         >
           <Translate>Log In</Translate>
         </Link>
-        <Link
+        {/* <Link
           href={`/${user.userType}/profile`}
-          className="bg-transparent text-white text-center text-xs w-full hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
+          className="bg-transparent text-center w-full text-black font-semibold p-[10px] rounded-full border-[1px] border-black"
         >
           <Translate>Profile</Translate>
-        </Link>
-        <Link
-          href={`/medicine`}
-          className="bg-transparent text-white text-center text-xs w-full hover:text-black hover:bg-white font-semibold p-[10px] rounded-full border-2 border-white"
-        >
-          <Translate>Medicine</Translate>
-        </Link>
+        </Link> */}
       </div>
       <Dropdown items={items} checked={isChecked} onSelect={handleSelect} />
     </main>

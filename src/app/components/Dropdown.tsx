@@ -38,35 +38,44 @@ export default function Dropdown({ items, checked, onSelect }: any) {
   };
 
   return (
-    <div className="relative inline-block" ref={dropdownRef}>
+    <div
+      className={`absolute top-5 right-5 bg-white ${
+        isOpen ? "h-[178px]" : "h-10"
+      } inline-block border-[1px] border-black rounded-2xl overflow-hidden transition-all opacity-80`}
+      ref={dropdownRef}
+    >
       <button
-        className="w-20 p-2 font-semibold bg-white text-xs rounded-full focus:outline-none text-black cursor-pointer inline-flex justify-center items-center gap-1"
+        className="w-24 h-10 p-3 font-semibold bg-white text-xs focus:outline-none text-black cursor-pointer inline-flex justify-center items-center gap-1"
         onClick={() => setIsOpen(!isOpen)}
       >
+        {isOpen ? (
+          <Image src="/check_icon.svg" height={7} width={7} alt="down button" />
+        ) : (
+          <Image
+            src="/down_icon.svg"
+            height={10}
+            width={10}
+            alt="down button"
+          />
+        )}
         <Translate>{selectedItem.label}</Translate>
-        <Image src="/down_icon.svg" height={10} width={10} alt="down button" />
       </button>
       {isOpen && (
-        <ul className="absolute bottom-[-60px] left-0 w-20 p-1 bg-white text-black shadow rounded-2xl outline outline-2 outline-black select-none max-h-80 overflow-y-scroll ">
-          {items.map((item: any) => (
-            <li
-              key={item.value}
-              onClick={() => handleItemClick(item)}
-              className={`${
-                checked ? "hover:bg-purple-200" : "hover:bg-orange-200"
-              } cursor-pointer text-center text-xs font-semibold px-4 py-2 rounded-2xl flex justify-center items-center gap-1`}
-            >
-              {selectedItem.value === item.value && (
-                <Image
-                  src="/check_icon.svg"
-                  height={7}
-                  width={7}
-                  alt="down button"
-                />
-              )}
-              {item.label}
-            </li>
-          ))}
+        <ul className="relative top-0 left-0 w-24 p-1 bg-transparent text-black shadow select-none max-h-80">
+          {items.map((item: any) => {
+            if (selectedItem.value !== item.value)
+              return (
+                <li
+                  key={item.value}
+                  onClick={() => handleItemClick(item)}
+                  className={`${
+                    checked ? "hover:bg-purple-200" : "hover:bg-orange-200"
+                  } cursor-pointer text-center text-xs font-semibold px-4 py-2 rounded-xl flex justify-center items-center gap-1`}
+                >
+                  {item.label}
+                </li>
+              );
+          })}
         </ul>
       )}
     </div>

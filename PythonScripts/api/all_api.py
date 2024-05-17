@@ -7,9 +7,10 @@ from PharmeasyScrap import PriceScraper
 from pdf_convert import convrt
 from io import BytesIO
 import json
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 img=ImageVerifier()
 img_p=ImageProcessor()
 pscrp=PriceScraper()
@@ -21,15 +22,15 @@ def facematch():
 
 @app.route('/cnvimg', methods=['POST'])
 def cnvimg():
-   file = request.files['file']
-   file_data = file.read()
+   file = request.files.getlist('file')
+   #file_data = file.read()
    #uploaded_file = request.files.get('file')
-   result= cnv.cnvrt(file_data)
+   result= cnv.cnvrt(file)
    with open('datas.txt', 'w') as f:
        f.write(json.dumps(result))
    result_dict = json.loads(json.dumps(result))
    if result_dict['message'] == 'success':
-       return jsonify({'message': 'File processed successfully','data':result_dict['data']}), 200
+       return jsonify({'message': 'File processed successfully','data':result}), 200
    else:
        return jsonify({'error': 'File processing failed','return':result}), 500
 

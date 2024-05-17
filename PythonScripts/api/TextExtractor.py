@@ -34,8 +34,6 @@ class ImageProcessor:
         resized_image = cv2.resize(image, (target_width, target_height))
 
         edges = self.preprocess_image(resized_image)
-        cv2.imshow('image', edges)
-        cv2.waitKey(0)
 
         roi_height = int(resized_image.shape[0] * 0.2)
         roi = edges[:roi_height, :]
@@ -57,10 +55,6 @@ class ImageProcessor:
 
         cropped_image = resized_image[min_y:max_y, :]
 
-        if not cropped_image.size == 0:
-           cv2.imshow('imrage', cropped_image)
-           cv2.waitKey(0)
-
         return cropped_image
 
     def process_image(self,data):
@@ -79,7 +73,7 @@ class ImageProcessor:
         invert = 255 - opening
 
         text = pytesseract.image_to_string(invert, lang='eng', config='--psm 6')
-
-        return jsonify({'text': text})
+        print(text)
+        return text
 
 

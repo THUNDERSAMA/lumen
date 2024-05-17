@@ -41,14 +41,15 @@ export async function POST(request:any) {
 
 
 
-async function storeData(data: string | URL) {
+async function storeData(data: any) {
     try {
     //  { pinataApiKey: 'a4afa96ba5007f955324', pinataSecretApiKey: 'c3d497f7df8b265c1d862897fb9632d4d53a905d1ba8d1eca48376747e80408b' }
 const pinata = new pinataSDK({ pinataApiKey: 'a4afa96ba5007f955324', pinataSecretApiKey: 'c3d497f7df8b265c1d862897fb9632d4d53a905d1ba8d1eca48376747e80408b' });
-const readableStreamForFile = fs.createReadStream(data);
+//const readableStreamForFile = fs.createReadStream(data);
+const dataJson=JSON.parse(data);
 const options = {
     pinataMetadata: {
-        name: "ID2546",
+        name: dataJson.m_id || "mid not fetched",
         keyvalues: {
             customKey: 'customValue',
             customKey2: 'customValue2'
@@ -58,10 +59,53 @@ const options = {
         cidVersion: 0
     }
 };
-const res = await pinata.pinFileToIPFS(readableStreamForFile, options)
-console.log(res)
-    
-      return { status: 'success', message: 'success storing data' ,transaction:res};
+
+const res = await pinata.pinJSONToIPFS(dataJson, options)
+//console.log(res)
+try {
+    const resp=await fetch("http://localhost:3000/api/storedata",{
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json",
+     },
+     body: JSON.stringify({
+       key: res.IpfsHash,
+       m_id:dataJson.m_id
+     }),
+    }); 
+    if(resp.ok)
+    {
+        const resultgot=await resp.json();
+        console.log(resultgot);
+        const updRec=await fetch("http://localhost:3000/api/record",{
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              type: "P",
+              mid:dataJson.m_id,
+              data:""
+            }),
+           }); 
+           if(updRec.ok)
+           {
+            const resultgot=await updRec.json();
+        console.log(resultgot);
+            return { status: 'success', message: 'success storing data' ,transaction:res};
+           }  
+           else{
+            return { status: 'fail1', message: ' storing data' ,transaction:res};
+           }
+    }
+    // const user=await resp.json();
+    // gId=user.data.graphDB_id;
+    return { status: 'fail2', message: ' storing data' ,transaction:res};
+} catch (error) {
+    console.log(error);
+    return { status: 'fail3', message: error};
+}
+      
       
 }catch (error) {
   console.error("Data storage error:", error);
