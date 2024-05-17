@@ -117,7 +117,7 @@ export default function Navbar() {
           </Link>
           <span className="text-slate-300">|</span>
           <Link
-            href={""}
+            href={"profile"}
             title="Account & settings"
             className="hover:text-orange-700"
           >
