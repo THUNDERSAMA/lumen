@@ -9,6 +9,8 @@ import { updateByValue } from "../../utils/slices/UploaddataState";
 import { RootState } from "@/app/utils/store";
 import { Providers } from "../../Providers";
 import { extractDoctorInfo } from "@/app/utils/nlp";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 interface FileWithPreview {
   file: File;
@@ -29,7 +31,7 @@ function App() {
   );
   const [isPreviewAll, setIsPreviewAll] = useState<boolean>(false);
   const [enableExtendedMenu, setEnableExtendedMenu] = useState<boolean>(false);
-
+  const [open, setOpen] = useState(false);
   const handlePreview = (file: FileWithPreview) => {
     setEnablePreview(file);
   };
@@ -143,6 +145,7 @@ function App() {
           );
         }
         try {
+          setOpen(true);
           //console.log(base64imgCode);
           const metaResponse = await fetch(
             "http://127.0.0.1:5000/processimage",
@@ -214,6 +217,9 @@ function App() {
             if (sentData.ok) {
               const result = await sentData.json();
               console.log(result);
+              if (result.status == "success") {
+                setOpen(false);
+              }
             } else {
               console.error("send failed:", sentData.statusText);
             }
@@ -224,6 +230,7 @@ function App() {
         }
       } else {
         try {
+          setOpen(true);
           const formPrev = JSON.parse(formPrevdata);
           console.log(formPrev.title);
           let packet: Packet = {
@@ -270,6 +277,9 @@ function App() {
           if (sentData.ok) {
             const result = await sentData.json();
             console.log(result);
+            if (result.status == "success") {
+              setOpen(false);
+            }
           } else {
             console.error("send failed:", sentData.statusText);
           }
@@ -309,6 +319,12 @@ function App() {
           //       : { display: "flex" }
           //   }
         >
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
           <section className="w-96 max-w-[90vw] flex flex-col items-start">
             <h1 className="text-center text-xl font-normal">Upload</h1>
             <h2 className="text-center text-5xl font-bold">Prescription</h2>
