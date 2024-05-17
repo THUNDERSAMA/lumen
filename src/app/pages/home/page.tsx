@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { use, useEffect, useState } from "react";
 import * as Switch from "@radix-ui/react-switch";
 import { getTranslation } from "../../utils/TranslationUtils";
@@ -106,18 +107,32 @@ function App() {
         </div>
       </form>
 
-      <div className=" w-40 flex flex-col gap-1 justify-center items-center">
+      <div className="w-fit flex flex-col justify-center items-center">
         <Link
           href={`/${user.userType}/register`}
-          className="bg-white hover:bg-black hover:text-white text-center w-full text-black font-semibold p-[10px] rounded-full border-[1px] border-black"
+          className="relative flex items-center justify-center bg-white hover:bg-black hover:text-white text-center w-full text-black font-semibold p-3 px-10 rounded-t-3xl border-[1px] border-black border-b-0"
         >
           <Translate>Register</Translate>
+          <Image
+            src="/arrow.png"
+            alt="arrow"
+            width={16}
+            height={16}
+            className="invert rotate-180 absolute right-3"
+          />
         </Link>
         <Link
           href={`/${user.userType}/login`}
-          className="bg-white hover:bg-black hover:text-white text-center w-full text-black font-semibold p-[10px] rounded-full border-[1px] border-black"
+          className="relative flex items-center justify-center bg-white hover:bg-black hover:text-white text-center w-full text-black font-semibold p-3 rounded-b-3xl border-[1px] border-black"
         >
           <Translate>Log In</Translate>
+          <Image
+            src="/arrow.png"
+            alt="arrow"
+            width={16}
+            height={16}
+            className="invert rotate-180 absolute right-3"
+          />
         </Link>
         {/* <Link
           href={`/${user.userType}/profile`}

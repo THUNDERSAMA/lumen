@@ -368,7 +368,7 @@ export default function Main() {
         </>
       ) : (
         <main
-          className={`relative mainMain max-h-screen w-screen flex flex-row ${
+          className={`relative mainMain h-screen w-screen flex flex-row ${
             onTileClick ? "gap-4" : ""
           } py-10 px-28`}
         >
@@ -401,7 +401,7 @@ export default function Main() {
                 className="absolute z-20 bottom-[-60px] right-[10px] rotate-[256deg] pointer-events-none"
               />
             </div>
-            <div className="relative flex flex-1 bg-red-300 text-red-950 rounded-2xl overflow-hidden">
+            <div className="relative flex flex-1 h-full bg-red-300 text-red-950 rounded-2xl overflow-hidden">
               <button
                 onClick={() => setOnTileClick("pre")}
                 className="w-full h-full"
@@ -419,7 +419,7 @@ export default function Main() {
                 />
               </button>
             </div>
-            <div className="flex-1 flex flex-row gap-4">
+            <div className="flex-1 h-full flex flex-row gap-4">
               <button
                 onClick={() => setOnTileClick("doc")}
                 className="relative flex-1 bg-green-300 text-green-950 rounded-2xl overflow-hidden"

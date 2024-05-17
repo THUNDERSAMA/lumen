@@ -14,10 +14,9 @@ html {
 body {
   position: relative;
   overflow-x: hidden;
-}
-.mainMain {
   min-height: 100svh;
   background: linear-gradient(#ffffffea, #ffffffea), url("/main_bg_2.jpg");
+  /* background: linear-gradient(#ffffff1a, #ffffff1a), url("/main_bg_2.jpg"); */
   background-color: #fff;
   background-position: center;
   background-repeat: no-repeat;

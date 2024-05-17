@@ -419,10 +419,10 @@ function App() {
             </p>
           )}
           {files.length ? (
-            <section className="flex flex-col items-center justify-center w-96 max-w-[90%]">
+            <section className="flex flex-col items-center justify-center w-full max-w-[90%]">
               {files[0].file.type.startsWith("image/") && (
                 <>
-                  <div className="gap-2 justify-content-center grid grid-cols-2 place-content-center w-full">
+                  <div className="gap-2 justify-content-center grid mobile:grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-4 place-content-center w-full">
                     {files.map((fileObj, index) => (
                       <div
                         key={index}
@@ -506,7 +506,7 @@ function App() {
               <button
                 onClick={handleSubmit}
                 disabled={files.length === 0}
-                className="w-full mt-8 p-4 px-6 rounded-xl border-2 border-dashed border-green-600 text-green-600 font-semibold bg-white"
+                className="w-full mt-8 p-4 px-6 rounded-xl border-2 border-dashed hover:border-solid border-green-600 text-green-600 font-semibold bg-white hover:bg-green-600 hover:text-white max-w-80"
               >
                 Submit
               </button>
