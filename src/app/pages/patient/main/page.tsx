@@ -8,6 +8,8 @@ import Cookies from "js-cookie";
 import { useCookies } from "next-client-cookies";
 import Navbar from "@/app/components/Navbar";
 import List from "@/app/components/List";
+import io from "Socket.IO-client";
+let socket: any;
 
 export default function Main() {
   const router = useRouter();
@@ -201,8 +203,23 @@ export default function Main() {
   } else {
     // console.log("First name not found in localValue");
   }
-
+  const mid = localValue.user?.m_id;
   //console.log(firstName);
+  useEffect(() => {
+    const socketInitializer = async () => {
+      socket = io("http://localhost:3001/");
+      //console.log(socket);
+      socket.on("connect", () => {
+        console.log("connected");
+      });
+
+      console.log(localValue.user?.m_id);
+      socket.on(localValue.user?.m_id, (msg: any) => {
+        console.log("hi recieving", msg);
+      });
+    };
+    socketInitializer();
+  }, [mid]);
 
   useEffect(() => {
     const handleResize = () => setIsMobileWidth(window.innerWidth <= 840);
@@ -372,13 +389,13 @@ export default function Main() {
             onTileClick ? "gap-4" : ""
           } py-10 px-28`}
         >
-          <Image
+          {/* <Image
             src={"/joker.png"}
             height={500}
             width={500}
             alt="prescriptions"
             className="rotate"
-          />
+          /> */}
           <section className="w-[calc(50%-0.5rem)] flex-1 flex flex-col gap-4 mt-12 text-black text-opacity-90">
             <div className="relative flex flex-col items-start gap-4 ">
               <div className="relative flex flex-col m-10 mx-2">

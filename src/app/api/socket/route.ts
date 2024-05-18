@@ -1,11 +1,24 @@
-import { createServer } from "http";
-import { Server } from "socket.io";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { Server as HTTPServer } from 'http';
+import { Server as SocketIOServer } from 'socket.io';
 
-const httpServer = createServer();
-const io = new Server(httpServer, { /* options */ });
+type NextApiResponseWithSocket = NextApiResponse & {
+  socket: {
+    server: HTTPServer & {
+      io?: SocketIOServer;
+    };
+  };
+};
 
-io.on("connection", (socket) => {
-  // ...
-});
+const handler = (req: NextApiRequest, res: NextApiResponseWithSocket) => {
+  if (!res.socket.server.io) {
+    console.log('Socket is initializing');
+    const io = new SocketIOServer(res.socket.server);
+    res.socket.server.io = io;
+  } else {
+    console.log('Socket is already running');
+  }
+  res.end();
+};
 
-httpServer.listen(3000);
+export default handler;
