@@ -8,6 +8,8 @@ import Cookies from "js-cookie";
 import { useCookies } from "next-client-cookies";
 import Navbar from "@/app/components/Navbar";
 import List from "@/app/components/List";
+import io from "socket.IO-client";
+let socket: any;
 
 export default function Main() {
   const router = useRouter();
@@ -201,8 +203,23 @@ export default function Main() {
   } else {
     // console.log("First name not found in localValue");
   }
-
+  const mid = localValue.user?.m_id;
   //console.log(firstName);
+  useEffect(() => {
+    const socketInitializer = async () => {
+      socket = io("http://localhost:3001/");
+      //console.log(socket);
+      socket.on("connect", () => {
+        console.log("connected");
+      });
+
+      console.log(localValue.user?.m_id);
+      socket.on(localValue.user?.m_id, (msg: any) => {
+        console.log("hi recieving", msg);
+      });
+    };
+    socketInitializer();
+  }, [mid]);
 
   useEffect(() => {
     const handleResize = () => setIsMobileWidth(window.innerWidth <= 840);
