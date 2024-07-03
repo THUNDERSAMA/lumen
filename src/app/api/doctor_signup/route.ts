@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import neo4j from 'neo4j-driver';
 import {SignJWT,jwtVerify} from 'jose'
 import { cookies } from "next/headers";
-const neo4jDriver = neo4j.driver('neo4j+s://45c4756c.databases.neo4j.io', neo4j.auth.basic('neo4j', 'cJuC379i53EG4aYz10x7LXjBJKAmhupuNd_l8xJv9pg'));
+const neo4jDriver = neo4j.driver('neo4j+s://23bdc3c3.databases.neo4j.io', neo4j.auth.basic('neo4j', 'T5lwo9j-acM7K8ry04pEd5IM50bZdWec4uLQZVSDEsM'));
 const secretKey = "secret";
 const key = new TextEncoder().encode(secretKey);
 export async function encrypt(payload:any) {
