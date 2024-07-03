@@ -176,22 +176,3 @@ input[type="number"] {
   width: 52.5px;
   height: 5px;
 }
-
-
-/* jokingggg */
-.rotate {
-  animation: rotation 8s infinite linear;
-  position: absolute;
-    z-index: 999;
-    margin: 0 auto;
-    width: 40%;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}

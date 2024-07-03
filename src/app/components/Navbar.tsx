@@ -103,7 +103,7 @@ export default function Navbar() {
           <Link
             href={""}
             title="Compare medicines and buy them at lowest cost"
-            className="hover:text-orange-700 font-semibold"
+            className="hover:text-orange-700"
           >
             R<sub>x</sub>Meds
           </Link>

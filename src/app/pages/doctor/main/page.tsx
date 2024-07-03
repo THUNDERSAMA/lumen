@@ -321,7 +321,7 @@ export default function Main() {
         </>
       ) : (
         <main
-          className={`relative mainMain max-h-screen w-screen flex flex-row ${
+          className={`relative mainMain h-screen w-screen flex flex-row ${
             onTileClick ? "gap-4" : ""
           } py-10 px-28`}
         >

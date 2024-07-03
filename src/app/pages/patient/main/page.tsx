@@ -389,13 +389,6 @@ export default function Main() {
             onTileClick ? "gap-4" : ""
           } py-10 px-28`}
         >
-          {/* <Image
-            src={"/joker.png"}
-            height={500}
-            width={500}
-            alt="prescriptions"
-            className="rotate"
-          /> */}
           <section className="w-[calc(50%-0.5rem)] flex-1 flex flex-col gap-4 mt-12 text-black text-opacity-90">
             <div className="relative flex flex-col items-start gap-4 ">
               <div className="relative flex flex-col m-10 mx-2">

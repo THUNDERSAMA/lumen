@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function List({ list, code }: { list: any[]; code: string }) {
   const [color, setColor] = useState<{
@@ -35,13 +36,31 @@ export default function List({ list, code }: { list: any[]; code: string }) {
       });
     }
   }, [code]);
+
   return (
-    <div className="flex flex-col w-full h-full p-2 pt-12 overflow-auto noScroll">
+    <div
+      className="flex flex-col w-full h-full p-2 pt-12 overflow-auto noScroll"
+      style={code == "pre" ? { gap: 8 } : undefined}
+    >
       {list.map((item, index) => (
         <Link
           href={""}
           key={index}
-          className="flex flex-col items-start justify-between gap-2 p-4 px-6 w-full rounded-lg odd:bg-white odd:bg-opacity-30"
+          className="flex flex-col items-start justify-end gap-2 p-4 px-6 w-full rounded-xl odd:bg-white odd:bg-opacity-30"
+          style={
+            code == "pre" || item.image
+              ? {
+                  background: `linear-gradient(rgb(255 255 255 / 0) 50%, rgb(254 202 202 / 0.99) 70%), url(${
+                    item.image || "/temp_prescription.png"
+                  })`,
+                  backgroundAttachment: "scroll",
+                  backgroundPosition: "top",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  minHeight: 300,
+                }
+              : undefined
+          }
         >
           <span className={`font-bold text-2xl ${color.primary}`}>
             {item.name}
