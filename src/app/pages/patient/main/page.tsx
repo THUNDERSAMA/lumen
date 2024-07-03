@@ -8,7 +8,6 @@ import Cookies from "js-cookie";
 import { useCookies } from "next-client-cookies";
 import Navbar from "@/app/components/Navbar";
 import List from "@/app/components/List";
-// import io from "socket.IO-client";
 let socket: any;
 
 export default function Main() {
