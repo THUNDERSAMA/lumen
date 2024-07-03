@@ -207,7 +207,7 @@ export default function Main() {
   //console.log(firstName);
   useEffect(() => {
     const socketInitializer = async () => {
-      socket = io("http://localhost:3001/");
+      socket = io("https://gilded-lollipop-bbc9fd.netlify.app:3000/");
       //console.log(socket);
       socket.on("connect", () => {
         console.log("connected");

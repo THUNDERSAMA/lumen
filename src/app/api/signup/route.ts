@@ -6,7 +6,7 @@ import neo4j from 'neo4j-driver';
 
 
 
-const neo4jDriver = neo4j.driver('neo4j+s://78208b1f.databases.neo4j.io', neo4j.auth.basic('neo4j', '7Ip5WHgdheXTisuYy9VB959wyzzbXzYkuTjCbQWviN8'));
+const neo4jDriver = neo4j.driver('neo4j+s://23bdc3c3.databases.neo4j.io', neo4j.auth.basic('neo4j', 'T5lwo9j-acM7K8ry04pEd5IM50bZdWec4uLQZVSDEsM'));
 
 
 

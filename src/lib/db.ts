@@ -16,9 +16,9 @@ async function connectToDatabase(uri: string): Promise<void> {
 
 
 // async function connectToNeo4j(uri: string): Promise<void> {
-//     const URI = "neo4j+s://78208b1f.databases.neo4j.io";
+//     const URI = "neo4j+s://23bdc3c3.databases.neo4j.io";
 //     const USER = "neo4j";
-//     const PASSWORD = "7Ip5WHgdheXTisuYy9VB959wyzzbXzYkuTjCbQWviN8";
+//     const PASSWORD = "T5lwo9j-acM7K8ry04pEd5IM50bZdWec4uLQZVSDEsM";
 //     let driver;
   
 //     try {
@@ -38,10 +38,10 @@ async function connectToDatabase(uri: string): Promise<void> {
 // }
 
 async function connectToNeo4j(uri: string): Promise<void> {
-    // const URI = "neo4j+s://78208b1f.databases.neo4j.io";
+    // const URI = "neo4j+s://23bdc3c3.databases.neo4j.io";
     let URI: string = process.env.NEO4J_URI as string;
     const USER = "neo4j";
-    const PASSWORD = "7Ip5WHgdheXTisuYy9VB959wyzzbXzYkuTjCbQWviN8";
+    const PASSWORD = "T5lwo9j-acM7K8ry04pEd5IM50bZdWec4uLQZVSDEsM";
     let driver = null; // Initialize with null
   
     try {
