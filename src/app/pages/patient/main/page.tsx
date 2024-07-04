@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 import { useCookies } from "next-client-cookies";
 import Navbar from "@/app/components/Navbar";
 import List from "@/app/components/List";
+import Alert from "@/app/components/Alert";
 let socket: any;
 
 export default function Main() {
@@ -170,6 +171,10 @@ export default function Main() {
     phone: number;
   }
 
+  const [alert, setAlert] = useState(
+    "lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto numquam laudantium nostrum dolorem tenetur. (note from dev: click to dismiss)"
+  );
+
   useEffect(() => {
     const date = new Date();
     const hours = date.getHours();
@@ -227,6 +232,14 @@ export default function Main() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    if (isMobileWidth == false) {
+      setOnTileClick("pre");
+    } else {
+      setOnTileClick(null);
+    }
+  }, [isMobileWidth]);
+
   if (isMobileWidth == null || greeting == "")
     return (
       <div className="h-screen grid place-items-center text-center">
@@ -237,6 +250,7 @@ export default function Main() {
   return (
     <>
       <Navbar />
+      <Alert message={alert} setMessage={setAlert} />
       {isMobileWidth ? (
         <>
           <main
