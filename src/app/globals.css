@@ -28,6 +28,10 @@ ul::-webkit-scrollbar {
   display: none;
 }
 
+.noScrollBar::-webkit-scrollbar {
+  display: none;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

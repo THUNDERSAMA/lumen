@@ -8,6 +8,20 @@ export default function Navbar() {
   const [width, setWidth] = useState(0);
   const [toggleMenu, setToggleMenu] = useState(false);
   const [scrollValue, setScrollValue] = useState(0);
+  const [isNotiOpen, setIsNotiOpen] = useState(false);
+
+  const [notifications, setNotifications] = useState([
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "Lorem ipsum dolor sit.",
+    "Lorem ipsum dolor sit amet consectetur.",
+    "Lorem, ipsum dolor.",
+    "Lorem ipsum dolor sit amet consectetur adipisicing.",
+    "Lorem ipsum dolor sit amet.",
+    "Lorem ipsum dolor sit adipisicing.",
+    "Lorem ipsum dolor sit amet.",
+    "Lorem ipsum dolor sit amet consectetur.",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  ]);
 
   // function handleOutsideClick(clickedOutside: boolean) {
   //   if (clickedOutside) setToggleMenu(false);
@@ -72,11 +86,45 @@ export default function Navbar() {
           >
             <Image src={"/menu.png"} height={50} width={50} alt="menu" />
           </button>
-          <input
-            type="text"
-            placeholder="Search anything..."
-            className="w-40 h-[46px] px-4 font-light text-sm text-left border-[1.5px] border-black rounded-full bg-white placeholder:italic"
-          />
+          <ElementBound onOutsideClick={setIsNotiOpen}>
+            <>
+              <span className="relative flex items-center gap-1">
+                <input
+                  type="text"
+                  placeholder="Search anything..."
+                  className="w-40 h-[50px] px-4 font-light text-sm text-left border-[1px] border-black rounded-full bg-white placeholder:italic"
+                />
+                <button
+                  className="w-[50px] h-[50px] bg-white border-black border-[1px] grid place-content-center rounded-full"
+                  onClick={() => setIsNotiOpen(!isNotiOpen)}
+                >
+                  <Image
+                    src={
+                      isNotiOpen ? "/noti_bell.svg" : "/noti_bell_active.svg"
+                    }
+                    height={25}
+                    width={25}
+                    alt="menu"
+                  />
+                </button>
+              </span>
+              <div
+                className={`absolute top-[72px] right-0 w-3/4 ${
+                  isNotiOpen ? "h-64" : "h-0 opacity-0"
+                } mx-4 border-[1px] border-black rounded-2xl p-1 bg-white flex flex-col overflow-auto noScrollBar`}
+              >
+                {notifications.map((noti, index) => (
+                  <Link
+                    href={""}
+                    key={index}
+                    className="p-2 px-3 rounded-xl odd:bg-slate-100"
+                  >
+                    {noti}
+                  </Link>
+                ))}
+              </div>
+            </>
+          </ElementBound>
         </nav>
       </>
     );
@@ -124,11 +172,24 @@ export default function Navbar() {
             Profile
           </Link>
         </ul>
-        <input
-          type="text"
-          placeholder="Search anything..."
-          className="w-40 h-[46px] px-4 font-light text-sm text-left border-[1.5px] border-black rounded-full bg-white placeholder:italic"
-        />
+        <span className="flex items-center gap-1">
+          <input
+            type="text"
+            placeholder="Search anything..."
+            className="w-40 h-[50px] px-4 font-light text-sm text-left border-[1px] border-black rounded-full bg-white placeholder:italic"
+          />
+          <button
+            className="w-[50px] h-[50px] bg-white border-black border-[1px] grid place-content-center rounded-full"
+            onClick={() => setIsNotiOpen(!isNotiOpen)}
+          >
+            <Image
+              src={isNotiOpen ? "/noti_bell.svg" : "/noti_bell_active.svg"}
+              height={25}
+              width={25}
+              alt="menu"
+            />
+          </button>
+        </span>
       </nav>
     );
 }
