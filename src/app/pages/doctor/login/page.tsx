@@ -2,10 +2,11 @@
 import { Providers } from "@/app/Providers";
 import Translate from "@/app/Translate";
 import Notification from "@/app/components/Notification";
+import Spinner from "@/app/components/Spinner";
 import { getTranslation } from "@/app/utils/TranslationUtils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 export default function DoctorLogin() {
   return (
@@ -23,6 +24,14 @@ function App() {
   const [error, setError] = useState<string | null>(null);
 
   const [eyeToggle, setEyeToggle] = useState<boolean>(false);
+
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (error) {
+      loading && setLoading(false);
+    }
+  }, [error, loading]);
 
   async function handleSubmit() {
     if (phone.trim() === "" || password.trim() === "") {
@@ -123,20 +132,24 @@ function App() {
             <div className="flex justify-end py-4 pr-1">
               <button
                 type="submit"
-                className=""
+                className="bg-black h-[50px] w-[50px] grid place-content-center rounded-full"
                 onClick={(event) => {
                   event.preventDefault();
                   handleSubmit();
+                  setLoading(true);
                 }}
               >
-                {/* <Translate>Log In</Translate> */}
-                <Image
-                  src={"/arrow.png"}
-                  height={50}
-                  width={50}
-                  alt="login"
-                  className="rotate-180"
-                />
+                {loading ? (
+                  <Spinner className="h-7 w-7 text-white fill-zinc-600" />
+                ) : (
+                  <Image
+                    src={"/arrow.png"}
+                    height={50}
+                    width={50}
+                    alt="login"
+                    className="rotate-180 scanBtn"
+                  />
+                )}
               </button>
             </div>
           </form>

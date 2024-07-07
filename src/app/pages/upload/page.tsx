@@ -11,6 +11,9 @@ import Cookies from "js-cookie";
 import { decrypt } from "@/lib/auth";
 import { set } from "mongoose";
 import ElementBound from "@/app/components/ElementBound";
+import Spinner from "@/app/components/Spinner";
+import Notification from "@/app/components/Notification";
+import { useRouter } from "next/navigation";
 
 export default function Upload() {
   return (
@@ -54,6 +57,38 @@ function App() {
   const [onSelectClick, setOnSelectClick] = useState(false);
   const [inputDisabled, setInputDisabled] = useState(true);
 
+  const [error, setError] = useState<string | null>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  function handleNextClicked() {
+    if (title.trim() === "") {
+      setError("Please provide a title");
+      return;
+    }
+    if (type.trim() === "") {
+      setError("Please select a type");
+      return;
+    }
+    setError(null);
+    setNextClicked(true);
+  }
+
+  function handleScanRedirect(e: any) {
+    e.preventDefault();
+    setLoading(true);
+  }
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (loading) {
+      router.push("/scan");
+    }
+    if (error) {
+      loading && setLoading(false);
+    }
+  }, [error, loading, router]);
+
   const inputRef = useRef<HTMLInputElement>(null);
   const selectRef = useRef<HTMLDivElement>(null);
 
@@ -77,6 +112,13 @@ function App() {
 
   return (
     <>
+      <Notification
+        message={error}
+        setMessage={setError}
+        time={5000}
+        position="top"
+        type="error"
+      />
       <Navbar />
       <main className="mainMain flex flex-col items-center justify-start gap-20 min-h-screen h-full w-screen">
         <section className="mt-36 w-96 max-w-[90vw] flex flex-col items-start">
@@ -213,7 +255,7 @@ function App() {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  setNextClicked(true);
+                  handleNextClicked();
                 }}
                 className="mt-4 me-2"
               >
@@ -238,7 +280,7 @@ function App() {
                 name=""
                 id=""
                 rows={3}
-                placeholder="Description"
+                placeholder="Description (optional)"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className={`w-full ${
@@ -254,15 +296,22 @@ function App() {
                 >
                   <Image src={"/arrow.png"} height={50} width={50} alt="back" />
                 </button>
-                <Link href={"/scan"}>
-                  <Image
-                    src={"/arrow.png"}
-                    height={50}
-                    width={50}
-                    alt="next"
-                    className="rotate-180"
-                  />
-                </Link>
+                <button
+                  className="bg-black h-[50px] w-[50px] grid place-content-center rounded-full"
+                  onClick={handleScanRedirect}
+                >
+                  {loading ? (
+                    <Spinner className="h-7 w-7 text-white fill-zinc-600" />
+                  ) : (
+                    <Image
+                      src={"/arrow.png"}
+                      height={50}
+                      width={50}
+                      alt="next"
+                      className="rotate-180 scanBtn"
+                    />
+                  )}
+                </button>
               </span>
             </div>
             {/* )} */}

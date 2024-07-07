@@ -2,11 +2,12 @@
 import { Providers } from "@/app/Providers";
 import Translate from "@/app/Translate";
 import Notification from "@/app/components/Notification";
+import Spinner from "@/app/components/Spinner";
 import { getTranslation } from "@/app/utils/TranslationUtils";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { MouseEventHandler, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 
 export default function PatientReg() {
   return (
@@ -28,6 +29,14 @@ function App() {
 
   const [eyeToggle, setEyeToggle] = useState<boolean>(false);
   const [conEyeToggle, setConEyeToggle] = useState<boolean>(false);
+
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (error) {
+      loading && setLoading(false);
+    }
+  }, [error, loading]);
 
   const router = useRouter();
   async function handleSubmit() {
@@ -212,20 +221,24 @@ function App() {
             <div className="flex justify-end py-2 pr-1">
               <button
                 type="submit"
-                className=""
+                className="bg-black h-[50px] w-[50px] grid place-content-center rounded-full"
                 onClick={(event) => {
                   event.preventDefault();
                   handleSubmit();
+                  setLoading(true);
                 }}
               >
-                {/* <Translate>Request OTP</Translate> */}
-                <Image
-                  src={"/arrow.png"}
-                  height={50}
-                  width={50}
-                  alt="login"
-                  className="rotate-180"
-                />
+                {loading ? (
+                  <Spinner className="h-7 w-7 text-white fill-zinc-600" />
+                ) : (
+                  <Image
+                    src={"/arrow.png"}
+                    height={50}
+                    width={50}
+                    alt="login"
+                    className="rotate-180 scanBtn"
+                  />
+                )}
               </button>
             </div>
           </form>

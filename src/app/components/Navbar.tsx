@@ -64,11 +64,15 @@ export default function Navbar() {
               <Image src={"/back.png"} height={50} width={50} alt="back" />
             </button>
             <ul className="flex flex-col items-center gap-4">
-              <Link href={""}>
+              <Link href={""} className="hover:underline">
                 R<sub>x</sub>Meds
               </Link>
-              <Link href={""}>Profile</Link>
-              <Link href={""}>Settings</Link>
+              <Link href={"/patient/profile"} className="hover:underline">
+                Profile
+              </Link>
+              <Link href={""} className="hover:underline">
+                Settings
+              </Link>
             </ul>
           </section>
         </ElementBound>
@@ -151,7 +155,7 @@ export default function Navbar() {
           <Link
             href={""}
             title="Compare medicines and buy them at lowest cost"
-            className="hover:text-orange-700"
+            className="hover:underline"
           >
             R<sub>x</sub>Meds
           </Link>
@@ -159,7 +163,7 @@ export default function Navbar() {
           <Link
             href={""}
             title="Account & settings"
-            className="hover:text-orange-700"
+            className="hover:underline"
           >
             Settings
           </Link>
@@ -167,7 +171,7 @@ export default function Navbar() {
           <Link
             href={"profile"}
             title="Account & settings"
-            className="hover:text-orange-700"
+            className="hover:underline"
           >
             Profile
           </Link>
